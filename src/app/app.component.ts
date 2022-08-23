@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faArrowCircleUp, faCoffee, faFaceAngry, faYinYang } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Kaizen';
+
+  faCoffe = faCoffee
+  Unicorn = faArrowCircleUp
+  yinyang = faYinYang
+  face = faFaceAngry
+
 }

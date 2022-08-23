@@ -1,0 +1,116 @@
+<div class="col-9 position-absolute top-0 end-0 container-fluid m-3 container mx-auto PosAbas">
+
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-Receitas" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Receitas</button>
+          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-Despesas" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Despesas</button>
+          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-Saldo" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Saldo</button>
+          <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-SaldoPrev" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false" >Saldo Previsto</button>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+
+        <!-- <CONTEUDO ABA RECEITAS> -->
+<!-- // Dados --- | ---   -->
+      <!--   //PASSAR TODOS OS DADOS QUE DIZ RESPEITO Á TABELAS NO SCOPE DO Mterial -->
+
+        <div class="tab-pane fade show active" id="nav-Receitas" role="tabpanel" aria-labelledby="nav-Receitas-tab" tabindex="0">
+    
+        rECEITAS E TAL
+          
+          
+
+
+        </div>
+        
+        <!-- <CONTEUDO ABA DESPESAS> -->
+
+        <div class="tab-pane fade" id="nav-Despesas" role="tabpanel" aria-labelledby="nav-Despesas-tab" tabindex="0">
+          <div class="" >
+
+              <div class="grid mx-auto">
+            
+                 
+          <table mat-table [dataSource]="DadosDespesas" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            
+            <ng-container matColumnDef="Id">
+              <th mat-header-cell *matHeaderCellDef> id </th>
+              <td mat-cell *matCellDef="let Despesa"> {{Despesa.Id}} </td>
+            </ng-container>
+          
+    
+            <ng-container matColumnDef="Data">
+              <th mat-header-cell *matHeaderCellDef> Data </th>
+              <td mat-cell *matCellDef="let Despesas"> {{Despesas.Data}} </td>
+            </ng-container>
+          
+        
+            <ng-container matColumnDef="Categoria">
+              <th mat-header-cell *matHeaderCellDef> Categoria </th>
+              <td mat-cell *matCellDef="let Despesas"> {{Despesas.Categoria}} </td>
+            </ng-container>
+          
+        
+            <ng-container matColumnDef="SubCategoria">
+              <th mat-header-cell *matHeaderCellDef> SubCategoria </th>
+              <td mat-cell *matCellDef="let Despesas"> {{Despesas.SubCategoria}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="Valor">
+              <th mat-header-cell *matHeaderCellDef> Valor </th>
+              <td mat-cell *matCellDef="let Despesas"> {{Despesas.Valor}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="FonteDespesa">
+              <th mat-header-cell *matHeaderCellDef> FonteDespesa </th>
+              <td mat-cell *matCellDef="let Despesas"> {{Despesas.FonteDespesa}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Observacao">
+              <th mat-header-cell *matHeaderCellDef> Observacao </th>
+              <td mat-cell *matCellDef="let Despesas"> {{Despesas.Observacao}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          
+          <mat-paginator 
+          [length]="2"
+          [pageSize]="1"
+          [pageSizeOptions]="[2,4,6]"
+          >
+        </mat-paginator>
+        
+        <button class="btn btn-primary" (click)="abrirCreateModal()">RegistarDespesas</button>
+        <!--------------Modal Inclusão das Despesas --------->
+        <div class="modal fade" id="ModInclusaoDesp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmar exclusão</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+               Bla bla bla
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="exampleModal">Fechar</button>
+                <button type="button"  class="btn btn-primary">Confirm Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+              
+        </div>
+        <div class="tab-pane fade" id="nav-Saldo" role="tabpanel" aria-labelledby="nav-Saldo-tab" tabindex="0">Saldo</div>
+        <div class="tab-pane fade" id="nav-SaldoPrev" role="tabpanel" aria-labelledby="nav-SaldoPrev-tab" tabindex="0">nav-SaldoPrev</div>
+      </div>
+    </div>
+

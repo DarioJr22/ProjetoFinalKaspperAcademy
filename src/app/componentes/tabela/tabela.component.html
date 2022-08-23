@@ -1,0 +1,40 @@
+
+
+ 
+    
+    <div class="tableEdit container col-md-3 position-absolute top-5 start-0 me-4 mt-2 g-col-4" ><h1 >Cursos</h1></div>   <div class="tableEdit container col-md-6 position-absolute top-5 end-0 me-4 mt-2 g-col-6"><h1 >Alunos</h1></div>
+   
+
+
+
+    <div class="grid">
+   
+        <table class="table  table-light table-sm col-8 " >
+              <thead>
+                  <tr>
+                    <th colspan="6">Despesas</th>
+                  </tr>
+                      <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">SubCategoria</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">FonteDespesa</th>
+                        <th scope="col">Observacao</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor = "let x of DadosDespesas">
+                        <td class="d-none d-sm-table-cell" >{{x.Id}}</td>
+                        <td class="d-none d-sm-table-cell">{{x.Data}}</td>
+                        <td class="d-none d-sm-table-cell">{{x.Categoria}}</td>
+                        <td class="d-none d-sm-table-cell" >{{x.SubCategoria}}</td>
+                        <td class="d-none d-sm-table-cell" >{{x.Valor}}</td>
+                        <td class="d-none d-sm-table-cell" >{{x.FonteDespesa}}</td>
+                        <td class="d-none d-sm-table-cell" >{{x.Observacao}}</td>
+                      </tr>
+            </tbody>
+    
+      </table>
+

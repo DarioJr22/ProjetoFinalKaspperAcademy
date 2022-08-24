@@ -4097,6 +4097,7 @@ input[type="button"].btn-block {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  height: 100%;
 }
 
 .navbar .container,
@@ -4105,6 +4106,7 @@ input[type="button"].btn-block {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  
 }
 
 .navbar-brand {
@@ -4127,6 +4129,7 @@ input[type="button"].btn-block {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  height: 100%;
 }
 
 .navbar-nav .nav-link {
@@ -11270,7 +11273,7 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .container-fluid {
-  position: absolute;
+  position: relative;
   display: flex;
   align-content: flex-end;
   flex-direction: column;

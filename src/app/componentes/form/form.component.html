@@ -1,0 +1,50 @@
+
+<div class="container">
+    <form action="">
+    
+    <div class="mb-3">
+    
+        <Label >Data</Label>
+        <input  (input) = "CapturaData(Data.value)" #Data type="datetime" class="form-control">
+        <div class="form-text">Data da despesa</div>
+        
+    </div>
+    
+    <div class="mb-3">
+        <Label >Categoria</Label>
+        
+        <input  (input) = "CapturaCategoria(Categoria.value)" #Categoria type="text" class="form-control">
+        <div class="form-text">Que tipo de despesa ?</div>
+    </div>
+
+    <div class = "mb-3">
+        <Label >SubCategoria</Label>
+        
+        <select (input)="CapturaSubCategoria(SubCategoria.value)" #SubCategoria>
+        <option *ngFor="let item of SubCategoriasList" [value]="item">{{item}}</option>
+        </select>
+        <div class="form-text">Subcategorize sua despesa.</div>
+    </div>    
+
+    <div class="mb-3">
+        <Label >Fonte Fonte utilizada</Label>
+        
+        <input  (input) = "CapturaFonteDespesa(FonteDespesa.value)" type="text" class="form-control" #FonteDespesa>
+        <div class="form-text">Qual fonte de renda você utilizou ?</div>
+    </div>
+
+    <div class="mb-3">
+        <Label >Observacao</Label>
+        
+        <textarea  (input) = "CapturaFonteDespesa(Observacao.value)" type="text" class="form-control" #Observacao></textarea>
+        <div class="form-text">Tem alguma coisa que se lembre sobre essa despesa ? ?</div>
+    </div>
+
+    <div class="mb-3">
+        <Label>Valor</Label>
+        <input  (input) = "CapturaValor(Valor.value)" type="text" class="form-control" #Valor>
+        <div class="form-text">Que tipo de despesa ?</div>
+    </div>
+        
+    </form>
+    </div>

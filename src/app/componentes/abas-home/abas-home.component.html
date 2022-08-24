@@ -92,23 +92,40 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirmar exclusão</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title" id="exampleModalLabel">Coletar Registro</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-               Bla bla bla
+               
+                <app-form 
+                (Data)="CapturaData($event)"
+                (Categoria)="CapturaCategoria($event)"
+                (SubCategoria)="CapturaSubCategoria($event)"
+                (Observacao)="CapturaObservacao($event)"
+                (FonteDespesa)="CapturaFonteDespesa($event)"
+                (Valor)="CapturaValor($event)">
+                  
+                </app-form>
+                
+
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="exampleModal">Fechar</button>
-                <button type="button"  class="btn btn-primary">Confirm Delete</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button"  class="btn btn-primary">Criar Despesa</button>
               </div>
             </div>
           </div>
+        </div> 
         </div>
-              
-        </div>
+
+
+
+
+
+
+
         <div class="tab-pane fade" id="nav-Saldo" role="tabpanel" aria-labelledby="nav-Saldo-tab" tabindex="0">Saldo</div>
         <div class="tab-pane fade" id="nav-SaldoPrev" role="tabpanel" aria-labelledby="nav-SaldoPrev-tab" tabindex="0">nav-SaldoPrev</div>
       </div>

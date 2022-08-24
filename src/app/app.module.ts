@@ -17,6 +17,7 @@ import { MatSlider, MatSliderModule } from "@angular/material/slider";
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { FormComponent } from './componentes/form/form.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     CardsTotaisComponent,
     AbasHomeComponent,
-    TabelaComponent
+    TabelaComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

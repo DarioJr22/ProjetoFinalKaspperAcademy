@@ -1,5 +1,5 @@
 export interface Despesas {
-    Id?: number,
+    id?: number,
     Data: string,
     Categoria:string,
     SubCategoria: string,

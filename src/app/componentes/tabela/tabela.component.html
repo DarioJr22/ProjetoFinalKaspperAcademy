@@ -9,7 +9,7 @@
 
     <div class="grid">
    
-        <table class="table  table-light table-sm col-8 " >
+        <table class="table" >
               <thead>
                   <tr>
                     <th colspan="6">Despesas</th>
@@ -26,7 +26,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor = "let x of DadosDespesas">
-                        <td class="d-none d-sm-table-cell" >{{x.Id}}</td>
+                        <td class="d-none d-sm-table-cell" >{{x.id}}</td>
                         <td class="d-none d-sm-table-cell">{{x.Data}}</td>
                         <td class="d-none d-sm-table-cell">{{x.Categoria}}</td>
                         <td class="d-none d-sm-table-cell" >{{x.SubCategoria}}</td>

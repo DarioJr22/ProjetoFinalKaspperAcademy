@@ -1,4 +1,4 @@
-<div class="col-9 position-absolute top-0 end-0 container-fluid m-3 container mx-auto PosAbas">
+<div class="col-12 position-absolute top-0 end-0 container-fluid m-3 container mx-auto PosAbas">
 
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -7,20 +7,50 @@
           <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-Saldo" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Saldo</button>
           <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-SaldoPrev" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false" >Saldo Previsto</button>
         </div>
-      </nav>
-      <div class="tab-content" id="nav-tabContent">
+    </nav>
 
-        <!-- <CONTEUDO ABA RECEITAS> -->
-<!-- // Dados --- | ---   -->
-      <!--   //PASSAR TODOS OS DADOS QUE DIZ RESPEITO Á TABELAS NO SCOPE DO Mterial -->
+
+      <div class="tab-content" id="nav-Receitas">
 
         <div class="tab-pane fade show active" id="nav-Receitas" role="tabpanel" aria-labelledby="nav-Receitas-tab" tabindex="0">
     
-        rECEITAS E TAL
-          
-          
+            <table mat-table [dataSource]="DadosReceitas" class="table  mat-elevation-z8">
+              
+              <ng-container matColumnDef="id_R">
+                <th mat-header-cell *matHeaderCellDef> id </th>
+                <td mat-cell *matCellDef="let Receitas">{{Receitas.id}}</td>
+              </ng-container>
 
+              <ng-container matColumnDef="Data_R">
+                <th mat-header-cell *matHeaderCellDef> Data </th>
+                <td mat-cell *matCellDef="let Receitas">{{Receitas.Data}}</td>
+              </ng-container>
 
+              <ng-container matColumnDef="Categoria_R">
+                <th mat-header-cell *matHeaderCellDef> Categoria </th>
+                <td mat-cell *matCellDef="let Receitas">{{Receitas.Categoria}}</td>
+              </ng-container>
+              
+              <ng-container matColumnDef="SubCategoria_R">
+                <th mat-header-cell *matHeaderCellDef> SubCategoria </th>
+                <td mat-cell *matCellDef="let Receitas">{{Receitas.SubCategoria}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="FonteDespesa_R">
+                <th mat-header-cell *matHeaderCellDef> FonteDespesa </th>
+                <td mat-cell *matCellDef="let Receitas"> {{Receitas.FonteReceita}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Observacao_R">
+                <th mat-header-cell *matHeaderCellDef> Observacao </th>
+                <td mat-cell *matCellDef="let Receitas"> {{Receitas.Observacao}} </td>
+              </ng-container>
+              
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsReceitas"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsReceitas;"></tr>
+            </table>
+
+        </div>
         </div>
         
         <!-- <CONTEUDO ABA DESPESAS> -->
@@ -31,7 +61,7 @@
               <div class="grid mx-auto">
             
                  
-          <table mat-table [dataSource]="DadosDespesas" class="mat-elevation-z8">
+          <table mat-table [dataSource]="DadosDespesas" class="table mat-elevation-z8">
 
             <!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->
@@ -39,7 +69,7 @@
             
             <ng-container matColumnDef="Id">
               <th mat-header-cell *matHeaderCellDef> id </th>
-              <td mat-cell *matCellDef="let Despesa"> {{Despesa.Id}} </td>
+              <td mat-cell *matCellDef="let Despesa"> {{Despesa.id}} </td>
             </ng-container>
           
     
@@ -75,15 +105,14 @@
               <td mat-cell *matCellDef="let Despesas"> {{Despesas.Observacao}} </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsDespesas"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsDespesas;"></tr>
           </table>
           
           <mat-paginator 
           [length]="2"
           [pageSize]="1"
-          [pageSizeOptions]="[2,4,6]"
-          >
+          [pageSizeOptions]="[2,4,6]">
         </mat-paginator>
         
         <button class="btn btn-primary" (click)="abrirCreateModal()">RegistarDespesas</button>
@@ -106,14 +135,13 @@
                 (Observacao)="CapturaObservacao($event)"
                 (FonteDespesa)="CapturaFonteDespesa($event)"
                 (Valor)="CapturaValor($event)">
-                  
                 </app-form>
                 
 
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button"  class="btn btn-primary">Criar Despesa</button>
+                <button type="button" (click)="createDespesas()" class="btn btn-primary">Criar Despesa</button>
               </div>
             </div>
           </div>

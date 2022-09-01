@@ -1,49 +1,69 @@
 {
-    "Despesas":[
-    {   "Id":1,
-        "Data":"10/07/2022",
-        "Categoria":"Casa-Moradia",
-        "SubCategoria":"Alimentação",
-        "Valor":159.21,
-        "FonteDespesa":"ITAU",
-        "Observacao":"Feira da 1º semana de Julho"
+  "Despesas": [
+    {
+      "id": 1,
+      "Data": "10/07/2022",
+      "Categoria": "Casa-Moradia",
+      "SubCategoria": "Alimentação",
+      "Valor": 159.21,
+      "FonteDespesa": "ITAU",
+      "Observacao": "Feira da 1º semana de Julho"
     },
-    {   "Id":2,
-        "Data":"15/07/2022",
-        "Categoria":"Casa-Moradia",
-        "SubCategoria":"Aluguél",
-        "Valor":300,
-        "FonteDespesa":"PicPay",
-        "Observacao":"Aluguél - Mês Julho."
+    {
+      "id": 2,
+      "Data": "15/07/2022",
+      "Categoria": "Casa-Moradia",
+      "SubCategoria": "Aluguél",
+      "Valor": 300,
+      "FonteDespesa": "PicPay",
+      "Observacao": "Aluguél - Mês Julho."
     },
-    {   "Id":3,
-        "Data":"25/07/2022",
-        "Categoria":"CuidadoPessoal",
-        "SubCategoria":"Academia",
-        "Valor":80,
-        "FonteDespesa":"MercadoPago",
-        "Observacao":"Academia de Julho"
+    {
+      "id": 3,
+      "Data": "25/07/2022",
+      "Categoria": "CuidadoPessoal",
+      "SubCategoria": "Academia",
+      "Valor": 80,
+      "FonteDespesa": "MercadoPago",
+      "Observacao": "Academia de Julho"
+    },
+    {
+      "Data": "2022-08-10",
+      "Categoria": "Casa-Modaria",
+      "Observacao": "Feira do Mês Maio",
+      "FonteDespesa": "Feira Semana 1",
+      "SubCategoria": "Alimentação",
+      "Valor": "200",
+      "id": 4
+    },
+    {
+      "Data": "2022-08-25",
+      "Categoria": "Cuidado Pessoal",
+      "Observacao": "Feira do Mês Maio",
+      "FonteDespesa": "Curso de inglês mês 4",
+      "SubCategoria": "Cursos",
+      "Valor": "200",
+      "id": 5
     }
-],
-
-"Receitas":[
-    {   "Id":1,
-        "Data":"01/07/2022",
-        "Categoria":"SalárioEmpresa",
-        "SubCategoria":"RendaFixa",
-        "Valor":1000,
-        "FonteReceita":"ITAU",
-        "Observacao":"Feira da 1º semana de Julho"
+  ],
+  "Receitas": [
+    {
+      "Id": 1,
+      "Data": "01/07/2022",
+      "Categoria": "SalárioEmpresa",
+      "SubCategoria": "RendaFixa",
+      "Valor": 1000,
+      "FonteReceita": "ITAU",
+      "Observacao": "Feira da 1º semana de Julho"
     },
-    {   "Id":2,
-        "Data":"15/07/2022",
-        "Categoria":"CasaMoradia",
-        "SubCategoria":"Aluguél",
-        "Valor":300,
-        "FonteReceita":"PicPay",
-        "Observacao":"Aluguél  Mês Julho."
+    {
+      "Id": 2,
+      "Data": "15/07/2022",
+      "Categoria": "CasaMoradia",
+      "SubCategoria": "Aluguél",
+      "Valor": 300,
+      "FonteReceita": "PicPay",
+      "Observacao": "Aluguél  Mês Julho."
     }
-  
-]
-
+  ]
 }

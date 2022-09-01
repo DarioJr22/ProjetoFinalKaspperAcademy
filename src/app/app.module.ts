@@ -12,12 +12,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AbasHomeComponent } from './componentes/abas-home/abas-home.component';
 import { TabelaComponent } from './componentes/tabela/tabela.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MatTable, MatTableModule } from "@angular/material/table";
-import { MatSlider, MatSliderModule } from "@angular/material/slider";
+import { MatTableModule } from "@angular/material/table";
+import { MatSliderModule } from "@angular/material/slider";
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FormComponent } from './componentes/form/form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { LoginComponent } from './paginas/login/login.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { FormComponent } from './componentes/form/form.component';
     CardsTotaisComponent,
     AbasHomeComponent,
     TabelaComponent,
-    FormComponent
+    FormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -35,11 +38,12 @@ import { FormComponent } from './componentes/form/form.component';
     FontAwesomeModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    CommonModule,
+    FormsModule,
     MatTableModule,
     MatSliderModule,
-    MatPaginatorModule,
-    CommonModule,
-    FormsModule
+    MatFormFieldModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

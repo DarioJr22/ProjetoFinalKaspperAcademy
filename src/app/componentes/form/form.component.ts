@@ -13,7 +13,26 @@ export class FormComponent implements OnInit {
     'Lazer',
     'Esportes',
     'Cursos',
-    'Ostros'
+    'Faculdade',
+    'Bolsa de Valores'
+  ]
+
+  CategoriaList:string[] = 
+  [
+    'Casa-moradia',
+    'Cuidado Pessoal',
+    'Investimento',
+    'Educação'
+  ]
+
+  Fonte:string[] =
+  [
+    'ITAU',
+    'PICPAY',
+    'NUBANK',
+    'SANTANDER',
+    'CartãoCrédito1',
+    'CartãoCrédito2'
   ]
 
   //Cadastro de Despesa

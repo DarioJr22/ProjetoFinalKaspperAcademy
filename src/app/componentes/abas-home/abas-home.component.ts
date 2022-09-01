@@ -3,6 +3,8 @@ import { Despesas } from 'src/app/service/despesas';
 import { KaizenService } from 'src/app/service/kaizen.service';
 
 import { MatPaginator } from '@angular/material/paginator';
+import { data } from 'jquery';
+import { Receitas } from 'src/app/service/receitas';
 
 
 declare var window:any
@@ -18,14 +20,25 @@ export class AbasHomeComponent implements OnInit {
 
   DadosDespesas:Despesas [] = []
 
-  displayedColumns:String[] = 
-  ['Id',
+  DadosReceitas:Receitas [] = []
+
+  displayedColumnsDespesas:String[] = 
+  ['id',
   'Data',
   'Categoria',
   'SubCategoria',
   'Valor',
-  'FonteDespesa',
+  'FonteReceitas',
   'Observacao']
+
+  displayedColumnsReceitas:String[] = 
+  ['id_R',
+  'Data_R',
+  'Categoria_R',
+  'SubCategoria_R',
+  'Valor_R',
+  'FonteDespesa_R',
+  'Observacao_R']
 
   CreateDadosDespesas:Despesas ={
     Data:'10/05/2022',
@@ -44,15 +57,30 @@ export class AbasHomeComponent implements OnInit {
   ngOnInit(): void {
     this.DadosDespesas =[]
     this.getDespesas()
+    this.getReceitas()
     this.carregarForm()
    
     }
+//Serviço
 
   getDespesas(){
     this.kaizenService
     .getDespesas()
-    .subscribe((dados)=>{console.log(dados, this.DadosDespesas = dados);
-    })
+    .subscribe(
+    (dados)=>{console.log(dados, this.DadosDespesas = dados)})
+  }
+
+  createDespesas(){
+    this.kaizenService
+    .createDespesa(this.CreateDadosDespesas)
+    .subscribe((data) => console.log(data))
+    
+  }
+
+  getReceitas(){
+    this.kaizenService
+    .getReceitas()
+    .subscribe((data) => console.log(this.DadosReceitas = data))
   }
 
   abrirCreateModal(){
@@ -64,6 +92,12 @@ export class AbasHomeComponent implements OnInit {
   }
 
   //Métodos de Captura de eventos
+
+  teste(){
+
+    console.log(this.CreateDadosDespesas);
+    
+  }
 
   CapturaData(event:any){
     this.CreateDadosDespesas.Data = event
@@ -95,45 +129,6 @@ export class AbasHomeComponent implements OnInit {
     console.log(this.CreateDadosDespesas.Observacao);
   }
 
-
-
-
-
-
-  /* 
-  (Data)=""
-                (Categoria)="CapturaCategotia($event)"
-                (SubCategoria)=""
-                (Observacao)=""
-                (FonteDespesa)=""
-                (Valor)=""
-  CapturaNome(event){
-  
-    this.AlunoFiltro.Nome = event
-    console.log(this.AlunoFiltro.Nome);
-    
-    
-  }
-  CapturaTelefone(event){
-    this.AlunoFiltro.Telefone = event
-    console.log(this.AlunoFiltro.Telefone);
-    
-  }
-  CapturaCondPag(event){
-    this.AlunoFiltro.CondPag = event
-    console.log(this.AlunoFiltro.CondPag);
-  }
-  
-  CapturaEndereco(event){
-    this.AlunoFiltro.Endereco  =event
-    console.log(this.AlunoFiltro.Endereco);
-  }
-  
-  CapturaCurso(event){
-    this.AlunoFiltro.Cursos  =event
-    console.log(this.AlunoFiltro.Cursos);
-    
-  } */
   
 
 }

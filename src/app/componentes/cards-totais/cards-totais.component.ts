@@ -12,13 +12,14 @@ export class CardsTotaisComponent implements OnInit {
   Receitas:number = 2678
   Saldo = this.Receitas - this.Despesas
   Orcado = 192
-
-  
+  PercentualGast= this.Receitas/this.Despesas*100
   constructor() { }
 
   ngOnInit(): void {
     this.formatacaoCurrecy()
   }
+
+
 
   formatacaoCurrecy(){
     this.Despesas.toLocaleString('pt-br', {style: 'currency', currency:'BRL'})

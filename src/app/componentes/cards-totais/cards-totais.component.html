@@ -16,7 +16,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Receitas</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{Receitas}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{Receitas | currency: 'BRL':'R$ '}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -34,7 +34,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                             Despesas</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{Despesas | currency: 'BRL':'code'}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{Despesas | currency: 'BRL':'R$ '}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -81,7 +81,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Saldo</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{Saldo}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{Saldo | currency: 'BRL':'R$ '}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>

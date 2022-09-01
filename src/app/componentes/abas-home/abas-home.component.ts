@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Despesas } from 'src/app/service/despesas';
 import { KaizenService } from 'src/app/service/kaizen.service';
 
@@ -17,7 +17,7 @@ declare var window:any
 export class AbasHomeComponent implements OnInit {
   
   //Variáveis
-
+  
   DadosDespesas:Despesas [] = []
 
   DadosReceitas:Receitas [] = []
@@ -28,7 +28,7 @@ export class AbasHomeComponent implements OnInit {
   'Categoria',
   'SubCategoria',
   'Valor',
-  'FonteReceitas',
+  'FonteDespesas',
   'Observacao']
 
   displayedColumnsReceitas:String[] = 
@@ -37,7 +37,7 @@ export class AbasHomeComponent implements OnInit {
   'Categoria_R',
   'SubCategoria_R',
   'Valor_R',
-  'FonteDespesa_R',
+  'FonteReceitas_R',
   'Observacao_R']
 
   CreateDadosDespesas:Despesas ={
@@ -48,8 +48,18 @@ export class AbasHomeComponent implements OnInit {
     SubCategoria:'Alimentação',
     Valor:459.98
   }
+
+  CreateDadosReceitas:Receitas ={
+    Data:'10/05/2022',
+    Categoria:'Casa-Modaria',
+    Observacao:'Feira do Mês Maio',
+    FonteReceita:'Vale Refeição',
+    SubCategoria:'Alimentação',
+    Valor:459.98
+  }
   
-  ModalInclusao:any
+  ModalInclusaoDesp:any
+  ModalInclusaoRece:any
 
 
   constructor(private kaizenService:KaizenService) { }
@@ -61,6 +71,8 @@ export class AbasHomeComponent implements OnInit {
     this.carregarForm()
    
     }
+
+   
 //Serviço
 
   getDespesas(){
@@ -83,12 +95,22 @@ export class AbasHomeComponent implements OnInit {
     .subscribe((data) => console.log(this.DadosReceitas = data))
   }
 
-  abrirCreateModal(){
-    this.ModalInclusao.show()
+  createReceitas(){
+    this.kaizenService.createReceitas(this.CreateDadosReceitas)
+    .subscribe((data) => console.log(data))
+  }
+
+  abrirCreateModalDespesas(){
+    this.ModalInclusaoDesp.show()
+  }
+
+  abrirCreateModalReceitas(){
+    this.ModalInclusaoRece.show()
   }
 
   carregarForm(){
-      this.ModalInclusao = new window.bootstrap.Modal(document.getElementById('ModInclusaoDesp'))
+      this.ModalInclusaoDesp = new window.bootstrap.Modal(document.getElementById('ModInclusaoDesp'))
+      this.ModalInclusaoRece = new window.bootstrap.Modal(document.getElementById('ModInclusaoRece'))
   }
 
   //Métodos de Captura de eventos
@@ -128,6 +150,8 @@ export class AbasHomeComponent implements OnInit {
     this.CreateDadosDespesas.Observacao = event
     console.log(this.CreateDadosDespesas.Observacao);
   }
+
+  //Paginação da tabela
 
   
 

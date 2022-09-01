@@ -7,14 +7,14 @@
 
             <input (input)="CapturaData(Data.value)" #Data type="date" class="form-control">
 
-            <div class="form-text">Data da despesa</div>
+            <div class="form-text">Data do registro </div>
 
         </div>
 
         <div class="mb-2">
 
             <Label>Categoria</Label>
-            <div class="form-text">Como categoriza sua despesa ?</div>
+            <div class="form-text">Como categoriza seu registro ?</div>
 
             <select class="form-select" (input)="CapturaCategoria(Categoria.value)" #Categoria>
 
@@ -25,7 +25,7 @@
 
         <div class="mb-2">
             <Label>SubCategoria</Label>
-            <div class="form-text">Subcategorize sua despesa.</div>
+            <div class="form-text">Subcategorize seu registro.</div>
 
             <select class="form-select" (input)="CapturaSubCategoria(SubCategoria.value)" #SubCategoria>
 
@@ -57,18 +57,18 @@
             <div class="form-text">Tem alguma coisa que se lembre sobre essa despesa ? ?</div>
         </div>
 
-         <div class="mb-2">
+        <div class="mb-2">
             <Label>Valor</Label>
             <input (input)="CapturaValor(Valor.value)" type="number" class="form-control" #Valor>
             <div class="form-text">Que tipo de despesa ?</div>
         </div>
 
-     <!--   <mat-form-field appearance="fill" floatLabel="always">
-        <mat-label>Amount</mat-label>
-                <input (input)="CapturaValor(Valor.value)" #Valor matInput type="number" class="example-right-align" placeholder="0">
-            <span matPrefix>$&nbsp;</span>
-            <span matSuffix>.00</span>
-         </mat-form-field> -->
+        <!--   <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label>Amount</mat-label>
+                    <input (input)="CapturaValor(Valor.value)" #Valor matInput type="number" class="example-right-align" placeholder="0">
+                <span matPrefix>$&nbsp;</span>
+                <span matSuffix>.00</span>
+             </mat-form-field> -->
 
     </form>
 </div>

@@ -44,6 +44,7 @@ import { LoginComponent } from './paginas/login/login.component';
     MatSliderModule,
     MatFormFieldModule,
     MatPaginatorModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

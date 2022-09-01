@@ -44,11 +44,20 @@
       "SubCategoria": "Cursos",
       "Valor": "200",
       "id": 5
+    },
+    {
+      "Data": "2022-08-31",
+      "Categoria": "Cuidado Pessoal",
+      "Observacao": "Feira do Mês Maio",
+      "FonteDespesa": "Tal tal ",
+      "SubCategoria": "Lazer",
+      "Valor": "233333",
+      "id": 6
     }
   ],
   "Receitas": [
     {
-      "Id": 1,
+      "id": 1,
       "Data": "01/07/2022",
       "Categoria": "SalárioEmpresa",
       "SubCategoria": "RendaFixa",
@@ -57,13 +66,31 @@
       "Observacao": "Feira da 1º semana de Julho"
     },
     {
-      "Id": 2,
+      "id": 2,
       "Data": "15/07/2022",
       "Categoria": "CasaMoradia",
       "SubCategoria": "Aluguél",
       "Valor": 300,
       "FonteReceita": "PicPay",
       "Observacao": "Aluguél  Mês Julho."
+    },
+    {
+      "Data": "10/05/2022",
+      "Categoria": "Casa-Modaria",
+      "Observacao": "Feira do Mês Maio",
+      "FonteReceita": "Vale Refeição",
+      "SubCategoria": "Alimentação",
+      "Valor": 459.98,
+      "id": 3
+    },
+    {
+      "Data": "10/05/2022",
+      "Categoria": "Casa-Modaria",
+      "Observacao": "Feira do Mês Maio",
+      "FonteReceita": "Vale Refeição",
+      "SubCategoria": "Alimentação",
+      "Valor": 459.98,
+      "id": 4
     }
   ]
 }

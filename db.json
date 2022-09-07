@@ -53,6 +53,69 @@
       "SubCategoria": "Lazer",
       "Valor": "233333",
       "id": 6
+    },
+    {
+      "Data": "2022-09-01",
+      "Categoria": "Casa-Modaria",
+      "Observacao": "Feira do Mês Maio",
+      "FonteDespesa": "Vale Refeição",
+      "SubCategoria": "Cursos",
+      "Valor": 24444444,
+      "id": 7
+    },
+    {
+      "Data": "2022-09-01",
+      "Categoria": "Casa-Modaria",
+      "Observacao": "Feira do Mês Maio",
+      "FonteDespesa": "Vale Refeição",
+      "SubCategoria": "Cursos",
+      "Valor": 24444444,
+      "id": 8
+    },
+    {
+      "Data": "2022-09-01",
+      "Categoria": "Casa-Modaria",
+      "Observacao": "Feira do Mês Maio",
+      "FonteDespesa": "Vale Refeição",
+      "SubCategoria": "Cursos",
+      "Valor": 24444444,
+      "id": 9
+    },
+    {
+      "Data": "2022-09-01",
+      "Categoria": "Casa-Modaria",
+      "Observacao": "Feira do Mês Maio",
+      "FonteDespesa": "Vale Refeição",
+      "SubCategoria": "Cursos",
+      "Valor": 24444444,
+      "id": 10
+    },
+    {
+      "Data": "2022-09-01",
+      "Categoria": "Casa-Modaria",
+      "Observacao": "Feira do Mês Maio",
+      "FonteDespesa": "Vale Refeição",
+      "SubCategoria": "Cursos",
+      "Valor": 24444444,
+      "id": 11
+    },
+    {
+      "Data": "10/05/2022",
+      "Categoria": "Casa-Modaria",
+      "Observacao": "Feira do Mês Maio",
+      "FonteDespesa": "Vale Refeição",
+      "SubCategoria": "Alimentação",
+      "Valor": 459.98,
+      "id": 12
+    },
+    {
+      "Data": "10/05/2022",
+      "Categoria": "Casa-Modaria",
+      "Observacao": "Feira do Mês Maio",
+      "FonteDespesa": "Vale Refeição",
+      "SubCategoria": "Alimentação",
+      "Valor": 222,
+      "id": 13
     }
   ],
   "Receitas": [
@@ -91,6 +154,33 @@
       "SubCategoria": "Alimentação",
       "Valor": 459.98,
       "id": 4
+    },
+    {
+      "Data": "10/05/2022",
+      "Categoria": "Casa-Modaria",
+      "Observacao": "Feira do Mês Maio",
+      "FonteReceita": "Vale Refeição",
+      "SubCategoria": "Alimentação",
+      "Valor": 459.98,
+      "id": 5
+    },
+    {
+      "Data": "10/05/2022",
+      "Categoria": "Casa-Modaria",
+      "Observacao": "Feira do Mês Maio",
+      "FonteReceita": "Vale Refeição",
+      "SubCategoria": "Alimentação",
+      "Valor": 459.98,
+      "id": 6
+    },
+    {
+      "Data": "2022-09-01",
+      "Categoria": "Investimentos",
+      "Observacao": "aaaaaaa",
+      "FonteReceita": "Vale Refeição",
+      "SubCategoria": "Alimentação",
+      "Valor": 2333411,
+      "id": 7
     }
   ]
 }

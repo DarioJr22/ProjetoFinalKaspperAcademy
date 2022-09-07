@@ -41,21 +41,21 @@ export class AbasHomeComponent implements OnInit {
   'Observacao_R']
 
   CreateDadosDespesas:Despesas ={
-    Data:'10/05/2022',
-    Categoria:'Casa-Modaria',
-    Observacao:'Feira do Mês Maio',
-    FonteDespesa:'Vale Refeição',
-    SubCategoria:'Alimentação',
-    Valor:459.98
+    Data:'',
+    Categoria:'',
+    Observacao:'',
+    FonteDespesa:'',
+    SubCategoria:'',
+    Valor:0
   }
 
   CreateDadosReceitas:Receitas ={
-    Data:'10/05/2022',
-    Categoria:'Casa-Modaria',
-    Observacao:'Feira do Mês Maio',
-    FonteReceita:'Vale Refeição',
-    SubCategoria:'Alimentação',
-    Valor:459.98
+    Data:'',
+    Categoria:'',
+    Observacao:'',
+    FonteReceita:'',
+    SubCategoria:'',
+    Valor:0
   }
   
   ModalInclusaoDesp:any
@@ -72,8 +72,13 @@ export class AbasHomeComponent implements OnInit {
    
     }
 
+    carregarForm(){
+      this.ModalInclusaoDesp = new window.bootstrap.Modal(document.getElementById('ModInclusaoDesp'))
+      this.ModalInclusaoRece = new window.bootstrap.Modal(document.getElementById('ModInclusaoRece'))
+  }
+
    
-//Serviço
+  //------------------------------------ DESPESAS ------------------------------------
 
   getDespesas(){
     this.kaizenService
@@ -89,6 +94,46 @@ export class AbasHomeComponent implements OnInit {
     
   }
 
+  CapturaDataDesp(event:any){
+    this.CreateDadosDespesas.Data = event
+    console.log(this.CreateDadosDespesas.Data);
+  }
+
+  CapturaCategoriaDesp(event:any){
+    this.CreateDadosDespesas.Categoria = event
+    console.log(this.CreateDadosDespesas.Categoria);
+  }
+
+  CapturaSubCategoriaDesp(event:any){
+    this.CreateDadosDespesas.SubCategoria = event
+    console.log(this.CreateDadosDespesas.SubCategoria);
+  }
+
+  CapturaFonteDespesa(event:any){
+    this.CreateDadosDespesas.FonteDespesa = event
+    console.log(this.CreateDadosDespesas.FonteDespesa);
+  }
+
+  CapturaValorDesp(event:any){
+    let convers = parseFloat(event)
+    this.CreateDadosDespesas.Valor = convers
+    console.log(this.CreateDadosDespesas.Valor);
+  }
+
+  CapturaObservacaoDesp(event:any){
+    this.CreateDadosDespesas.Observacao = event
+    console.log(this.CreateDadosDespesas.Observacao);
+  }
+
+  abrirCreateModalDespesas(){
+    this.ModalInclusaoDesp.show()
+  }
+
+
+
+//------------------------------------ RECEITAS ------------------------------------
+
+
   getReceitas(){
     this.kaizenService
     .getReceitas()
@@ -100,20 +145,41 @@ export class AbasHomeComponent implements OnInit {
     .subscribe((data) => console.log(data))
   }
 
-  abrirCreateModalDespesas(){
-    this.ModalInclusaoDesp.show()
+  
+  CapturaDataRece(event:any){
+    this.CreateDadosReceitas.Data = event
+    console.log(this.CreateDadosReceitas.Data);
+  }
+
+  CapturaCategoriaRece(event:any){
+    this.CreateDadosReceitas.Categoria = event
+    console.log(this.CreateDadosReceitas.Categoria);
+  }
+
+  CapturaSubCategoriaRece(event:any){
+    this.CreateDadosReceitas.SubCategoria = event
+    console.log(this.CreateDadosReceitas.SubCategoria);
+  }
+
+  CapturaFonteReceitas(event:any){
+    this.CreateDadosReceitas.FonteReceita = event
+    console.log(this.CreateDadosReceitas.FonteReceita);
+  }
+
+  CapturaValorRece(event:any){
+    this.CreateDadosReceitas.Valor = event
+    console.log(this.CreateDadosReceitas.Valor);
+  }
+
+  CapturaObservacaoRece(event:any){
+    this.CreateDadosReceitas.Observacao = event
+    console.log(this.CreateDadosReceitas.Observacao);
   }
 
   abrirCreateModalReceitas(){
     this.ModalInclusaoRece.show()
   }
 
-  carregarForm(){
-      this.ModalInclusaoDesp = new window.bootstrap.Modal(document.getElementById('ModInclusaoDesp'))
-      this.ModalInclusaoRece = new window.bootstrap.Modal(document.getElementById('ModInclusaoRece'))
-  }
-
-  //Métodos de Captura de eventos
 
   teste(){
 
@@ -121,38 +187,5 @@ export class AbasHomeComponent implements OnInit {
     
   }
 
-  CapturaData(event:any){
-    this.CreateDadosDespesas.Data = event
-    console.log(this.CreateDadosDespesas.Data);
-  }
-
-  CapturaCategoria(event:any){
-    this.CreateDadosDespesas.Categoria = event
-    console.log(this.CreateDadosDespesas.Categoria);
-  }
-
-  CapturaSubCategoria(event:any){
-    this.CreateDadosDespesas.SubCategoria = event
-    console.log(this.CreateDadosDespesas.SubCategoria);
-  }
-
-  CapturaFonteDespesa(event:any){
-    this.CreateDadosDespesas.FonteDespesa = event
-    console.log(this.CreateDadosDespesas.FonteDespesa);
-  }
-
-  CapturaValor(event:any){
-    this.CreateDadosDespesas.Valor = event
-    console.log(this.CreateDadosDespesas.Valor);
-  }
-
-  CapturaObservacao(event:any){
-    this.CreateDadosDespesas.Observacao = event
-    console.log(this.CreateDadosDespesas.Observacao);
-  }
-
-  //Paginação da tabela
-
-  
 
 }

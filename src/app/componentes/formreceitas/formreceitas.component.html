@@ -23,25 +23,13 @@
             </select>
         </div>
 
-        <div class="mb-2">
-            <Label>SubCategoria</Label>
-            <div class="form-text">Subcategorize seu registro.</div>
-
-            <select class="form-select" (input)="CapturaSubCategoria(SubCategoria.value)" #SubCategoria>
-
-                <option *ngFor="let item of SubCategoriasList" [value]="item">{{item}}</option>
-
-            </select>
-
-
-        </div>
 
         <div class="mb-2">
             <Label>Fonte Fonte utilizada</Label>
 
             <div class="form-text">Qual fonte de renda você utilizou ?</div>
 
-            <select (input)="CapturaFonteReceitas(FonteReceita.value)" class="form-select" #FonteDespesa>
+            <select (input)="CapturaFonteReceitas(FonteReceitas.value)" class="form-select" #FonteReceitas>
 
                 <option *ngFor="let item of Fonte" [value]="item">{{item}}</option>
 
@@ -52,9 +40,9 @@
         <div class="mb-2">
             <Label>Observacao</Label>
 
-            <textarea (input)="CapturaFonteDespesa(Observacao.value)" type="text" class="form-control"
+            <textarea (input)="CapturaObservacao(Observacao.value)" type="text" class="form-control"
                 #Observacao></textarea>
-            <div class="form-text">Tem alguma coisa que se lembre sobre essa despesa ? ?</div>
+            <div class="form-text">Tem alguma coisa que se lembre sobre essa  Receita ? ?</div>
         </div>
 
         <div class="mb-2">

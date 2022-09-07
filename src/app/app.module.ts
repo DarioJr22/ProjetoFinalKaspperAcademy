@@ -21,6 +21,9 @@ import { FormComponent } from './componentes/form/form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginComponent } from './paginas/login/login.component';
 
+import { AuthModule } from "./auth/auth.module";
+import { FormreceitasComponent } from './componentes/formreceitas/formreceitas.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +33,8 @@ import { LoginComponent } from './paginas/login/login.component';
     AbasHomeComponent,
     TabelaComponent,
     FormComponent,
-    LoginComponent
+    LoginComponent,
+    FormreceitasComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,8 @@ import { LoginComponent } from './paginas/login/login.component';
     MatTableModule,
     MatSliderModule,
     MatFormFieldModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    AuthModule
     
   ],
   providers: [],

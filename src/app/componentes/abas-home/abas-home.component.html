@@ -110,14 +110,14 @@
               </div>
               <div class="modal-body">
                
-                <app-form 
-                (Data)="CapturaData($event)"
-                (Categoria)="CapturaCategoria($event)"
-                (SubCategoria)="CapturaSubCategoria($event)"
-                (Observacao)="CapturaObservacao($event)"
-                (FonteDespesa)="CapturaFonteDespesa($event)"
-                (Valor)="CapturaValor($event)">
-                </app-form>
+                <app-formreceitas 
+                (Data)="CapturaDataRece($event)"
+                (Categoria)="CapturaCategoriaRece($event)"
+                (SubCategoria)="CapturaSubCategoriaRece($event)"
+                (Observacao)="CapturaObservacaoRece($event)"
+                (FonteReceita)="CapturaFonteReceitas($event)"
+                (Valor)="CapturaValorRece($event)">
+                </app-formreceitas>
                 
 
               </div>
@@ -191,12 +191,12 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumnsDespesas"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumnsDespesas;"></tr>
           </table>
-          
+        <!--   
           <mat-paginator 
           [length]="2"
           [pageSize]="1"
           [pageSizeOptions]="[2,4,6]">
-        </mat-paginator>
+        </mat-paginator> -->
         
         <button class="btn btn-danger" (click)="abrirCreateModalDespesas()">Registar Despesas</button>
         <!--------------Modal Inclusão das Despesas --------->
@@ -211,14 +211,14 @@
               </div>
               <div class="modal-body">
                
-                <app-form 
-                (Data)="CapturaData($event)"
-                (Categoria)="CapturaCategoria($event)"
-                (SubCategoria)="CapturaSubCategoria($event)"
-                (Observacao)="CapturaObservacao($event)"
+                <app-formdespesas
+                (Data)="CapturaDataDesp($event)"
+                (Categoria)="CapturaCategoriaDesp($event)"
+                (SubCategoria)="CapturaSubCategoriaDesp($event)"
+                (Observacao)="CapturaObservacaoDesp($event)"
                 (FonteDespesa)="CapturaFonteDespesa($event)"
-                (Valor)="CapturaValor($event)">
-                </app-form>
+                (Valor)="CapturaValorDesp($event)">
+                </app-formdespesas>
                 
 
               </div>

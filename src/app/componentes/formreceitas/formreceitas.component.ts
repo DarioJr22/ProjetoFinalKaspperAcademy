@@ -1,28 +1,19 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-formdespesas',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  selector: 'app-formreceitas',
+  templateUrl: './formreceitas.component.html',
+  styleUrls: ['./formreceitas.component.css']
 })
-export class FormComponent implements OnInit {
-
-  SubCategoriasList:string[] = 
-  [
-    'Alimentação',
-    'Lazer',
-    'Esportes',
-    'Cursos',
-    'Faculdade',
-    'Bolsa de Valores'
-  ]
+export class FormreceitasComponent implements OnInit {
 
   CategoriaList:string[] = 
   [
-    'Casa-moradia',
-    'Cuidado Pessoal',
-    'Investimento',
-    'Educação'
+    'Salário',
+    'Investimentos',
+    'Empreendimentos',
+    'Freelas',
+    'Outros'
   ]
 
   Fonte:string[] =
@@ -40,7 +31,7 @@ export class FormComponent implements OnInit {
   @Output() Categoria:EventEmitter<any> = new EventEmitter
   @Output() SubCategoria:EventEmitter<any> = new EventEmitter
   @Output() Valor:EventEmitter<any> = new EventEmitter
-  @Output() FonteDespesa:EventEmitter<any> = new EventEmitter
+  @Output() FonteReceita:EventEmitter<any> = new EventEmitter
   @Output() Observacao:EventEmitter<any> = new EventEmitter
 
 
@@ -63,13 +54,14 @@ export class FormComponent implements OnInit {
     
   }
 
-  CapturaFonteDespesa(valor:any){
-    this.FonteDespesa.emit(valor)
+  CapturaFonteReceitas(valor:any){
+    this.FonteReceita.emit(valor)
     
   }
 
   CapturaValor(valor:any){
-    this.Valor.emit(valor)
+    let conv = parseFloat(valor)
+    this.Valor.emit(conv)
     
   }
 

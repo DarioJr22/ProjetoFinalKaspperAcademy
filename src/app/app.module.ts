@@ -23,6 +23,12 @@ import { LoginComponent } from './paginas/login/login.component';
 
 import { AuthModule } from "./auth/auth.module";
 import { FormreceitasComponent } from './componentes/formreceitas/formreceitas.component';
+import { FormdespesasdeleteComponent } from './componentes/formdespesasdelete/formdespesasdelete.component';
+import { FormreceitasdeleteComponent } from './componentes/formreceitasdelete/formreceitasdelete.component';
+import { ControledespesasComponent } from './paginas/controledespesas/controledespesas.component';
+import { ControlereceitasComponent } from './paginas/controlereceitas/controlereceitas.component';
+import { NotfoundComponent } from './paginas/notfound/notfound.component';
+import { EmconstrucaoComponent } from './paginas/emconstrucao/emconstrucao.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,14 @@ import { FormreceitasComponent } from './componentes/formreceitas/formreceitas.c
     TabelaComponent,
     FormComponent,
     LoginComponent,
-    FormreceitasComponent
+    FormreceitasComponent,
+    FormdespesasdeleteComponent,
+    FormreceitasdeleteComponent,
+    ControledespesasComponent,
+    ControlereceitasComponent,
+    NotfoundComponent,
+    EmconstrucaoComponent,
+ 
   ],
   imports: [
     BrowserModule,
@@ -51,7 +64,8 @@ import { FormreceitasComponent } from './componentes/formreceitas/formreceitas.c
     AuthModule
     
   ],
-  providers: [],
+    
+    providers: [AbasHomeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

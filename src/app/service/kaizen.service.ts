@@ -18,6 +18,10 @@ export class KaizenService {
     return this.http.post<Despesas>("http://localhost:3000/Despesas",Desp)
   }
 
+  deleteDespesa(id:number){
+    return this.http.delete<Despesas>(`http://localhost:3000/Despesas/${id}`)
+  }
+
   // Métodos Exc Receitas
 
   getReceitas(){
@@ -26,5 +30,9 @@ export class KaizenService {
 
   createReceitas(Rece:Receitas){
     return this.http.post<Receitas>("http://localhost:3000/Receitas",Rece)
+  }
+
+  deleteReceitas(id:number){
+    return this.http.delete<Receitas>(`http://localhost:3000/Receitas/${id}`)
   }
 }

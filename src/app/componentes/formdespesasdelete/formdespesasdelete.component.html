@@ -1,0 +1,32 @@
+<div class="container">
+    <form action="">
+
+
+        <div class="mb-2">
+
+            <Label>Categoria</Label>
+            <div class="form-text">Como categoriza seu registro ?</div>
+
+            <select class="form-select" (input)="CapturaId(id.value)" #id>
+
+                <option *ngFor="let item of DadosDespesas" [value]="item">{{item.id}}</option>
+
+            </select>
+        </div>
+
+
+        <div class="mb-2">
+            <Label>SubCategoria</Label>
+            <div class="form-text">Subcategorize seu registro.</div>
+
+            <select class="form-select" (input)="CapturaObservacao(Observacao.value)" #Observacao>
+
+                <option *ngFor="let item of DadosDespesas" [value]="item">{{item.Observacao}}</option>
+
+            </select>
+
+
+        </div>
+
+    </form>
+</div>

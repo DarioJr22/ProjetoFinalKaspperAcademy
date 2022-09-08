@@ -1,0 +1,11 @@
+.row-image-svg{
+    background: url("../../../assets/Pngs/Viajanovelmehosvg.svg") no-repeat;
+    background-size: 40%;
+    position: relative;
+    height: 100%;
+}
+
+.positionCardNotfound{
+ margin: 20px;
+
+}

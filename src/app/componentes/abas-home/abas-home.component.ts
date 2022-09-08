@@ -5,6 +5,7 @@ import { KaizenService } from 'src/app/service/kaizen.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { data } from 'jquery';
 import { Receitas } from 'src/app/service/receitas';
+import { CardsTotaisComponent } from '../cards-totais/cards-totais.component';
 
 
 declare var window:any
@@ -17,10 +18,10 @@ declare var window:any
 export class AbasHomeComponent implements OnInit {
   
   //Variáveis
-  
+  idDelete:number = 0
   DadosDespesas:Despesas [] = []
-
   DadosReceitas:Receitas [] = []
+  ValorTotalDespesas:number = 0 
 
   displayedColumnsDespesas:String[] = 
   ['id',
@@ -29,7 +30,8 @@ export class AbasHomeComponent implements OnInit {
   'SubCategoria',
   'Valor',
   'FonteDespesas',
-  'Observacao']
+  'Observacao',
+  'Delete/Edit']
 
   displayedColumnsReceitas:String[] = 
   ['id_R',
@@ -38,7 +40,8 @@ export class AbasHomeComponent implements OnInit {
   'SubCategoria_R',
   'Valor_R',
   'FonteReceitas_R',
-  'Observacao_R']
+  'Observacao_R',
+  'Deletar/Alterar_R']
 
   CreateDadosDespesas:Despesas ={
     Data:'',
@@ -60,9 +63,11 @@ export class AbasHomeComponent implements OnInit {
   
   ModalInclusaoDesp:any
   ModalInclusaoRece:any
+  ModalDeleteDesp:any
+  ModalDeleteRece:any
 
-
-  constructor(private kaizenService:KaizenService) { }
+  constructor(private kaizenService:KaizenService,
+            ) { }
 
   ngOnInit(): void {
     this.DadosDespesas =[]
@@ -75,6 +80,8 @@ export class AbasHomeComponent implements OnInit {
     carregarForm(){
       this.ModalInclusaoDesp = new window.bootstrap.Modal(document.getElementById('ModInclusaoDesp'))
       this.ModalInclusaoRece = new window.bootstrap.Modal(document.getElementById('ModInclusaoRece'))
+      this.ModalDeleteDesp = new window.bootstrap.Modal(document.getElementById('ModExclusãoDesp'))
+      this.ModalDeleteRece = new window.bootstrap.Modal(document.getElementById('ModExclusãoRece'))
   }
 
    
@@ -91,8 +98,28 @@ export class AbasHomeComponent implements OnInit {
     this.kaizenService
     .createDespesa(this.CreateDadosDespesas)
     .subscribe((data) => console.log(data))
+    this.ModalInclusaoDesp.hide()
+    setTimeout(() => {this.getDespesas(),this.calcularTotalDespesas()}, 2000);
+  }
+
+  //Form - Deleção
+
+  abrirDeleteModalDespesas(id:any){
+    this.idDelete =id
+    this.ModalDeleteDesp.show()
+    console.log(this.idDelete)
+  }
+
+  deleteDespesa(){
+    this.kaizenService
+    .deleteDespesa(this.idDelete)
+    .subscribe((data) => {this.DadosDespesas = this.DadosDespesas.filter(ID => ID.id !== this.idDelete)
+                          this.ModalDeleteDesp.hide()})
     
   }
+
+
+  //Form - Inclusão 
 
   CapturaDataDesp(event:any){
     this.CreateDadosDespesas.Data = event
@@ -129,6 +156,16 @@ export class AbasHomeComponent implements OnInit {
     this.ModalInclusaoDesp.show()
   }
 
+ //Calculo
+
+ calcularTotalDespesas(){
+  this.ValorTotalDespesas = 0
+  this.DadosDespesas.forEach((dados) =>{
+    return this.ValorTotalDespesas += dados.Valor})
+  console.log(this.ValorTotalDespesas);
+  
+}
+
 
 
 //------------------------------------ RECEITAS ------------------------------------
@@ -142,8 +179,31 @@ export class AbasHomeComponent implements OnInit {
 
   createReceitas(){
     this.kaizenService.createReceitas(this.CreateDadosReceitas)
-    .subscribe((data) => console.log(data))
+    .subscribe((data) => {console.log(data)
+    this.ModalInclusaoRece.hide()})
+    setTimeout(() => {this.getReceitas()}, 2000)
   }
+
+  //Form - Deleção
+
+  abrirDeleteModalReceitas(id:any){
+    this.idDelete = id
+    this.ModalDeleteRece.show()
+    console.log(this.idDelete);
+  }
+
+  deleteReceita(){
+
+    this.kaizenService
+    .deleteReceitas(this.idDelete)
+    .subscribe((data)=>{this.DadosReceitas = this.DadosReceitas.filter(ID => ID.id !== this.idDelete)
+    this.ModalDeleteRece.hide()}
+  )
+}
+
+  //Form - Inclusão
+
+
 
   
   CapturaDataRece(event:any){
@@ -186,6 +246,6 @@ export class AbasHomeComponent implements OnInit {
     console.log(this.CreateDadosDespesas);
     
   }
-
+  
 
 }

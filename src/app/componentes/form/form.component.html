@@ -41,7 +41,7 @@
 
             <div class="form-text">Qual fonte de renda você utilizou ?</div>
 
-            <select (input)="CapturaFonteReceitas(FonteReceita.value)" class="form-select" #FonteDespesa>
+            <select (input)="CapturaFonteDespesa(FonteDespesa.value)" class="form-select" #FonteDespesa>
 
                 <option *ngFor="let item of Fonte" [value]="item">{{item}}</option>
 

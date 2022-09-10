@@ -1,0 +1,15 @@
+.row-image-svg1{
+    background: url("../../../assets/Pngs/Construção.svg") no-repeat;
+    background-size: 40%;
+    height: 100%;
+}
+
+.positionCardNotfound{
+ margin: 20px;
+
+}
+
+.imageSize{
+    height: 60%;
+    width: 80%;
+}

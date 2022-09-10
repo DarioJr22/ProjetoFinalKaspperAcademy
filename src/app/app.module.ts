@@ -29,6 +29,8 @@ import { ControledespesasComponent } from './paginas/controledespesas/controlede
 import { ControlereceitasComponent } from './paginas/controlereceitas/controlereceitas.component';
 import { NotfoundComponent } from './paginas/notfound/notfound.component';
 import { EmconstrucaoComponent } from './paginas/emconstrucao/emconstrucao.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { GraficoPizzaComponent } from './componentes/grafico-pizza/grafico-pizza.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { EmconstrucaoComponent } from './paginas/emconstrucao/emconstrucao.compo
     ControlereceitasComponent,
     NotfoundComponent,
     EmconstrucaoComponent,
+    GraficoPizzaComponent,
  
   ],
   imports: [
@@ -61,7 +64,9 @@ import { EmconstrucaoComponent } from './paginas/emconstrucao/emconstrucao.compo
     MatSliderModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    AuthModule
+    AuthModule,
+    NgxChartsModule,
+    BrowserAnimationsModule
     
   ],
     

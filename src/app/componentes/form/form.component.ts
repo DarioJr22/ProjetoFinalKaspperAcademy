@@ -50,7 +50,11 @@ export class FormComponent implements OnInit {
   }
 
   CapturaData(valor:any){
-    this.Data.emit(valor)
+    let data_americana = valor
+    let data_brasileira = data_americana.split('-').reverse().join('/')
+
+    
+    this.Data.emit(data_brasileira)
     
   }
 

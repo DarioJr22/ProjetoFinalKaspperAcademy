@@ -1,1 +1,61 @@
-<p>controledespesas works!</p>
+<app-navbar></app-navbar>
+
+<div class="positionCardNotfound col-8 position-absolute top-0 end-0 container-fluid m-3">
+<!-- Acorddion -->
+<div class="accordion accordion-flush" id="CardDespesas">
+    <div class="accordion-item">
+        <h1 class="accordion-item" id="headingOne">
+            <strong>Controle de Despesas</strong>
+          </h1>
+          <div id="collapseOne" class="accordion-collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <ngx-charts-advanced-pie-chart
+                [view]="view"
+                scheme="cool"
+                [results]="DivisaoCategoricaDesp"
+                [gradient]="gradient"
+                (select)="onSelect($event)"
+                (activate)="onActivate($event)"
+                (deactivate)="onDeactivate($event)"
+                >
+            </ngx-charts-advanced-pie-chart>  
+            </div>
+
+          
+    </div>
+
+</div>
+<div>
+    
+</div>
+
+<div class="row">
+    <strong><h2 class="accordion-item">Histórioco de gastos</h2></strong>
+    <hr>
+    <div class="col">
+    <ngx-charts-bar-vertical-stacked
+    [view]="view"
+    scheme="cool"
+    [results]="multi"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegendEmp"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [animations]="animations"
+    (select)="onSelect($event)">
+    </ngx-charts-bar-vertical-stacked>
+    </div>
+    <div class="col">
+        <div class="btn-group" role="group">
+            <button (click)="transformacaoHistDiario()" class="btn btn-primary">Transforma dia</button>
+            <button (click)="transformacaoHistMensal()" class="btn btn-primary">Transforma Mês</button>
+          </div>
+    
+</div>
+</div>
+
+</div>

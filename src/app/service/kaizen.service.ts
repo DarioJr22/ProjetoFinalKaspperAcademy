@@ -22,6 +22,14 @@ export class KaizenService {
     return this.http.delete<Despesas>(`http://localhost:3000/Despesas/${id}`)
   }
 
+  updateDespesas(payload:Despesas){
+    return this.http.put(`http://localhost:3000/Despesas/${payload.id}`,payload)
+  }
+
+  getByIdDespesa(id:number){
+    return this.http.get<Despesas>(`http://localhost:3000/Despesas/${id}`)
+  }
+
   // Métodos Exc Receitas
 
   getReceitas(){
@@ -35,4 +43,12 @@ export class KaizenService {
   deleteReceitas(id:number){
     return this.http.delete<Receitas>(`http://localhost:3000/Receitas/${id}`)
   }
+
+  updateReceitas(payload:Receitas){
+    return this.http.put(`http://localhost:3000/Receitas/${payload.id}`,payload)
+  }
+  getByIdReceita(id:number){
+    return this.http.get<Receitas>(`http://localhost:3000/Receitas/${id}`)
+  }
+
 }

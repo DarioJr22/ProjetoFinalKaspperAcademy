@@ -8,7 +8,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class FormComponent implements OnInit {
 
   SubCategoriasList:string[] = 
-  [
+  [ '',
     'Alimentação',
     'Lazer',
     'Esportes',
@@ -18,7 +18,7 @@ export class FormComponent implements OnInit {
   ]
 
   CategoriaList:string[] = 
-  [
+  [ '',
     'Casa-moradia',
     'Cuidado Pessoal',
     'Investimento',
@@ -26,7 +26,7 @@ export class FormComponent implements OnInit {
   ]
 
   Fonte:string[] =
-  [
+  [ '',
     'ITAU',
     'PICPAY',
     'NUBANK',

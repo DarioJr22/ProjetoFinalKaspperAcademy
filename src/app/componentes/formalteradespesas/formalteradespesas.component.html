@@ -1,0 +1,84 @@
+<div class="container">
+    <h2>Alterar</h2>
+    <form>
+
+        <div class="mb-3">
+
+            <label class="form-label">Id</label>
+            <select 
+            id="id_despersas"
+            type="text" 
+            class="form-select" 
+            [(ngModel)]="AltDadosDespesas.id" 
+            name="id"
+            (input)="CapturaId(id.value)" #id>
+            
+            <option *ngFor="let i of DadosDespesas" >{{i.id}}</option>
+
+        </select>
+           
+          </div>
+        <div class="mb-3">
+            <label class="form-label">Data</label>
+            <input type="text" 
+            class="form-control" 
+            [(ngModel)]="AltDadosDespesas.Data" 
+            name="Data"
+            (input)="CapturaData(Data.value)" #Data>
+           
+          </div>
+        <div class="mb-3">
+          <label class="form-label">Categoria</label>
+          <input type="text" 
+          class="form-control" 
+          [(ngModel)]="AltDadosDespesas.Categoria" 
+          name="Categoria"
+          (input)="CapturaCategoria(Categoria.value)" #Categoria>
+         
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">SubCategoria</label>
+            <input type="text" 
+            class="form-control" 
+            [(ngModel)]="AltDadosDespesas.SubCategoria"  
+            name="SubCategoria"
+            (input)="CapturaSubCategoria(SubCategoria.value)" #SubCategoria>
+           
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Valor</label>
+            <input type="number" 
+            class="form-control" 
+            [(ngModel)]="AltDadosDespesas.Valor" 
+            name="Valor" 
+            (input)="CapturaValor(Valor.value)" #Valor>
+           
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Fonte Despesa</label>
+            <input type="text" class="form-control" 
+            [(ngModel)]="AltDadosDespesas.FonteDespesa"  name="FonteDespesa">
+           
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Observacao</label>
+            <input type="text" class="form-control" 
+            [(ngModel)]="AltDadosDespesas.Observacao"  
+            name="Observacao"
+            (input)="CapturaFonteDespesa(Observacao.value)" type="text" class="form-control"
+                #Observacao>
+           
+          </div>
+        
+          <div class="modal-footer">
+            <button type="button" (click)="update()" data-bs-dismiss="modal" class="btn btn-primary">Atualizar</button>
+          </div>
+        
+      
+         
+    </form>
+</div>

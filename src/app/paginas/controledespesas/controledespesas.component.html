@@ -1,16 +1,13 @@
 <app-navbar></app-navbar>
 
-<div class="positionCardNotfound col-8 position-absolute top-0 end-0 container-fluid m-3">
+<div class="positionCardNotfound col-10 position-absolute top-0 end-0 container-fluid m-3">
 <!-- Acorddion -->
-<div class="accordion accordion-flush" id="CardDespesas">
-    <div class="accordion-item">
-        <h1 class="accordion-item" id="headingOne">
-            <strong>Controle de Despesas</strong>
-          </h1>
-          <div id="collapseOne" class="accordion-collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
+<div class="row" id="CardDespesas">
+  <strong><h1 class="accordion-item">Gasto de Despesas Por categoria</h1></strong>
+    <div class="col img-thumbnail">
+       
                 <ngx-charts-advanced-pie-chart
-                [view]="view"
+                [view]="viewPizza"
                 scheme="cool"
                 [results]="DivisaoCategoricaDesp"
                 [gradient]="gradient"
@@ -19,43 +16,259 @@
                 (deactivate)="onDeactivate($event)"
                 >
             </ngx-charts-advanced-pie-chart>  
-            </div>
-
-          
     </div>
-
-</div>
+    <div class = "col img-thumbnail">
+        <ngx-charts-bar-horizontal
+        [view]="viewBarraHorizontal"
+        scheme="flame"
+        [results]="DivisaoCategoricaDesp"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [showDataLabel]="showDataLabel"
+        (select)="onSelect($event)"
+        (activate)="onActivate($event)"
+        (deactivate)="onDeactivate($event)">
+        </ngx-charts-bar-horizontal>
+    </div>
 <div>
     
 </div>
 
 <div class="row">
-    <strong><h2 class="accordion-item">Histórioco de gastos</h2></strong>
+    <strong><h1 class="accordion-item">Histórioco de gastos</h1></strong>
     <hr>
-    <div class="col">
+    <div class="col img-thumbnail">
     <ngx-charts-bar-vertical-stacked
-    [view]="view"
+    [view]="viewEmpilhadas"
     scheme="cool"
     [results]="multi"
     [gradient]="gradient"
     [xAxis]="showXAxis"
     [yAxis]="showYAxis"
     [legend]="showLegendEmp"
+    [showDataLabel]="showDataLabel"
     [showXAxisLabel]="showXAxisLabel"
     [showYAxisLabel]="showYAxisLabel"
-    [xAxisLabel]="xAxisLabel"
-    [yAxisLabel]="yAxisLabel"
+
     [animations]="animations"
     (select)="onSelect($event)">
     </ngx-charts-bar-vertical-stacked>
     </div>
-    <div class="col">
-        <div class="btn-group" role="group">
-            <button (click)="transformacaoHistDiario()" class="btn btn-primary">Transforma dia</button>
-            <button (click)="transformacaoHistMensal()" class="btn btn-primary">Transforma Mês</button>
-          </div>
     
+
+    <div class="col img-thumbnail">
+      <ngx-charts-bar-vertical
+        [view]="view_barVertical"
+        scheme="cool"
+        [results]="single"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [showDataLabel]="showDataLabel"
+        (select)="onSelect($event)">
+      </ngx-charts-bar-vertical>
+    </div>
+    <div class="col">
+      <div class="btn-group" role="group">
+      <button (click)="transformacaoHistDiario()" class="btn btn-primary m-3">Transforma dia</button>
+      <button (click)="transformacaoHistMensal()" class="btn btn-primary m-3">Transforma Mês</button>
+      </div>
 </div>
 </div>
+
+<!--------------Modal Exclusão das Receitas --------->
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" id="exampleModalLabel">Despesas por categoria</h1>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Registros</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let i of DadosModal">
+                    <th scope="row">{{i}}</th>
+                  </tr>
+                  <tr>
+                    <th scope="row">{{TotalModal}}</th>
+                  </tr>
+                 
+                
+                  
+                </tbody>
+              </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" data-bs-dismiss="modal" class="btn btn-success">OK !</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+           
+  <table mat-table [dataSource]="DadosDespesas" class="table mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let Despesa"> {{Despesa.id}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="Data">
+      <th mat-header-cell *matHeaderCellDef> Data </th>
+      <td mat-cell *matCellDef="let Despesas"> {{Despesas.Data}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="Categoria">
+      <th mat-header-cell *matHeaderCellDef> Categoria </th>
+      <td mat-cell *matCellDef="let Despesas"> {{Despesas.Categoria}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="SubCategoria">
+      <th mat-header-cell *matHeaderCellDef> SubCategoria </th>
+      <td mat-cell *matCellDef="let Despesas"> {{Despesas.SubCategoria}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Valor">
+      <th mat-header-cell *matHeaderCellDef> Valor </th>
+      <td mat-cell *matCellDef="let Despesas"> {{Despesas.Valor}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="FonteDespesas">
+      <th mat-header-cell *matHeaderCellDef> FonteDespesa </th>
+      <td mat-cell *matCellDef="let Despesas"> {{Despesas.FonteDespesa}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Observacao">
+      <th mat-header-cell *matHeaderCellDef> Observacao </th>
+      <td mat-cell *matCellDef="let Despesas"> {{Despesas.Observacao}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Delete/Edit">
+      <th mat-header-cell *matHeaderCellDef> Deletar/Editar </th>
+      <td mat-cell *matCellDef="let Despesas"><button class="btn btn-danger" (click) = "abrirDeleteModalDespesas(Despesas.id)">Deletar</button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsDespesas"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsDespesas;"></tr>
+  </table>
+  
+  
+
+<!--------------Modal Exclusão das Despesas --------->
+<div class="modal fade" id="ModExclusãoDesp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Coletar Registro</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+        Tem certeza que quer excluir a Despesa ?
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class=" m-1 btn btn-secondary" data-bs-dismiss="modal">Não</button>
+        <button type="button" (click)="deleteDespesa()" class="btn btn-danger">Sim</button>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+<!--------------Botão de inclusão das Despesas --------->
+<div class="col">
+  <div class="btn-group" role="group">
+    <button class="btn btn-danger mr-3" (click)="abrirCreateModalDespesas()">Registar</button>
+    <button class="btn btn-danger" (click)="abriralteracaoDespesa()">Alterar</button>
+  </div>
+</div>
+
+<!--------------Modal Inclusão das Despesas --------->
+<div class="modal fade" id="ModInclusaoDesp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Coletar Registro</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+        <app-formdespesas
+        (Data)="CapturaDataDesp($event)"
+        (Categoria)="CapturaCategoriaDesp($event)"
+        (SubCategoria)="CapturaSubCategoriaDesp($event)"
+        (Observacao)="CapturaObservacaoDesp($event)"
+        (FonteDespesa)="CapturaFonteDespesa($event)"
+        (Valor)="CapturaValorDesp($event)">
+        </app-formdespesas>
+        
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" (click)="createDespesas()" class="btn btn-danger">OK</button>
+      </div>
+    </div>
+  </div>
+</div> 
+</div>
+
+
+<!--------------Modal Alteração de Despesas das Despesas --------->
+<div class="modal fade" id="ModAlteracaoDesp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Coletar Registro</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+        <app-formalteradespesas
+        (id)="CapturaIdDesp($event)"
+        (Data)="CapturaDataDesp($event)"
+        (Categoria)="CapturaCategoriaDesp($event)"
+        (SubCategoria)="CapturaSubCategoriaDesp($event)"
+        (Observacao)="CapturaObservacaoDesp($event)"
+        (FonteDespesa)="CapturaFonteDespesa($event)"
+        (Valor)="CapturaValorDesp($event)">
+        </app-formalteradespesas>
+        
+
+      </div>
+      
+    </div>
+  </div>
+</div> 
 
 </div>

@@ -1,56 +1,65 @@
 <div class="container">
     <form action="">
-
-        <div class="mb-2">
-
-            <Label>Data</Label>
+        <div class = "row mb-2">
+            <div class="col-6">
+                
+                <span style="color: red">*</span><Label><strong>Data</strong></Label>
 
             <input (input)="CapturaData(Data.value)" #Data type="date" class="form-control">
 
             <div class="form-text">Data do registro </div>
-
+            
         </div>
 
-        <div class="mb-2">
-
-            <Label>Categoria</Label>
-            <div class="form-text">Como categoriza seu registro ?</div>
+        <div class="col-6">
+            
+            <span style="color: red">*</span><Label><strong>Categoria</strong></Label>
+            
 
             <select class="form-select" (input)="CapturaCategoria(Categoria.value)" #Categoria>
 
                 <option *ngFor="let item of CategoriaList" [value]="item">{{item}}</option>
 
             </select>
+            <div class="form-text">Como categoriza seu registro ?</div>
+        </div>
         </div>
 
 
-        <div class="mb-2">
-            <Label>Fonte Fonte utilizada</Label>
-
-            <div class="form-text">Qual fonte de renda você utilizou ?</div>
+        <div class = "row mb-2">
+        <div class="col-6">
+            
+            <span style="color: red">*</span><Label><strong>Fonte de renda</strong></Label>
 
             <select (input)="CapturaFonteReceitas(FonteReceitas.value)" class="form-select" #FonteReceitas>
 
                 <option *ngFor="let item of Fonte" [value]="item">{{item}}</option>
 
             </select>
+            <div class="form-text">Qual fonte de renda você utilizou ?</div>
 
         </div>
 
-        <div class="mb-2">
-            <Label>Observacao</Label>
-
-            <textarea (input)="CapturaObservacao(Observacao.value)" type="text" class="form-control"
-                #Observacao></textarea>
-            <div class="form-text">Tem alguma coisa que se lembre sobre essa  Receita ? ?</div>
-        </div>
-
-        <div class="mb-2">
-            <Label>Valor</Label>
+        <div class="col-6">
+            
+            <span style="color: red">*</span><Label><strong>Valor</strong></Label>
             <input (input)="CapturaValor(Valor.value)" type="number" class="form-control" #Valor>
             <div class="form-text">Que tipo de despesa ?</div>
         </div>
 
+        
+        </div>
+
+    <div class="col-12">
+        
+        <Label><strong>Observação</strong></Label>
+
+        <textarea (input)="CapturaObservacao(Observacao.value)" type="text" class="form-control"
+            #Observacao></textarea>
+        <div class="form-text">Tem alguma coisa que se lembre sobre essa  Receita ?</div>
+    </div>
+
+        
         <!--   <mat-form-field appearance="fill" floatLabel="always">
             <mat-label>Amount</mat-label>
                     <input (input)="CapturaValor(Valor.value)" #Valor matInput type="number" class="example-right-align" placeholder="0">

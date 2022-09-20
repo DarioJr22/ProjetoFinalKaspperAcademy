@@ -48,6 +48,7 @@ export class GraficoPizzaComponent  {
   }
 
   onSelect(data: any): void {
+    
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
 

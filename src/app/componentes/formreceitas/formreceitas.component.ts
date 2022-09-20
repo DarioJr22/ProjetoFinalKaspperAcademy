@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-formreceitas',
@@ -8,7 +9,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class FormreceitasComponent implements OnInit {
 
   CategoriaList:string[] = 
-  [
+  [ '',
     'Salário',
     'Investimentos',
     'Empreendimentos',
@@ -17,7 +18,7 @@ export class FormreceitasComponent implements OnInit {
   ]
 
   Fonte:string[] =
-  [
+  [ '',
     'ITAU',
     'PICPAY',
     'NUBANK',
@@ -41,7 +42,14 @@ export class FormreceitasComponent implements OnInit {
   }
 
   CapturaData(valor:any){
-    this.Data.emit(valor)
+    /* let data_americana = valor
+    let data_brasileira = data_americana.split('-').reverse().join('/')
+     */
+    
+    let data_americana = valor 
+    let data_brasileira = data_americana.split('-').reverse().join('/')
+    
+    this.Data.emit(data_brasileira)
     
   }
 

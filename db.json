@@ -1,60 +1,6 @@
 {
   "Despesas": [
     {
-      "id": 1,
-      "Data": "10/07/2022",
-      "Categoria": "Casa-Moradia",
-      "SubCategoria": "Alimentação",
-      "Valor": 159.21,
-      "FonteDespesa": "ITAU",
-      "Observacao": "Feira da 1º semana de Julho"
-    },
-    {
-      "id": 2,
-      "Data": "15/07/2022",
-      "Categoria": "Casa-Moradia",
-      "SubCategoria": "Aluguél",
-      "Valor": 300,
-      "FonteDespesa": "PicPay",
-      "Observacao": "Aluguél - Mês Julho."
-    },
-    {
-      "Data": "15/09/2022",
-      "Categoria": "Cuidado Pessoal",
-      "Observacao": "",
-      "FonteDespesa": "Rolê com amigos.",
-      "SubCategoria": "Lazer",
-      "Valor": 24.5,
-      "id": 3
-    },
-    {
-      "Data": "15/09/2022",
-      "Categoria": "Cuidado Pessoal",
-      "Observacao": "",
-      "FonteDespesa": "Rolê com amigos.",
-      "SubCategoria": "Lazer",
-      "Valor": 24.5,
-      "id": 4
-    },
-    {
-      "Data": "15/09/2022",
-      "Categoria": "Educação",
-      "Observacao": "",
-      "FonteDespesa": "Faculdade Mês de Julho",
-      "SubCategoria": "Faculdade",
-      "Valor": 321,
-      "id": 5
-    },
-    {
-      "Data": "15/09/2022",
-      "Categoria": "Investimento",
-      "Observacao": "",
-      "FonteDespesa": "Investimentos Mês de Agosto",
-      "SubCategoria": "Bolsa de Valores",
-      "Valor": 150,
-      "id": 6
-    },
-    {
       "Data": "15/09/2022",
       "Categoria": "Investimento",
       "Observacao": "",
@@ -64,15 +10,6 @@
       "id": 7
     },
     {
-      "Data": "19/02/2022",
-      "Categoria": "Educação",
-      "Observacao": "",
-      "FonteDespesa": "Cursos de inglês",
-      "SubCategoria": "Cursos",
-      "Valor": 193,
-      "id": 8
-    },
-    {
       "Data": "14/06/2022",
       "Categoria": "Educação",
       "Observacao": "",
@@ -80,6 +17,33 @@
       "SubCategoria": "Cursos",
       "Valor": 141,
       "id": 9
+    },
+    {
+      "Data": "05/09/2022",
+      "Categoria": "Casa-moradia",
+      "Observacao": "",
+      "FonteDespesa": "ITAU",
+      "SubCategoria": "Lazer",
+      "Valor": 2,
+      "id": 10
+    },
+    {
+      "Data": "01/09/2022",
+      "Categoria": "Casa-moradia",
+      "Observacao": "",
+      "FonteDespesa": "Ursinho Blau blau",
+      "SubCategoria": "Alimentação",
+      "Valor": 300,
+      "id": 11
+    },
+    {
+      "Data": "01/09/2022",
+      "Categoria": "Casa-moradia",
+      "Observacao": "",
+      "FonteDespesa": "KKKKKKKKKKKKKK",
+      "SubCategoria": "Alimentação",
+      "Valor": 222,
+      "id": 12
     }
   ],
   "Receitas": [
@@ -93,13 +57,13 @@
       "Observacao": "Feira da 1º semana de Julho"
     },
     {
-      "Data": "2022-09-09",
-      "Categoria": "",
-      "Observacao": "4441",
-      "FonteReceita": "",
-      "SubCategoria": "",
-      "Valor": 3123,
-      "id": 2
+      "Data": "15/09/2022",
+      "Categoria": "Freelas",
+      "Observacao": "Grana do freela em angular",
+      "FonteReceita": "NUBANK",
+      "SubCategoria": "wesdassds",
+      "Valor": 4414,
+      "id": 3
     }
   ]
 }

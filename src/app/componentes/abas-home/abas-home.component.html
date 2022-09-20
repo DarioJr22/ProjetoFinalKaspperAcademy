@@ -94,7 +94,7 @@
 
               <ng-container matColumnDef="Deletar/Alterar_R">
                 <th mat-header-cell *matHeaderCellDef> Deletar/Alterar_R </th>
-                <td mat-cell *matCellDef="let Receitas"> <button class="btn btn-danger" (click)="abrirDeleteModalReceitas(Receitas.id)" >Deletar Receita</button> </td>
+                <td mat-cell *matCellDef="let Receitas"> <button class="btn btn-danger" (click)="abrirDeleteModalReceitas(Receitas.id)" >Deletar</button> </td>
               </ng-container>
 
              
@@ -102,7 +102,7 @@
               <tr mat-header-row *matHeaderRowDef="displayedColumnsReceitas"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumnsReceitas;"></tr>
             </table>
-            <mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+           <!--  <mat-slider min="1" max="100" step="1" value="50"></mat-slider> -->
 
           
         <!--------------Modal Exclusão das Receitas --------->
@@ -131,8 +131,9 @@
 
 
 
-
-            <button class="btn btn-success" (click)="abrirCreateModalReceitas()">Registar Receitas</button>
+            
+            <button class="btn btn-success mr-3" (click)="abrirCreateModalReceitas()">Registar</button>
+            <button class="btn btn-success " (click)="abriralteracaoReceitas()">Alterar</button>
 
         <!--------------Modal Inclusão das Receitas --------->
         <div class="modal fade" id="ModInclusaoRece" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -165,6 +166,34 @@
           </div>
         </div> 
 
+          <!--------------Modal Alteração de Receitas --------->
+          <div class="modal fade" id="ModAlteracaoRece" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Coletar Registro</h5>
+                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                 
+                  <app-formalterareceitas
+                  (id)="CapturaIdDesp($event)"
+                  (Data)="CapturaDataDesp($event)"
+                  (Categoria)="CapturaCategoriaDesp($event)"
+                  (SubCategoria)="CapturaSubCategoriaDesp($event)"
+                  (Observacao)="CapturaObservacaoDesp($event)"
+                  (FonteDespesa)="CapturaFonteDespesa($event)"
+                  (Valor)="CapturaValorDesp($event)">
+                  </app-formalterareceitas>
+                  
+  
+                </div>
+                
+              </div>
+            </div>
+          </div>
         </div>
         </div>
         
@@ -226,18 +255,14 @@
 
             <ng-container matColumnDef="Delete/Edit">
               <th mat-header-cell *matHeaderCellDef> Deletar/Editar </th>
-              <td mat-cell *matCellDef="let Despesas"><button class="btn btn-danger" (click) = "abrirDeleteModalDespesas(Despesas.id)">Deletar</button> </td>
+              <td mat-cell *matCellDef="let Despesas"><button class="btn btn-danger" (click) = "abrirDeleteModalDespesas(Despesas.id)">Deletar</button></td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumnsDespesas"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumnsDespesas;"></tr>
           </table>
-        <!--   
-          <mat-paginator 
-          [length]="2"
-          [pageSize]="1"
-          [pageSizeOptions]="[2,4,6]">
-        </mat-paginator> -->
+          
+          
 
         <!--------------Modal Exclusão das Despesas --------->
         <div class="modal fade" id="ModExclusãoDesp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -265,10 +290,15 @@
 
         <!--------------Botão de inclusão das Despesas --------->
         
-        <button class="btn btn-danger" (click)="abrirCreateModalDespesas()">Registar Despesas</button>
+        <button class="btn btn-danger mr-3" (click)="abrirCreateModalDespesas()">Registar</button>
+        <button class="btn btn-danger" (click)="abriralteracaoDespesa()">Alterar</button>
         <!--------------Modal Inclusão das Despesas --------->
-        <div class="modal fade" id="ModInclusaoDesp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
+        <div class="modal fade" id="ModInclusaoDesp" 
+        tabindex="-1" role="dialog" 
+        aria-labelledby="exampleModalLabel" 
+        aria-hidden="true">
+          
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Coletar Registro</h5>
@@ -297,6 +327,41 @@
           </div>
         </div> 
         </div>
+
+        
+        <!--------------Modal Alteração de Despesas das Despesas --------->
+        <div class="modal fade" id="ModAlteracaoDesp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Coletar Registro</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+               
+                <app-formalteradespesas
+                (id)="CapturaIdDesp($event)"
+                (Data)="CapturaDataDesp($event)"
+                (Categoria)="CapturaCategoriaDesp($event)"
+                (SubCategoria)="CapturaSubCategoriaDesp($event)"
+                (Observacao)="CapturaObservacaoDesp($event)"
+                (FonteDespesa)="CapturaFonteDespesa($event)"
+                (Valor)="CapturaValorDesp($event)">
+                </app-formalteradespesas>
+                
+
+              </div>
+              
+            </div>
+          </div>
+        </div> 
+        
+
+        
+
+
 
 
 

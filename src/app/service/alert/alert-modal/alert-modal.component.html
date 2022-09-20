@@ -1,0 +1,33 @@
+<div class="alert alert-{{ type }} no-margin p-3" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="onClose()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+<ng-template [ngIf]="type == 'danger'">
+    <div>
+      <div class = "row">
+      <fa-icon class="col-1" [icon]=" triangulo "></fa-icon><div class = 'col-11'><strong>ERRO !</strong></div>
+      <hr>
+    </div>
+    {{ message }}
+    </div>
+</ng-template>
+<ng-template [ngIf]="type == 'success'">
+  <div>
+    <div class = "row">
+    <fa-icon class="col-1" [icon]=" circuloSucesso "></fa-icon><div class = 'col-11'><strong>SUCESSO !</strong></div>
+    <hr>
+    {{ message }}
+  </div>
+  </div>
+</ng-template>
+<ng-template [ngIf]="type == 'warning'">
+  <div>
+    <div class = "row">
+    <fa-icon class="col-1" [icon]=" circuloExclamacao "></fa-icon><div class = 'col-11'><strong>CUIDADO !</strong></div>
+    <hr>
+    {{ message }}
+  </div>
+  </div>
+</ng-template>
+   
+</div>

@@ -15,6 +15,7 @@ export class CardsTotaisComponent implements OnInit, OnChanges {
 
   @Input('a') DadosDespesas:Despesas [] = []
   DadosReceitas:Receitas[] = []
+  width:any
 
   ValorTotalDespesas:number = 0
   ValorTotalReceitas:number = 0
@@ -100,6 +101,9 @@ export class CardsTotaisComponent implements OnInit, OnChanges {
          this.DadosReceitas.length > 0){
           this.Saldo = this.ValorTotalReceitas - this.ValorTotalDespesas
           this.PercentualGast = this.ValorTotalDespesas/this.ValorTotalReceitas*100
+          this.width = `width:${this.PercentualGast.toFixed(0)}%`
+          console.log(this.width);
+          
           }else{this.calcularSaldo()}}, 3000);
   }
 

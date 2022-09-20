@@ -4,12 +4,20 @@ import { Despesas } from 'src/app/service/despesas';
 import { KaizenService } from 'src/app/service/kaizen.service';
 import { conversaoDadosGraficos } from './conversaodadosgraficos';
 
+
+
+declare var window:any
+
+
 @Component({
   selector: 'app-controledespesas',
   templateUrl: './controledespesas.component.html',
   styleUrls: ['./controledespesas.component.css']
 })
 export class ControledespesasComponent implements OnInit {
+
+
+
   //Dados de Despesas
   DadosDespesas:Despesas[] = []
   //Categorias -- Despesas // Gráfico de pizza 
@@ -24,12 +32,24 @@ export class ControledespesasComponent implements OnInit {
 
   Cat4:number = 0
   Lista4:any[] = []
+
+
+  Modal:any
+  DadosModal:any [] = []
+  TotalModal:any
+  ModalInclusaoDesp:any
+  ModalInclusaoRece:any
+  ModalDeleteDesp:any
+  ModalDeleteRece:any
+  ModalAltDesp:any
+  ModalAltRece:any
   
    //Atributos para o gráfico de despesas -- Despesas // Gráfico de pizza 
-  view: [number,number] = [700,200];
+   viewPizza: [number,number] = [500,200];
+   viewBarraHorizontal: [number,number] =  [500,200];
   ListaCategorica:any [] = []
   gradient: boolean = false;
-  showLegend: boolean = false;
+  showLegend: boolean = true;
   showLabels: boolean = false;
   isDoughnut: boolean = false;
   colorScheme:Color = {name:'MyScheme',
@@ -47,19 +67,27 @@ export class ControledespesasComponent implements OnInit {
 
   //=======================================================================
   //Atributos para o gráfico de despesas -- Despesas // Gráfico de Barras empilhadas
+  viewEmpilhadas: [number,number] =  [500,200];
   showXAxis: boolean = true;
   showYAxis: boolean = true;
   gradientEmp: boolean = false;
   showLegendEmp: boolean = true;
   showXAxisLabel: boolean = false;
-  xAxisLabel: string = 'Country';
+
   showYAxisLabel: boolean = false;
-  yAxisLabel: string = 'Population';
+
   animations: boolean = true;
+  showDataLabel:boolean = true
 
   
   
+  //===============================
+  //grafico de barras 
+  view_barVertical:[number,number] =  [500,200]
+
+
   
+
 
 
   constructor(private kaizenService:KaizenService) { }
@@ -72,9 +100,22 @@ export class ControledespesasComponent implements OnInit {
     this.esperarDespesa("Educação")
     this.esperarDespesa("Investimento")
     this.setarInformacoes()
+    this.carregarForm()
 
-  
   }
+
+  carregarForm(){
+    this.Modal = new window.bootstrap.Modal(document.getElementById('Modal'))
+    this.esperar()
+    this.ModalInclusaoDesp = new window.bootstrap.Modal(document.getElementById('ModInclusaoDesp'))
+    this.ModalInclusaoRece = new window.bootstrap.Modal(document.getElementById('ModInclusaoRece'))
+    this.ModalDeleteDesp = new window.bootstrap.Modal(document.getElementById('ModExclusãoDesp'))
+    this.ModalDeleteRece = new window.bootstrap.Modal(document.getElementById('ModExclusãoRece'))
+    this.ModalAltDesp = new window.bootstrap.Modal(document.getElementById('ModAlteracaoDesp'))
+    this.ModalAltRece = new window.bootstrap.Modal(document.getElementById('ModAlteracaoRece'))
+
+}
+
 
   getDespesas(){
     this.kaizenService.getDespesas().subscribe((data)=>{console.log(this.DadosDespesas = data)})
@@ -92,22 +133,32 @@ export class ControledespesasComponent implements OnInit {
               Valor +=dados.Valor
               Lista.push(`${dados.id} - ${dados.Data} - ${dados.Categoria} - ${dados.Valor}`)
               this.Cat1 = Valor
+              this.Lista1 = Lista
             }
             if( nomeCategoria == "Cuidado Pessoal" ){
               Valor +=dados.Valor
               Lista.push(`${dados.id} - ${dados.Data} - ${dados.Categoria} - ${dados.Valor}`)
               this.Cat2 = Valor
+              this.Lista2 = Lista
+
             }
             if( nomeCategoria == "Educação" ){
               Valor +=dados.Valor
               Lista.push(`${dados.id} - ${dados.Data} - ${dados.Categoria} - ${dados.Valor}`)
               this.Cat3 = Valor
+              this.Lista3 = Lista
+
             }
             if( nomeCategoria == "Investimento" ){
               Valor +=dados.Valor
               Lista.push(`${dados.id} - ${dados.Data} - ${dados.Categoria} - ${dados.Valor}`)
               this.Cat4 = Valor
+              this.Lista4 = Lista
+              
+              
             }
+
+            
         }
       }
     )
@@ -150,6 +201,8 @@ export class ControledespesasComponent implements OnInit {
         "value": this.Cat3
       }
     ];
+
+
   }
 
   DivisaoCategoricaDesp = [
@@ -172,7 +225,28 @@ export class ControledespesasComponent implements OnInit {
   ];
 
   onSelect(data: any): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+    if(data.label == 'Investimento' ){
+      this.DadosModal = this.Lista4
+      this.TotalModal = `Total = ${data.value}`
+      this.Modal.show()
+    } else if(data.label == 'Casa-Moradia'){
+      this.DadosModal = this.Lista1
+      this.TotalModal = `Total = ${data.value}`
+      this.Modal.show()
+    } else if(data.label == 'Educação'){
+      this.DadosModal = this.Lista3
+      this.TotalModal = `Total = ${data.value}`
+      this.Modal.show()
+    } else if(data.label == 'Cuidado Pessoal'){
+      this.DadosModal = this.Lista2
+      this.TotalModal = `Total = ${data.value}`
+      this.Modal.show()
+    }
+
+
+
+    
+   /*  console.log('Item clicked', JSON.parse(JSON.stringify(data))) */;
   }
 
   onActivate(data: any): void {
@@ -184,9 +258,10 @@ export class ControledespesasComponent implements OnInit {
   }
   //================================
 
-  //GRAFICO DE BARRAS 
+  //GRAFICO DE BARRAS - Separadas
   transformacaoHistDiario(){
     this.multi = []
+    this.single = []
     this.DadosDespesas.forEach((dados) =>{
                     this.multi.push(
                             {
@@ -197,7 +272,12 @@ export class ControledespesasComponent implements OnInit {
                                 "value": dados.Valor
                             },
                             ]
-                        })             
+                        }) 
+                        this.single.push(
+                          {
+                            "name": dados.Data,
+                            "value": dados.Valor
+                          })            
                     
                 }
             )
@@ -205,6 +285,7 @@ export class ControledespesasComponent implements OnInit {
 
         transformacaoHistMensal(){
           this.multi = []
+          this.single = []
           let conv
           let Mes
           let listaMes:any = []
@@ -220,17 +301,37 @@ export class ControledespesasComponent implements OnInit {
                                       "value": dados.Valor
                                   },
                                   ]
+                          
                               })
-                          listaMes.sort((a:any,b:any ) => {a -b})
-                          console.log(listaMes);
-                          
-                        this.multi = listaMes               
-                          
-                      }
-                  )
+                              
+                            this.single.push(
+                                {
+                                  "name": Mes,
+                                  "value": dados.Valor
+                                })
+                          listaMes.sort((a:any, b:any) => { b.name - a.name })
+                          console.log(listaMes)
+                          this.multi = listaMes               
+                  }
+                )
               }
 
-  
+  single = [
+    {
+      "name": "Germany",
+      "value": 8940000
+    },
+    {
+      "name": "USA",
+      "value": 5000000
+    },
+    {
+      "name": "France",
+      "value": 7200000
+    }
+
+  ]
+
   multi = [
     {
       "name": "0",
@@ -243,5 +344,148 @@ export class ControledespesasComponent implements OnInit {
     }
   ];
 
+ 
 
+  esperar(){
+    setTimeout(()=>{
+      if (this.DadosDespesas.length > 0){this.transformacaoHistDiario()}
+      else{this.esperar()}
+      },2000
+    )
+  }
+
+
+  //___Controle de Despesas Abashome
+  //Variáveis
+  idDelete:number = 0
+  idEdit:number = 0
+ 
+  ValorTotalDespesas:number = 0 
+
+  displayedColumnsDespesas:String[] = 
+  ['id',
+  'Data',
+  'Categoria',
+  'SubCategoria',
+  'Valor',
+  'FonteDespesas',
+  'Observacao',
+  'Delete/Edit']
+
+  displayedColumnsReceitas:String[] = 
+  ['id_R',
+  'Data_R',
+  'Categoria_R',
+  'SubCategoria_R',
+  'Valor_R',
+  'FonteReceitas_R',
+  'Observacao_R',
+  'Deletar/Alterar_R']
+
+  CreateDadosDespesas:Despesas ={
+    Data:'',
+    Categoria:'',
+    Observacao:'',
+    FonteDespesa:'',
+    SubCategoria:'',
+    Valor:0
+  }
+
+ 
+
+  createDespesas(){
+    this.kaizenService
+    .createDespesa(this.CreateDadosDespesas)
+    .subscribe((data) => console.log(data))
+    this.ModalInclusaoDesp.hide()
+    setTimeout(() => {this.getDespesas(),this.calcularTotalDespesas()}, 2000);
+  }
+
+  //Form
+
+
+
+  updateDespesas(){
+    this.kaizenService.updateDespesas(this.CreateDadosDespesas)
+        .subscribe((data)=>{ console.log(`${this.CreateDadosDespesas.id} - Alterado`);
+        })
+  }
+
+  abrirDeleteModalDespesas(id:any){
+    this.idDelete =id
+    this.ModalDeleteDesp.show()
+    console.log(this.idDelete)
+  }
+
+  deleteDespesa(){
+    this.kaizenService
+    .deleteDespesa(this.idDelete)
+    .subscribe((data) => {this.DadosDespesas = this.DadosDespesas.filter(ID => ID.id !== this.idDelete)
+                          this.ModalDeleteDesp.hide()})
+    
+  }
+
+  abriralteracaoDespesa(){
+    this.ModalAltDesp.show()
+
+  }
+
+  abriralteracaoReceitas(){
+    this.ModalAltRece.show()
+
+  }
+
+
+  //Form - Inclusão 
+  CapturaIdDesp(event:any){
+    this.CreateDadosDespesas.id = event
+   
+  }
+
+  CapturaDataDesp(event:any){
+    this.CreateDadosDespesas.Data = event
+    console.log(this.CreateDadosDespesas.Data);
+  }
+
+  CapturaCategoriaDesp(event:any){
+    this.CreateDadosDespesas.Categoria = event
+    console.log(this.CreateDadosDespesas.Categoria);
+  }
+
+  CapturaSubCategoriaDesp(event:any){
+    this.CreateDadosDespesas.SubCategoria = event
+    console.log(this.CreateDadosDespesas.SubCategoria);
+  }
+
+  CapturaFonteDespesa(event:any){
+    this.CreateDadosDespesas.FonteDespesa = event
+    console.log(this.CreateDadosDespesas.FonteDespesa);
+  }
+
+  CapturaValorDesp(event:any){
+    let convers = parseFloat(event)
+    this.CreateDadosDespesas.Valor = convers
+    console.log(this.CreateDadosDespesas.Valor);
+  }
+
+  CapturaObservacaoDesp(event:any){
+    this.CreateDadosDespesas.Observacao = event
+    console.log(this.CreateDadosDespesas.Observacao);
+  }
+
+  abrirCreateModalDespesas(){
+    this.ModalInclusaoDesp.show()
+  }
+
+ //Calculo
+
+ calcularTotalDespesas(){
+  this.ValorTotalDespesas = 0
+  this.DadosDespesas.forEach((dados) =>{
+    return this.ValorTotalDespesas += dados.Valor})
+  console.log(this.ValorTotalDespesas);
+  
 }
+
+
+}/////

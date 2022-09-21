@@ -95,7 +95,7 @@ export class ControledespesasComponent implements OnInit {
   ngOnInit(): void {
     this.getDespesas()
     //Carregamento Gráfico de pizza.
-    this.esperarDespesa("Casa-Moradia") 
+    this.esperarDespesa("Casa-moradia") 
     this.esperarDespesa("Cuidado Pessoal")
     this.esperarDespesa("Educação")
     this.esperarDespesa("Investimento")
@@ -129,7 +129,7 @@ export class ControledespesasComponent implements OnInit {
     let Lista:any = []
     this.DadosDespesas.forEach((dados)=>{
           if(nomeCategoria == dados.Categoria){
-            if( nomeCategoria == "Casa-Moradia" ){
+            if( nomeCategoria == "Casa-moradia" ){
               Valor +=dados.Valor
               Lista.push(`${dados.id} - ${dados.Data} - ${dados.Categoria} - ${dados.Valor}`)
               this.Cat1 = Valor

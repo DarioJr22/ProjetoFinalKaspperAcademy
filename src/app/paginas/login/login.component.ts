@@ -29,8 +29,6 @@ export class LoginComponent implements OnInit {
    } else if( this.authService.usuarioAutenticado == false ){
    
     this.modalService.showAlertDanger(`O usuário "${this.usuario.nome}" não foi identificado, Registre ou tente novamente`)
-    this.modalService.showAlertSuccess(`O usuário "${this.usuario.nome}" não foi identificado, Registre ou tente novamente`)
-    this.modalService.showAlertWarning(`O usuário "${this.usuario.nome}" não foi identificado, Registre ou tente novamente`)
     
    }
   }

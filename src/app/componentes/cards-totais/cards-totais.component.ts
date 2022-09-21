@@ -1,5 +1,5 @@
 import { ThisReceiver } from '@angular/compiler';
-import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges,Output,EventEmitter } from '@angular/core';
 import { data } from 'jquery';
 import { Despesas } from 'src/app/service/despesas';
 import { KaizenService } from 'src/app/service/kaizen.service';
@@ -13,14 +13,18 @@ import { AbasHomeComponent } from '../abas-home/abas-home.component';
 })
 export class CardsTotaisComponent implements OnInit, OnChanges {
 
-  @Input('a') DadosDespesas:Despesas [] = []
+
+  @Output()cardsCarregados:EventEmitter<any> = new EventEmitter
+  controleDeCarregamento_Cards:boolean = true 
+
+  @Input() DadosDespesas:Despesas [] = []
   DadosReceitas:Receitas[] = []
   width:any
 
   ValorTotalDespesas:number = 0
   ValorTotalReceitas:number = 0
 
-  @Input() prop: number = 0;
+
 
 
   Despesas:number = 2134
@@ -37,6 +41,12 @@ export class CardsTotaisComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.formatacaoCurrecy()
+    this.carregarform()
+
+  }
+
+  carregarform(){
+    this.carregou_Abas(this.controleDeCarregamento_Cards)
     this.getDespesas()
     this.getReceitas()
     this.esperarDespesas()
@@ -44,10 +54,18 @@ export class CardsTotaisComponent implements OnInit, OnChanges {
     this.calcularSaldo()
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes: SimpleChanges) {
    console.log(changes);
    this.ValorTotalDespesas 
    
+  }
+  
+  carregouAgoraMeAjuda(event:any){
+    
+    this.carregarform()
+    this.cardsCarregados.emit(true)
+    
+
   }
 
 
@@ -91,7 +109,7 @@ export class CardsTotaisComponent implements OnInit, OnChanges {
     setTimeout(()=>{
       if (this.DadosReceitas.length > 0){this.calcularTotalReceitas()}
       else{this.esperarReceitas()}
-      },2000
+      },5000
     )
   }
 
@@ -104,15 +122,32 @@ export class CardsTotaisComponent implements OnInit, OnChanges {
           this.width = `width:${this.PercentualGast.toFixed(0)}%`
           console.log(this.width);
           
-          }else{this.calcularSaldo()}}, 3000);
+          }else{this.calcularSaldo()}}, 5000);
   }
 
 
   esperarDespesas(){
     setTimeout(()=>{
-      if (this.DadosDespesas.length > 0){this.calcularTotalDespesas()}
+      if (this.DadosDespesas.length > 0){
+        this.calcularTotalDespesas()
+        }
       else{this.esperarDespesas()}
-      },2000
+      },5000
     )
   }
+
+  carregou_Abas(event:any){
+    setTimeout(() => {
+      if (this.DadosDespesas.length > 0 &&
+          this.DadosReceitas.length > 0 &&
+          this.Saldo != 0 &&
+          this.width != 0 ) {
+            this.controleDeCarregamento_Cards = event
+            this.cardsCarregados.emit(this.controleDeCarregamento_Cards)
+            console.log(event, 'carregou os cards');
+            
+      }else{this.carregou_Abas(event)}
+    }, 5000);
+  }
+  
 }

@@ -1,3 +1,4 @@
 <app-navbar></app-navbar>
-<app-cards-totais></app-cards-totais>
-<app-carregando></app-carregando>
+<app-cards-totais (cardsCarregados)="carregouCards($event)">
+</app-cards-totais>
+<app-carregando [carregando]="carregando" ></app-carregando>

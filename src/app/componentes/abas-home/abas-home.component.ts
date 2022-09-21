@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { EventEmitter,Output,AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, ViewChild,Input, SimpleChange } from '@angular/core';
 import { Despesas } from 'src/app/service/despesas';
 import { KaizenService } from 'src/app/service/kaizen.service';
+
 
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { data } from 'jquery';
@@ -18,7 +19,12 @@ declare var window:any
   styleUrls: ['./abas-home.component.css']
 })
 export class AbasHomeComponent implements OnInit{
-  
+  //Carregamento
+  //Evento de saída para componente de cards
+  @Output()carregamentoTabelas_Abas:EventEmitter<any> = new EventEmitter
+  @Output()carregamentoTabelas_Cards:EventEmitter<any> = new EventEmitter
+  controleDeCarregamento_Abas = true
+
   //Variáveis
   idDelete:number = 0
   idEdit:number = 0
@@ -74,6 +80,7 @@ export class AbasHomeComponent implements OnInit{
   ModalAltDesp:any
   ModalAltRece:any
   //_______Paginator_________
+
   length =5 
   pageSize = 10
   pageSizOptions:number [] = [5,10,25,100]
@@ -122,7 +129,7 @@ export class AbasHomeComponent implements OnInit{
       this.ModalDeleteRece = new window.bootstrap.Modal(document.getElementById('ModExclusãoRece'))
       this.ModalAltDesp = new window.bootstrap.Modal(document.getElementById('ModAlteracaoDesp'))
       this.ModalAltRece = new window.bootstrap.Modal(document.getElementById('ModAlteracaoRece'))
-
+      this.carregamento_Abas()
     }
 
    
@@ -366,6 +373,50 @@ validaCamposReceitas(){
     console.log(this.CreateDadosDespesas);
     
   }
-  
+  //Lógica de carregamento  
+  carregamento_Abas(){
+    setTimeout(() => {
+      if (this.DadosDespesas.length > 0 &&
+          this.DadosReceitas.length > 0) {
+            this.controleDeCarregamento_Abas = false
+            this.carregamentoTabelas_Abas.emit(this.controleDeCarregamento_Abas)
+            console.log(this.controleDeCarregamento_Abas,'carregou tabelas');
+            
+      }else{this.carregamento_Abas()}
+    }, 5000);
+  }
 
+  carregamento_Cards(){
+    setTimeout(() => {
+      if (this.DadosDespesas.length > 0 &&
+          this.DadosReceitas.length > 0) {
+            this.controleDeCarregamento_Abas = false
+            this.carregamentoTabelas_Cards.emit(this.controleDeCarregamento_Abas)
+            console.log(this.controleDeCarregamento_Abas, 'MASTER');
+            
+      }else{this.carregamento_Abas()}
+    }, 5000);
+  }
+
+
+  carregar(){
+    setTimeout(() => {
+            this.carregamentoTabelas_Cards.emit(true)
+    }, 1000);
+  }
+
+esperarDespesas(){
+    setTimeout(()=>{
+      if (this.DadosDespesas.length > 0 &&
+        this.DadosReceitas.length > 0){
+        this.calcularTotalDespesas()}
+      else{this.esperarDespesas()}
+      },7000
+    )
+  }
+
+  emitirMudanca(event:any){
+    this.carregamento_Abas()
+    
+  }
 }

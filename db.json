@@ -1,21 +1,12 @@
 {
   "Despesas": [
     {
-      "Data": "15/09/2022",
-      "Categoria": "Investimento",
-      "Observacao": "",
-      "FonteDespesa": "Investimentos Mês de Setembro",
-      "SubCategoria": "Bolsa de Valores",
-      "Valor": 150,
-      "id": 7
-    },
-    {
       "Data": "14/06/2022",
       "Categoria": "Educação",
       "Observacao": "",
       "FonteDespesa": "Cursos de inglês",
       "SubCategoria": "Cursos",
-      "Valor": 141,
+      "Valor": 1414,
       "id": 9
     },
     {
@@ -24,26 +15,62 @@
       "Observacao": "",
       "FonteDespesa": "ITAU",
       "SubCategoria": "Lazer",
-      "Valor": 2,
+      "Valor": 22,
       "id": 10
     },
     {
       "Data": "01/09/2022",
       "Categoria": "Casa-moradia",
       "Observacao": "",
-      "FonteDespesa": "Ursinho Blau blau",
-      "SubCategoria": "Alimentação",
-      "Valor": 300,
-      "id": 11
+      "FonteDespesa": "PICPAY",
+      "SubCategoria": "Lazer",
+      "Valor": 34,
+      "id": 12
     },
     {
       "Data": "01/09/2022",
       "Categoria": "Casa-moradia",
       "Observacao": "",
-      "FonteDespesa": "KKKKKKKKKKKKKK",
+      "FonteDespesa": "PICPAY",
+      "SubCategoria": "Lazer",
+      "Valor": 34,
+      "id": 13
+    },
+    {
+      "Data": "31/08/2022",
+      "Categoria": "Educação",
+      "Observacao": "",
+      "FonteDespesa": "PICPAY",
       "SubCategoria": "Alimentação",
+      "Valor": 233,
+      "id": 14
+    },
+    {
+      "Data": "08/09/2022",
+      "Categoria": "Cuidado Pessoal",
+      "Observacao": "",
+      "FonteDespesa": "PICPAY",
+      "SubCategoria": "Lazer",
+      "Valor": 900,
+      "id": 15
+    },
+    {
+      "Data": "01/09/2022",
+      "Categoria": "Casa-moradia",
+      "Observacao": "",
+      "FonteDespesa": "PICPAY",
+      "SubCategoria": "Lazer",
       "Valor": 222,
-      "id": 12
+      "id": 16
+    },
+    {
+      "Data": "22/09/2022",
+      "Categoria": "Cuidado Pessoal",
+      "Observacao": "",
+      "FonteDespesa": "NUBANK",
+      "SubCategoria": "Esportes",
+      "Valor": 444,
+      "id": 17
     }
   ],
   "Receitas": [
@@ -64,6 +91,15 @@
       "SubCategoria": "wesdassds",
       "Valor": 4414,
       "id": 3
+    },
+    {
+      "Data": "03/09/2022",
+      "Categoria": "Investimentos",
+      "Observacao": "",
+      "FonteReceita": "ITAU",
+      "SubCategoria": "",
+      "Valor": 400,
+      "id": 4
     }
   ]
 }

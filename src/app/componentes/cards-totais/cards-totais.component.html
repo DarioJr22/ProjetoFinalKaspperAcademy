@@ -89,7 +89,9 @@
         </div>
     </div>
     <div class="container-fluid mx-auto">
-    <app-abas-home></app-abas-home>
+    <app-abas-home (carregamentoTabelas_Abas)="carregou_Abas($event)"
+                    (carregamentoTabelas_Cards)="carregouAgoraMeAjuda($event)"
+    ></app-abas-home>
     </div>
 </div>
 

@@ -1,105 +1,249 @@
 {
   "Despesas": [
     {
-      "Data": "14/06/2022",
-      "Categoria": "Educação",
-      "Observacao": "",
-      "FonteDespesa": "Cursos de inglês",
-      "SubCategoria": "Cursos",
-      "Valor": 1414,
-      "id": 9
-    },
-    {
-      "Data": "05/09/2022",
-      "Categoria": "Casa-moradia",
-      "Observacao": "",
-      "FonteDespesa": "ITAU",
-      "SubCategoria": "Lazer",
-      "Valor": 22,
-      "id": 10
-    },
-    {
-      "Data": "01/09/2022",
-      "Categoria": "Casa-moradia",
-      "Observacao": "",
-      "FonteDespesa": "PICPAY",
-      "SubCategoria": "Lazer",
-      "Valor": 34,
-      "id": 12
-    },
-    {
-      "Data": "01/09/2022",
-      "Categoria": "Casa-moradia",
-      "Observacao": "",
-      "FonteDespesa": "PICPAY",
-      "SubCategoria": "Lazer",
-      "Valor": 34,
-      "id": 13
-    },
-    {
-      "Data": "31/08/2022",
-      "Categoria": "Educação",
-      "Observacao": "",
-      "FonteDespesa": "PICPAY",
-      "SubCategoria": "Alimentação",
-      "Valor": 233,
-      "id": 14
-    },
-    {
       "Data": "08/09/2022",
       "Categoria": "Cuidado Pessoal",
-      "Observacao": "",
+      "Observacao": "Muito bom orochi KKKKKKKKKKKKKKK",
       "FonteDespesa": "PICPAY",
       "SubCategoria": "Lazer",
       "Valor": 900,
       "id": 15
     },
     {
+      "Data": "25/09/2022",
+      "Categoria": "Investimento",
+      "Observacao": "Feira da 1º semana de Julhooo",
+      "FonteDespesa": "asdse",
+      "SubCategoria": "Alimentação",
+      "Valor": 2231,
+      "id": 18
+    },
+    {
+      "Data": "01/09/2022",
+      "Categoria": "Investimento",
+      "Observacao": "Shubirum bá",
+      "FonteDespesa": "a",
+      "SubCategoria": "Alimentação",
+      "Valor": 2341,
+      "id": 19
+    },
+    {
+      "Data": "24/09/2022",
+      "Categoria": "Casa-moradia",
+      "Observacao": "",
+      "FonteDespesa": "bkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk para orochi\n",
+      "SubCategoria": "Lazer",
+      "Valor": 41,
+      "id": 22
+    },
+    {
+      "Data": "24/09/2022",
+      "Categoria": "Casa-moradia",
+      "Observacao": "",
+      "FonteDespesa": "bkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk para orochi\n",
+      "SubCategoria": "Lazer",
+      "Valor": 41,
+      "id": 23
+    },
+    {
+      "Data": "24/09/2022",
+      "Categoria": "Casa-moradia",
+      "Observacao": "",
+      "FonteDespesa": "bkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk para orochi\n",
+      "SubCategoria": "Lazer",
+      "Valor": 41,
+      "id": 24
+    },
+    {
       "Data": "01/09/2022",
       "Categoria": "Casa-moradia",
       "Observacao": "",
-      "FonteDespesa": "PICPAY",
-      "SubCategoria": "Lazer",
-      "Valor": 222,
-      "id": 16
+      "FonteDespesa": "Feira da semana 3 de setembro - Faltaram frutas",
+      "SubCategoria": "Alimentação",
+      "Valor": 294,
+      "id": 25
     },
     {
-      "Data": "22/09/2022",
+      "Data": "01/09/2022",
+      "Categoria": "Casa-moradia",
+      "Observacao": "",
+      "FonteDespesa": "Feira da semana 3 de setembro - Faltaram frutas",
+      "SubCategoria": "Alimentação",
+      "Valor": 294,
+      "id": 26
+    },
+    {
+      "Data": "01/09/2022",
       "Categoria": "Cuidado Pessoal",
       "Observacao": "",
-      "FonteDespesa": "NUBANK",
-      "SubCategoria": "Esportes",
-      "Valor": 444,
-      "id": 17
+      "FonteDespesa": "asasassa",
+      "SubCategoria": "Lazer",
+      "Valor": 41,
+      "id": 27
+    },
+    {
+      "Data": "01/09/2022",
+      "Categoria": "Cuidado Pessoal",
+      "Observacao": "",
+      "FonteDespesa": "asasassa",
+      "SubCategoria": "Lazer",
+      "Valor": 41,
+      "id": 28
+    },
+    {
+      "Data": "01/09/2022",
+      "Categoria": "Cuidado Pessoal",
+      "Observacao": "",
+      "FonteDespesa": "asasassa",
+      "SubCategoria": "Lazer",
+      "Valor": 41,
+      "id": 29
+    },
+    {
+      "Data": "01/09/2022",
+      "Categoria": "Cuidado Pessoal",
+      "Observacao": "",
+      "FonteDespesa": "asasassa",
+      "SubCategoria": "Lazer",
+      "Valor": 41,
+      "id": 30
+    },
+    {
+      "Data": "01/09/2022",
+      "Categoria": "Cuidado Pessoal",
+      "Observacao": "",
+      "FonteDespesa": "asasassa",
+      "SubCategoria": "Lazer",
+      "Valor": 41,
+      "id": 31
+    },
+    {
+      "Data": "01/09/2022",
+      "Categoria": "Cuidado Pessoal",
+      "Observacao": "",
+      "FonteDespesa": "asasassa",
+      "SubCategoria": "Lazer",
+      "Valor": 41,
+      "id": 32
+    },
+    {
+      "Data": "16/03/2022",
+      "Categoria": "Educação",
+      "Observacao": "",
+      "FonteDespesa": "Faculdade - Mensalidade 2 ",
+      "SubCategoria": "",
+      "Valor": 159,
+      "id": 33
+    },
+    {
+      "Data": "16/03/2022",
+      "Categoria": "Educação",
+      "Observacao": "",
+      "FonteDespesa": "Faculdade - Mensalidade 2 ",
+      "SubCategoria": "",
+      "Valor": 159,
+      "id": 34
+    },
+    {
+      "Data": "16/03/2022",
+      "Categoria": "Educação",
+      "Observacao": "",
+      "FonteDespesa": "Faculdade - Mensalidade 2 ",
+      "SubCategoria": "",
+      "Valor": 159,
+      "id": 35
+    },
+    {
+      "Data": "07/01/2022",
+      "Categoria": "Educação",
+      "Observacao": "",
+      "FonteDespesa": "assdaasd",
+      "SubCategoria": "Lazer",
+      "Valor": 321,
+      "id": 36
+    },
+    {
+      "Data": "15/01/2022",
+      "Categoria": "Educação",
+      "Observacao": "",
+      "FonteDespesa": "assdaasd",
+      "SubCategoria": "Lazer",
+      "Valor": 321,
+      "id": 37
+    },
+    {
+      "Data": "15/02/2022",
+      "Categoria": "Educação",
+      "Observacao": "",
+      "FonteDespesa": "assdaasd",
+      "SubCategoria": "Lazer",
+      "Valor": 321,
+      "id": 38
+    },
+    {
+      "Data": "17/03/2022",
+      "Categoria": "Educação",
+      "Observacao": "",
+      "FonteDespesa": "assdaasd",
+      "SubCategoria": "Lazer",
+      "Valor": 321,
+      "id": 39
+    },
+    {
+      "Data": "28/04/2022",
+      "Categoria": "Educação",
+      "Observacao": "",
+      "FonteDespesa": "assdaasd",
+      "SubCategoria": "Lazer",
+      "Valor": 321,
+      "id": 40
+    },
+    {
+      "Data": "31/05/2022",
+      "Categoria": "Educação",
+      "Observacao": "",
+      "FonteDespesa": "assdaasd",
+      "SubCategoria": "Lazer",
+      "Valor": 321,
+      "id": 41
+    },
+    {
+      "Data": "30/06/2022",
+      "Categoria": "Educação",
+      "Observacao": "",
+      "FonteDespesa": "assdaasd",
+      "SubCategoria": "Lazer",
+      "Valor": 321,
+      "id": 42
     }
   ],
   "Receitas": [
-    {
-      "id": 1,
-      "Data": "01/07/2022",
-      "Categoria": "SalárioEmpresa",
-      "SubCategoria": "RendaFixa",
-      "Valor": 1000,
-      "FonteReceita": "ITAU",
-      "Observacao": "Feira da 1º semana de Julho"
-    },
     {
       "Data": "15/09/2022",
       "Categoria": "Freelas",
       "Observacao": "Grana do freela em angular",
       "FonteReceita": "NUBANK",
-      "SubCategoria": "wesdassds",
+      "SubCategoria": "wesdassdsfss",
       "Valor": 4414,
       "id": 3
     },
     {
       "Data": "03/09/2022",
       "Categoria": "Investimentos",
-      "Observacao": "",
+      "Observacao": "ABLUBLEEBd",
       "FonteReceita": "ITAU",
       "SubCategoria": "",
-      "Valor": 400,
+      "Valor": 800,
       "id": 4
+    },
+    {
+      "Data": "03/09/2022",
+      "Categoria": "Empreendimentos",
+      "Observacao": "ABLUBLE",
+      "FonteReceita": "PICPAY",
+      "SubCategoria": "",
+      "Valor": 2314,
+      "id": 5
     }
   ]
 }

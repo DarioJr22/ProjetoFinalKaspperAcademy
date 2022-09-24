@@ -13,26 +13,17 @@ export class FormalterareceitasComponent implements OnInit {
   id_conv:number = 0
   DadosReceitas:Receitas [] = []
 
-  SubCategoriasList:string[] = 
-  [
-    'Alimentação',
-    'Lazer',
-    'Esportes',
-    'Cursos',
-    'Faculdade',
-    'Bolsa de Valores'
-  ]
-
   CategoriaList:string[] = 
-  [
-    'Casa-moradia',
-    'Cuidado Pessoal',
-    'Investimento',
-    'Educação'
+  [ '',
+    'Salário',
+    'Investimentos',
+    'Empreendimentos',
+    'Freelas',
+    'Outros'
   ]
 
   Fonte:string[] =
-  [
+  [ '',
     'ITAU',
     'PICPAY',
     'NUBANK',
@@ -50,7 +41,8 @@ export class FormalterareceitasComponent implements OnInit {
     Valor:0
   }
 
-  //Alteração de Despesa
+  //Alteração de Receitas
+  @Output()atualizar:EventEmitter<any> = new EventEmitter
   @Output() id:EventEmitter<any> = new EventEmitter
   @Output() Data:EventEmitter<any> = new EventEmitter
   @Output() Categoria:EventEmitter<any> = new EventEmitter
@@ -96,6 +88,20 @@ export class FormalterareceitasComponent implements OnInit {
     this.kaizenService.updateReceitas(this.AltDadosReceitas).subscribe((data)=>{console.log(`Atualizado`,this.AltDadosReceitas)})
   }
 
+
+
+  atualizado(){
+    setTimeout(() => {
+      if (this.DadosReceitas.length > 0) {
+            
+            this.atualizar.emit(true)
+            console.log('Atualizado Receitas');
+            this.getReceitas()
+            
+      }else{this.atualizado()}
+    }, 1000);
+  }
+
   CapturaData(valor:any){
     let data_americana = valor
     let data_brasileira = data_americana.split('-').reverse().join('/')
@@ -130,6 +136,7 @@ export class FormalterareceitasComponent implements OnInit {
   }
 
   CapturaId(valor:any){
+    this.getReceitas()
    this.id_conv = valor
     this.id.emit(valor)
     console.log(valor);

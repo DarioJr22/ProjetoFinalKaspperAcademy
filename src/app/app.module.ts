@@ -40,7 +40,7 @@ import { AlertmodalService } from './service/alert/alertmodal.service';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarregandoComponent } from './componentes/carregando/carregando.component'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import {MatCardModule} from '@angular/material/card'
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,14 +73,17 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HttpClientModule,
     CommonModule,
     FormsModule,
+    NgxChartsModule,
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule,
+    ModalModule.forRoot(),
+    //Imports Material
     MatTableModule,
     MatSliderModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    NgxChartsModule,
-    MatProgressSpinnerModule,
-    BrowserAnimationsModule,
-    ModalModule.forRoot()
+    MatCardModule,
+    
     
     
   ],

@@ -28,6 +28,7 @@ export class FormreceitasComponent implements OnInit {
   ]
 
   //Cadastro de Despesa
+  @Output()atualizar:EventEmitter<any> = new EventEmitter
   @Output() Data:EventEmitter<any> = new EventEmitter
   @Output() Categoria:EventEmitter<any> = new EventEmitter
   @Output() SubCategoria:EventEmitter<any> = new EventEmitter

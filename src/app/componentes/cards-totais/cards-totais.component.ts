@@ -1,6 +1,7 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges,Output,EventEmitter } from '@angular/core';
 import { data } from 'jquery';
+import { AlertmodalService } from 'src/app/service/alert/alertmodal.service';
 import { Despesas } from 'src/app/service/despesas';
 import { KaizenService } from 'src/app/service/kaizen.service';
 import { Receitas } from 'src/app/service/receitas';
@@ -37,6 +38,7 @@ export class CardsTotaisComponent implements OnInit, OnChanges {
   PercentualGast= this.Receitas/this.Despesas*100
 
   constructor(private kaizenService:KaizenService,
+    private modalService:AlertmodalService
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +54,7 @@ export class CardsTotaisComponent implements OnInit, OnChanges {
     this.esperarDespesas()
     this.esperarReceitas()
     this.calcularSaldo()
+    
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -142,12 +145,12 @@ export class CardsTotaisComponent implements OnInit, OnChanges {
           this.DadosReceitas.length > 0 &&
           this.Saldo != 0 &&
           this.width != 0 ) {
-            this.controleDeCarregamento_Cards = event
+            this.controleDeCarregamento_Cards = false
             this.cardsCarregados.emit(this.controleDeCarregamento_Cards)
-            console.log(event, 'carregou os cards');
+            console.log(this.controleDeCarregamento_Cards, 'carregou os cards');
             
-      }else{this.carregou_Abas(event)}
-    }, 5000);
+      }else{this.carregou_Abas(this.controleDeCarregamento_Cards)}
+    }, 3500);
   }
   
 }

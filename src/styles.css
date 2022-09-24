@@ -11329,6 +11329,38 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .matspiner{
   z-index: 9999999;
   margin-right: 5rem;
-  
+}
+
+.scrolbarGrafico{
+  overflow: scroll;
+  overflow-x: 1000px;
+  overflow-y: hidden;
 
 }
+
+.scrolbarTabela{
+  height: 300px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+
+}
+.flex{
+  display: flex;
+}
+
+.tituloCard{
+  background-color: #DCDCDC;
+  padding: 5px;
+  border-radius: 7px;
+  /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2) */
+
+}
+
+.card{
+ 
+  padding: 5px;
+  border-radius: 7px;
+  box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.2)
+
+}
+

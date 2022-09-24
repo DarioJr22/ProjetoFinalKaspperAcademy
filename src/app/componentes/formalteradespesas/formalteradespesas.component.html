@@ -1,8 +1,8 @@
 <div class="container">
     <h2>Alterar</h2>
     <form>
-
-        <div class="mb-3">
+      <div class = "row">
+        <div class="col-6">
 
             <label class="form-label">Id</label>
             <select 
@@ -18,7 +18,7 @@
         </select>
            
           </div>
-        <div class="mb-3">
+        <div class="col-6">
             <label class="form-label">Data</label>
             <input type="text" 
             class="form-control" 
@@ -27,7 +27,9 @@
             (input)="CapturaData(Data.value)" #Data>
            
           </div>
-        <div class="mb-3">
+      </div>
+      <div class = "row">
+        <div class="col-6">
           <label class="form-label">Categoria</label>
           <input type="text" 
           class="form-control" 
@@ -37,7 +39,7 @@
          
         </div>
 
-        <div class="mb-3">
+        <div class="col-6">
             <label class="form-label">SubCategoria</label>
             <input type="text" 
             class="form-control" 
@@ -46,8 +48,9 @@
             (input)="CapturaSubCategoria(SubCategoria.value)" #SubCategoria>
            
           </div>
-
-          <div class="mb-3">
+          </div>
+          <div class = "row">
+          <div class="col-6">
             <label class="form-label">Valor</label>
             <input type="number" 
             class="form-control" 
@@ -57,14 +60,14 @@
            
           </div>
 
-          <div class="mb-3">
+          <div class="col-6">
             <label class="form-label">Fonte Despesa</label>
             <input type="text" class="form-control" 
             [(ngModel)]="AltDadosDespesas.FonteDespesa"  name="FonteDespesa">
            
           </div>
-
-          <div class="mb-3">
+        </div>
+          <div class="col-12">
             <label class="form-label">Observacao</label>
             <input type="text" class="form-control" 
             [(ngModel)]="AltDadosDespesas.Observacao"  
@@ -75,7 +78,7 @@
           </div>
         
           <div class="modal-footer">
-            <button type="button" (click)="update()" data-bs-dismiss="modal" class="btn btn-primary">Atualizar</button>
+            <button type="button" (click)="update() ;atualizado() " data-bs-dismiss="modal" class="btn btn-primary">Atualizar</button>
           </div>
         
       

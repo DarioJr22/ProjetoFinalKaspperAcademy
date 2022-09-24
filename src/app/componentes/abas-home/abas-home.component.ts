@@ -1,14 +1,12 @@
-import { EventEmitter,Output,AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, ViewChild,Input, SimpleChange } from '@angular/core';
+import { EventEmitter,Output,Component, OnInit, Input } from '@angular/core';
 import { Despesas } from 'src/app/service/despesas';
 import { KaizenService } from 'src/app/service/kaizen.service';
 
 
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { data } from 'jquery';
+import { PageEvent } from '@angular/material/paginator';
 import { Receitas } from 'src/app/service/receitas';
-import { CardsTotaisComponent } from '../cards-totais/cards-totais.component';
-import { CustomMatPaginatorIntl } from 'src/app/service/custominitl';
 import { AlertmodalService } from 'src/app/service/alert/alertmodal.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 
 declare var window:any
@@ -20,6 +18,7 @@ declare var window:any
 })
 export class AbasHomeComponent implements OnInit{
   //Carregamento
+
   //Evento de saída para componente de cards
   @Output()carregamentoTabelas_Abas:EventEmitter<any> = new EventEmitter
   @Output()carregamentoTabelas_Cards:EventEmitter<any> = new EventEmitter
@@ -31,10 +30,30 @@ export class AbasHomeComponent implements OnInit{
   DadosDespesas:Despesas [] = []
   DadosReceitas:Receitas [] = []
   ValorTotalDespesas:number = 0 
-  
+
+  //Controle de seleção de abas
+  @Input()selecionarAba:string = ''
+  @Input()mostrarDuasAbas:boolean = true
+  AbaSelecionadaDesp = ''
+  AbaSelecionadaReceitas = ''
+
+
+  selecaoDeAbaAtiva(selecionarAba:string){
+    if(selecionarAba == "Receitas"){
+      this.AbaSelecionadaReceitas = "tab-pane fade show active"
+      this.AbaSelecionadaDesp = "tab-pane fade"
+    }else if (selecionarAba == "Despesas") {
+      this.AbaSelecionadaReceitas = "tab-pane fade"
+      this.AbaSelecionadaDesp = "tab-pane fade show active "
+    }else if (selecionarAba == "AsDuas") {
+      this.AbaSelecionadaReceitas = "tab-pane fade show active"
+      this.AbaSelecionadaDesp = "tab-pane fade"
+    }
+  }
   //Validacao
   validacampos:boolean = false
 
+  //Variáveis de seleção de coluna do MatTable
   displayedColumnsDespesas:String[] = 
   ['id',
   'Data',
@@ -55,6 +74,7 @@ export class AbasHomeComponent implements OnInit{
   'Observacao_R',
   'Deletar/Alterar_R']
 
+  //Variáveis de Iniciaçozação de interface
   CreateDadosDespesas:Despesas ={
     Data:'',
     Categoria:'',
@@ -73,12 +93,14 @@ export class AbasHomeComponent implements OnInit{
     Valor:0
   }
   
+  //Modais
   ModalInclusaoDesp:any
   ModalInclusaoRece:any
   ModalDeleteDesp:any
   ModalDeleteRece:any
   ModalAltDesp:any
   ModalAltRece:any
+
   //_______Paginator_________
 
   length =5 
@@ -111,7 +133,9 @@ export class AbasHomeComponent implements OnInit{
   //_______________
 
   constructor(private kaizenService:KaizenService,
-              private modalService:AlertmodalService   
+              private modalService:AlertmodalService,
+              private modalServiceModal:BsModalService
+
             ) { }
 
   ngOnInit(): void {
@@ -121,15 +145,39 @@ export class AbasHomeComponent implements OnInit{
     this.carregarForm()
    
     }
+/* 
+    private showAlert(message:string, type:string){
+      const bsModalRef: BsModalRef = this.modalServiceModal.show()
+      bsModalRef.content.type = type;
+      bsModalRef.content.message = message;
+  
+    } */
 
     carregarForm(){
-      this.ModalInclusaoDesp = new window.bootstrap.Modal(document.getElementById('ModInclusaoDesp'))
-      this.ModalInclusaoRece = new window.bootstrap.Modal(document.getElementById('ModInclusaoRece'))
-      this.ModalDeleteDesp = new window.bootstrap.Modal(document.getElementById('ModExclusãoDesp'))
-      this.ModalDeleteRece = new window.bootstrap.Modal(document.getElementById('ModExclusãoRece'))
-      this.ModalAltDesp = new window.bootstrap.Modal(document.getElementById('ModAlteracaoDesp'))
-      this.ModalAltRece = new window.bootstrap.Modal(document.getElementById('ModAlteracaoRece'))
-      this.carregamento_Abas()
+     //Verificar ordem de carregamento dos modais.
+     //Ocasiona um erro que faz os modais não fundionarem.
+        setTimeout(() => {
+          if (this.DadosDespesas.length > 0 &&
+              this.DadosReceitas.length > 0) {
+                this.ModalInclusaoDesp = new window.bootstrap.Modal(document.getElementById('ModInclusaoDesp'))
+                this.ModalAltDesp = new window.bootstrap.Modal(document.getElementById('ModAlteracaoDesp'))
+                this.ModalDeleteDesp = new window.bootstrap.Modal(document.getElementById('ModExclusaoDesp'))
+                this.ModalInclusaoRece = new window.bootstrap.Modal(document.getElementById('ModInclusaoRece'))
+                this.ModalDeleteRece = new window.bootstrap.Modal(document.getElementById('ModExclusãoRece'))
+                this.ModalAltRece = new window.bootstrap.Modal(document.getElementById('ModAlteracaoRece'))
+                this.carregamento_Abas()
+                this.carregamento_Cards()
+                console.log(this.ModalInclusaoDesp);
+                
+          }else{this.carregarForm()}
+        }, 2000)
+        //==
+        this.selecaoDeAbaAtiva(this.selecionarAba)
+       
+        
+        
+      
+      
     }
 
    
@@ -145,10 +193,10 @@ export class AbasHomeComponent implements OnInit{
     } else if (this.CreateDadosDespesas.FonteDespesa == ''){
       this.modalService.showAlertWarning("Selecione uma Fonte de Renda.")
       this.validacampos = false
-    }else if (this.CreateDadosDespesas.Valor == 0){
+    } else if (this.CreateDadosDespesas.Valor == 0){
       this.modalService.showAlertWarning("Você precisa dizer quanto gastou amigo !")
       this.validacampos = false
-    }else if (this.CreateDadosDespesas.Valor < 0){
+    } else if (this.CreateDadosDespesas.Valor < 0){
       this.modalService.showAlertWarning("Apenas números Positivos !")
       this.validacampos = false
     } else{
@@ -169,14 +217,20 @@ export class AbasHomeComponent implements OnInit{
       this.kaizenService
       .createDespesa(this.CreateDadosDespesas)
       .subscribe((data) => console.log(data))
+      //Fecha o modal 
       this.ModalInclusaoDesp.hide()
-      setTimeout(() => {this.getDespesas(),this.calcularTotalDespesas()}, 2000);
+      //Atualiza a tabela
+      this.getDespesas()
+      //Espera as mudanças e abre o carregando
+      setTimeout(() => {this.getDespesas()}, 2000);
+      //Carregar tudo
+      this.carregamento_Cards();
+      this.carregar() 
       return true
     } else {
       return false
     }
-    
-    
+  
   }
 
   //Form - Deleção
@@ -192,19 +246,27 @@ export class AbasHomeComponent implements OnInit{
     .deleteDespesa(this.idDelete)
     .subscribe((data) => {this.DadosDespesas = this.DadosDespesas.filter(ID => ID.id !== this.idDelete)
                           this.ModalDeleteDesp.hide()})
+    this.carregamento_Cards();
+    this.carregar()
     
   }
+  //=============
+
+  ////Form - Alteração
 
   abriralteracaoDespesa(){
     this.ModalAltDesp.show()
+    console.log(this.ModalAltDesp)
 
   }
-
-  abriralteracaoReceitas(){
-    this.ModalAltRece.show()
-
+  
+  updateDespesas(){
+    this.kaizenService.updateDespesas(this.CreateDadosDespesas)
+        .subscribe((data)=>{ console.log(`${this.CreateDadosDespesas.id} - Alterado`);
+        })
   }
 
+ 
 
   //Form - Inclusão 
   CapturaIdDesp(event:any){
@@ -270,17 +332,17 @@ validaCamposReceitas(){
       this.modalService.showAlertWarning("Selecione uma categoria de Receita.")
       this.validacampos = false
   } else if (this.CreateDadosReceitas.FonteReceita == ''){
-    this.modalService.showAlertWarning("Para qual fonte será direcionada a Receita.")
-    this.validacampos = false
+      this.modalService.showAlertWarning("Para qual fonte será direcionada a Receita.")
+      this.validacampos = false
   }else if (this.CreateDadosReceitas.Valor == 0){
-    this.modalService.showAlertWarning("Você precisa dizer quanto gastou amigo !")
-    this.validacampos = false
+      this.modalService.showAlertWarning("Você precisa dizer quanto gastou amigo !")
+      this.validacampos = false
   }else if (this.CreateDadosReceitas.Valor < 0){
-    this.modalService.showAlertWarning("Apenas números Positivos !")
-    this.validacampos = false
+      this.modalService.showAlertWarning("Apenas números Positivos !")
+      this.validacampos = false
   } else{
-    this.modalService.showAlertSuccess("Receita Registrada !")
-    this.validacampos = true}
+      this.modalService.showAlertSuccess("Receita Registrada !")
+      this.validacampos = true}
 }
 
   getReceitas(){
@@ -289,21 +351,27 @@ validaCamposReceitas(){
     .subscribe((data) => console.log(this.DadosReceitas = data))
   }
 
- 
-    
-
   createReceitas(){
     this.validaCamposReceitas()
       if(this.validacampos == true){
         this.kaizenService.createReceitas(this.CreateDadosReceitas)
           .subscribe((data) => {console.log(data)
-          this.ModalInclusaoRece.hide()})
+            //fecha tabela
+          this.ModalInclusaoRece.hide()
+          }
+        ) 
+          //atualiza tabela 
+          this.getReceitas()
+          //espera as mudanças e abre o carregamento
           setTimeout(() => {this.getReceitas()}, 2000)
-        return true
-  } else {
-    return false
-  }
-  }
+          //Carregar tudo
+          this.carregamento_Cards()
+          this.carregar()
+          return true
+        } else {
+          return false
+        }
+    }
 
   //Form - Deleção
 
@@ -318,8 +386,14 @@ validaCamposReceitas(){
     this.kaizenService
     .deleteReceitas(this.idDelete)
     .subscribe((data)=>{this.DadosReceitas = this.DadosReceitas.filter(ID => ID.id !== this.idDelete)
-    this.ModalDeleteRece.hide()}
+    //espera as mudanças e abre o carregamento
+    this.ModalDeleteRece.hide()
+    //Carregar tudo
+    this.carregamento_Cards() 
+    this.carregar()
+  }
   )
+  
 }
 
   //Form - Inclusão
@@ -358,14 +432,13 @@ validaCamposReceitas(){
     this.ModalInclusaoRece.show()
   }
 
+  abriralteracaoReceitas(){
+    this.ModalAltRece.show()
+
+  }
+
 
   //_________________________Alterar Despesas
-
-  updateDespesas(){
-    this.kaizenService.updateDespesas(this.CreateDadosDespesas)
-        .subscribe((data)=>{ console.log(`${this.CreateDadosDespesas.id} - Alterado`);
-        })
-  }
 
 
   teste(){
@@ -383,7 +456,7 @@ validaCamposReceitas(){
             console.log(this.controleDeCarregamento_Abas,'carregou tabelas');
             
       }else{this.carregamento_Abas()}
-    }, 5000);
+    }, 3500);
   }
 
   carregamento_Cards(){
@@ -395,7 +468,7 @@ validaCamposReceitas(){
             console.log(this.controleDeCarregamento_Abas, 'MASTER');
             
       }else{this.carregamento_Abas()}
-    }, 5000);
+    }, 3500);
   }
 
 
@@ -411,12 +484,19 @@ esperarDespesas(){
         this.DadosReceitas.length > 0){
         this.calcularTotalDespesas()}
       else{this.esperarDespesas()}
-      },7000
+      },3500
     )
   }
 
   emitirMudanca(event:any){
     this.carregamento_Abas()
+  }
+
+  capturarAtualizacao(event:any){
+    this.carregar()
+    this.getDespesas()
+    this.getReceitas()
+    console.log(event);
     
   }
 }

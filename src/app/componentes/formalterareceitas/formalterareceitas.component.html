@@ -1,8 +1,8 @@
 <div class="container">
     <h2>Alterar</h2>
     <form>
-
-        <div class="mb-3">
+      <div class = "row">
+        <div class="col-6">
 
             <label class="form-label">Id</label>
             <select 
@@ -12,22 +12,23 @@
             [(ngModel)]="AltDadosReceitas.id" 
             name="id"
             (input)="CapturaId(id.value)" #id>
-            
             <option *ngFor="let i of DadosReceitas" >{{i.id}}</option>
-
-        </select>
-           
+            </select>
           </div>
-        <div class="mb-3">
+
+            <div class="col-6">
             <label class="form-label">Data</label>
             <input type="text" 
             class="form-control" 
             [(ngModel)]="AltDadosReceitas.Data" 
             name="Data"
             (input)="CapturaData(Data.value)" #Data>
-           
           </div>
-        <div class="mb-3">
+        </div>
+
+        <div class = "row">
+
+        <div class="col-6">
           <label class="form-label">Categoria</label>
           <input type="text" 
           class="form-control" 
@@ -36,35 +37,30 @@
           (input)="CapturaCategoria(Categoria.value)" #Categoria>
          
         </div>
+        <div class="col-6">
+          <label class="form-label">Valor</label>
+          <input type="number" 
+          class="form-control" 
+          [(ngModel)]="AltDadosReceitas.Valor" 
+          name="Valor" 
+          (input)="CapturaValor(Valor.value)" #Valor>
+       
+        </div>
 
-        <div class="mb-3">
-            <label class="form-label">SubCategoria</label>
-            <input type="text" 
-            class="form-control" 
-            [(ngModel)]="AltDadosReceitas.SubCategoria"  
-            name="SubCategoria"
-            (input)="CapturaSubCategoria(SubCategoria.value)" #SubCategoria>
-           
-          </div>
+      </div>
+         
+            <div class = "row">
+          
 
-          <div class="mb-3">
-            <label class="form-label">Valor</label>
-            <input type="number" 
-            class="form-control" 
-            [(ngModel)]="AltDadosReceitas.Valor" 
-            name="Valor" 
-            (input)="CapturaValor(Valor.value)" #Valor>
-           
-          </div>
-
-          <div class="mb-3">
+          <div class="col-6">
             <label class="form-label">Fonte Receitas</label>
             <input type="text" class="form-control" 
             [(ngModel)]="AltDadosReceitas.FonteReceita"  name="FonteDespesa">
            
           </div>
+        
 
-          <div class="mb-3">
+          <div class="col-06">
             <label class="form-label">Observacao</label>
             <input type="text" class="form-control" 
             [(ngModel)]="AltDadosReceitas.Observacao"  
@@ -73,9 +69,10 @@
                 #Observacao>
            
           </div>
+        </div>
         
           <div class="modal-footer">
-            <button type="button" (click)="update()" data-bs-dismiss="modal" class="btn btn-primary">Atualizar</button>
+            <button type="button" (click)="update(); atualizado()" data-bs-dismiss="modal" class="btn btn-primary">Atualizar</button>
           </div>
         
       

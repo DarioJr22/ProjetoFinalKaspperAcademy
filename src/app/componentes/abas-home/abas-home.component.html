@@ -1,9 +1,11 @@
-<div class="col-12 position-absolute top-0 end-0 container-fluid m-3 container mx-auto PosAbas"
+<div
 >
 
     <nav>
+      
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-
+          
+          <ng-template [ngIf]="selecionarAba == 'Receitas' || selecionarAba == 'AsDuas'">
           <button class="nav-link active" 
           id="nav-Receitas-tab"
           data-bs-toggle="tab" 
@@ -11,18 +13,19 @@
           type="button" 
           role="tab" 
           aria-controls="nav-home" 
-          aria-selected="true">Receitas</button>
-
+          aria-selected="false">Receitas</button>
+          </ng-template>
+          <ng-template [ngIf]="selecionarAba == 'Despesas' || selecionarAba == 'AsDuas'">
           <button 
           class="nav-link" 
           id="nav-Despesas-tab" 
-          data-bs-toggle="tab" 
+          data-bs-toggle="tab"  
           data-bs-target="#nav-Despesas" 
           type="button" 
           role="tab" 
           aria-controls="nav-profile" 
-          aria-selected="false">Despesas</button>
-
+          aria-selected="true">Despesas</button>
+        </ng-template>
        <!--    <button 
           class="nav-link" 
           id="nav-contact-tab" 
@@ -47,15 +50,16 @@
     </nav>
 
 
-      <div class="tab-content">
-
+      <div class="tab-content ">
+        <ng-template [ngIf]="selecionarAba == 'Receitas' || selecionarAba == 'AsDuas'">
         <div 
-        class="tab-pane fade show active" 
+        [class]="AbaSelecionadaReceitas" 
         id="nav-Receitas" 
         role="tabpanel" 
         aria-labelledby="nav-Receitas-tab" 
         tabindex="0">
-    
+        <mat-card>
+          <div class="grid mx-auto scrolbarTabela ">
             <table mat-table [dataSource]="DadosReceitas" class="table  mat-elevation-z8">
               
               <ng-container matColumnDef="id_R">
@@ -95,7 +99,7 @@
 
               <ng-container matColumnDef="Deletar/Alterar_R">
                 <th mat-header-cell *matHeaderCellDef> Deletar/Alterar_R </th>
-                <td mat-cell *matCellDef="let Receitas"> <button class="btn btn-danger" (click)="abrirDeleteModalReceitas(Receitas.id); carregamento_Cards(); carregar()"  >Deletar</button> </td>
+                <td mat-cell *matCellDef="let Receitas"> <button class="btn btn-danger" (click)="abrirDeleteModalReceitas(Receitas.id)">Deletar</button> </td>
               </ng-container>
 
              
@@ -105,7 +109,8 @@
             </table>
            <!--  <mat-slider min="1" max="100" step="1" value="50"></mat-slider> -->
 
-          
+          </div>
+        </mat-card>
         <!--------------Modal Exclusão das Receitas --------->
         <div class="modal fade" id="ModExclusãoRece" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -122,7 +127,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" (click)="deleteReceita(); carregamento_Cards() ;carregar()" class="btn btn-success">OK !</button>
+                <button type="button" (click)="deleteReceita()" class="btn btn-success">OK !</button>
               </div>
             </div>
           </div>
@@ -133,8 +138,8 @@
 
 
             
-            <button class="btn btn-success mr-3" (click)="abrirCreateModalReceitas()">Registar</button>
-            <button class="btn btn-success " (click)="abriralteracaoReceitas()">Alterar</button>
+            <button class="btn btn-success mt-3 mr-3" (click)="abrirCreateModalReceitas()">Registar</button>
+            <button class="btn btn-success mt-3 " (click)="abriralteracaoReceitas()">Alterar</button>
 
         <!--------------Modal Inclusão das Receitas --------->
         <div class="modal fade" id="ModInclusaoRece" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -161,7 +166,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" (click)="createReceitas(); carregamento_Cards();carregar()" class="btn btn-success">OK !</button>
+                <button type="button" (click)="createReceitas()" class="btn btn-success">OK !</button>
               </div>
             </div>
           </div>
@@ -186,7 +191,8 @@
                   (SubCategoria)="CapturaSubCategoriaDesp($event)"
                   (Observacao)="CapturaObservacaoDesp($event)"
                   (FonteDespesa)="CapturaFonteDespesa($event)"
-                  (Valor)="CapturaValorDesp($event)">
+                  (Valor)="CapturaValorDesp($event)"
+                  (atualizar)="capturarAtualizacao($event)">
                   </app-formalterareceitas>
                   
   
@@ -196,21 +202,24 @@
             </div>
           </div>
         </div>
+      </ng-template>
+        
         </div>
         
         <!-- <CONTEUDO ABA DESPESAS> -->
+          <ng-template [ngIf]="selecionarAba == 'Despesas' || selecionarAba == 'AsDuas'">
 
         <div 
-        class="tab-pane fade" 
+        [class]="AbaSelecionadaDesp" 
         id="nav-Despesas" role="tabpanel" 
         aria-labelledby="nav-Despesas-tab" 
         tabindex="0">
           
-
-        <div class="grid mx-auto">
+          <mat-card>
+        <div class="grid mx-auto scrolbarTabela ">
             
                  
-          <table mat-table [dataSource]="DadosDespesas" class="table mat-elevation-z8">
+          <table mat-table [dataSource]="DadosDespesas" class="table mat-elevation-z8 ">
 
             <!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->
@@ -256,7 +265,7 @@
 
             <ng-container matColumnDef="Delete/Edit">
               <th mat-header-cell *matHeaderCellDef> Deletar/Editar </th>
-              <td mat-cell *matCellDef="let Despesas"><button class="btn btn-danger" (click) = "abrirDeleteModalDespesas(Despesas.id) ; carregamento_Cards();carregar()">Deletar</button></td>
+              <td mat-cell *matCellDef="let Despesas"><button class="btn btn-danger" (click) = "abrirDeleteModalDespesas(Despesas.id)">Deletar</button></td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumnsDespesas"></tr>
@@ -266,7 +275,7 @@
           
 
         <!--------------Modal Exclusão das Despesas --------->
-        <div class="modal fade" id="ModExclusãoDesp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="ModExclusaoDesp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -282,17 +291,14 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class=" m-1 btn btn-secondary" data-bs-dismiss="modal">Não</button>
-                <button type="button" (click)="deleteDespesa(); carregamento_Cards();carregar()" class="btn btn-danger">Sim</button>
+                <button type="button" (click)="deleteDespesa()" class="btn btn-danger">Sim</button>
               </div>
             </div>
           </div>
         </div> 
 
 
-        <!--------------Botão de inclusão das Despesas --------->
-        
-        <button class="btn btn-danger mr-3" (click)="abrirCreateModalDespesas()">Registar</button>
-        <button class="btn btn-danger" (click)="abriralteracaoDespesa()">Alterar</button>
+       
         <!--------------Modal Inclusão das Despesas --------->
         <div class="modal fade" id="ModInclusaoDesp" 
         tabindex="-1" role="dialog" 
@@ -322,12 +328,18 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" (click)="createDespesas(); carregamento_Cards();carregar() "  class="btn btn-danger">OK</button>
+                <button type="button" (click)="createDespesas()"  class="btn btn-danger">OK</button>
               </div>
             </div>
           </div>
         </div> 
         </div>
+      </mat-card>
+
+       <!--------------Botão de inclusão das Despesas --------->
+        
+       <button class="btn btn-danger mt-3 mr-3" (click)="abrirCreateModalDespesas()">Registar</button>
+       <button class="btn btn-danger mt-3 " (click)="abriralteracaoDespesa()">Alterar</button>
 
         
         <!--------------Modal Alteração de Despesas das Despesas --------->
@@ -349,7 +361,8 @@
                 (SubCategoria)="CapturaSubCategoriaDesp($event)"
                 (Observacao)="CapturaObservacaoDesp($event)"
                 (FonteDespesa)="CapturaFonteDespesa($event)"
-                (Valor)="CapturaValorDesp($event)">
+                (Valor)="CapturaValorDesp($event)"
+                (atualizar)="capturarAtualizacao($event)">
                 </app-formalteradespesas>
                 
 
@@ -373,5 +386,6 @@
         <div class="tab-pane fade" id="nav-Saldo" role="tabpanel" aria-labelledby="nav-Saldo-tab" tabindex="0">Saldo</div>
         <div class="tab-pane fade" id="nav-SaldoPrev" role="tabpanel" aria-labelledby="nav-SaldoPrev-tab" tabindex="0">nav-SaldoPrev</div>
       </div>
+    </ng-template>
     </div>
 

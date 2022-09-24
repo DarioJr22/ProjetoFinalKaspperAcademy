@@ -50,6 +50,7 @@ export class FormalteradespesasComponent implements OnInit {
   }
 
   //Alteração de Despesa
+  @Output()atualizar:EventEmitter<any> = new EventEmitter
   @Output() id:EventEmitter<any> = new EventEmitter
   @Output() Data:EventEmitter<any> = new EventEmitter
   @Output() Categoria:EventEmitter<any> = new EventEmitter
@@ -79,9 +80,10 @@ export class FormalteradespesasComponent implements OnInit {
     this.kaizenService
     .getDespesas()
     .subscribe(
-    (dados)=>{console.log(dados, this.DadosDespesas = dados)})
-
-  }
+    (dados)=>{console.log(dados, this.DadosDespesas = dados)
+    }
+  )
+}
 
   getByID(id:number){
     this.kaizenService.getByIdDespesa(id).subscribe((data)=>{
@@ -93,6 +95,7 @@ export class FormalteradespesasComponent implements OnInit {
 
   update(){
     this.kaizenService.updateDespesas(this.AltDadosDespesas).subscribe((data)=>{console.log(`Atualizado`,this.AltDadosDespesas)})
+    this.getDespesas()
   }
 
   CapturaData(valor:any){
@@ -102,6 +105,18 @@ export class FormalteradespesasComponent implements OnInit {
     
     this.Data.emit(data_brasileira)
     
+  }
+
+  atualizado(){
+    setTimeout(() => {
+      if (this.DadosDespesas.length > 0) {
+            
+            this.atualizar.emit(true)
+            console.log('Atualizado Despesas');
+            this.getDespesas()
+            
+      }else{this.atualizado()}
+    }, 1000);
   }
 
   CapturaCategoria(valor:any){
@@ -129,6 +144,7 @@ export class FormalteradespesasComponent implements OnInit {
   }
 
   CapturaId(valor:any){
+  this.getDespesas()
    this.id_conv = valor
     this.id.emit(valor)
     console.log(valor);

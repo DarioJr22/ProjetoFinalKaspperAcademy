@@ -5,7 +5,7 @@
         <div id="PageWrapper">
             <!-- Side Bar -->
            
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="AcordionSidebar">
+            <ul [ngClass]="corSideBar == 'Green' ? 'navbar-nav bg-gradient-success sidebar sidebar-dark accordion':'navbar-nav bg-gradient-primary sidebar sidebar-dark accordion'" id="AcordionSidebar">
     
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
                     <div class="sidebar-brand-icon">

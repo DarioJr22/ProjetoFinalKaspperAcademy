@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar corSideBar="Green"></app-navbar>
 <app-carregando [carregando]="carregando" ></app-carregando>
 
 <div class="positionCardNotfound col-9 position-absolute top-0 end-0 container-fluid m-3">
@@ -11,8 +11,8 @@
 
         <ngx-charts-advanced-pie-chart 
         [view]="viewPizza" 
-        scheme="flame" 
-        [results]="DivisaoCategoricaDesp"
+        scheme="forest" 
+        [results]="DivisaoCategoricaReceitas"
         [gradient]="gradient" 
         (select)="onSelect($event)" 
         (activate)="onActivate($event)"
@@ -22,8 +22,8 @@
       <div class="">
         <ngx-charts-bar-horizontal 
         [view]="viewBarraHorizontal" 
-        scheme="flame" 
-        [results]="DivisaoCategoricaDesp"
+        scheme="forest" 
+        [results]="DivisaoCategoricaReceitas"
         [legendPosition]="legendPosition" 
         [gradient]="gradient" 
         [xAxis]="showXAxis" 
@@ -80,7 +80,7 @@
         <h3 class="accordion-item"><strong>Gasto por categoria (Dia/Mês)</strong></h3>
         <ngx-charts-bar-vertical-2d
         [view]="viewEmpilhadas" 
-        scheme="flame" 
+        scheme="forest" 
         [results]="multi" 
         [gradient]="gradient"
         [xAxis]="showXAxis" 

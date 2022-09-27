@@ -29,14 +29,14 @@
         <div class = "row">
         <div class="col-6">
             
-            <span style="color: red">*</span><Label><strong>Fonte de renda</strong></Label>
+            <span style="color: red">*</span><Label><strong>Fonte</strong></Label>
 
             <select (input)="CapturaFonteReceitas(FonteReceitas.value)" class="form-select" #FonteReceitas>
 
                 <option *ngFor="let item of Fonte" [value]="item">{{item}}</option>
 
             </select>
-            <div class="form-text">Qual fonte de renda você utilizou ?</div>
+            <div class="form-text">Qual fonte você utilizou ?</div>
 
         </div>
 

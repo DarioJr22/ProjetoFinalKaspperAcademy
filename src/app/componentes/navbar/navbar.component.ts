@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faArrowsToEye, faChartBar, faGaugeHigh, faGears, faList12 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,8 +7,8 @@ import { faArrowsToEye, faChartBar, faGaugeHigh, faGears, faList12 } from '@fort
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  
-  //Icons 
+  @Input('corSideBar')corSideBar = 'Red'
+  Cor:string = ''
 
   Dashboard = faGaugeHigh
   Eyes = faArrowsToEye
@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

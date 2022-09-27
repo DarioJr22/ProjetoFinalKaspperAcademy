@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit,OnChanges {
   esperarCarregando(){
     setTimeout(() => {
       this.carregando = false 
-    }, 10000);
+    }, 5000);
   }
   carregouCards(){
     this.carregando

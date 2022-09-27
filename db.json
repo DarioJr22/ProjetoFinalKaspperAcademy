@@ -1,42 +1,6 @@
 {
   "Despesas": [
     {
-      "Data": "24/09/2022",
-      "Categoria": "Casa-moradia",
-      "Observacao": "",
-      "FonteDespesa": "bkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk para orochi\n",
-      "SubCategoria": "Lazer",
-      "Valor": 41,
-      "id": 22
-    },
-    {
-      "Data": "24/09/2022",
-      "Categoria": "Casa-moradia",
-      "Observacao": "",
-      "FonteDespesa": "bkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk para orochi\n",
-      "SubCategoria": "Lazer",
-      "Valor": 41,
-      "id": 23
-    },
-    {
-      "Data": "24/09/2022",
-      "Categoria": "Casa-moradia",
-      "Observacao": "",
-      "FonteDespesa": "bkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk para orochi\n",
-      "SubCategoria": "Lazer",
-      "Valor": 41,
-      "id": 24
-    },
-    {
-      "Data": "01/09/2022",
-      "Categoria": "Casa-moradia",
-      "Observacao": "",
-      "FonteDespesa": "Feira da semana 3 de setembro - Faltaram frutas",
-      "SubCategoria": "Alimentação",
-      "Valor": 2942,
-      "id": 25
-    },
-    {
       "Data": "01/09/2022",
       "Categoria": "Casa-moradia",
       "Observacao": "",
@@ -80,15 +44,6 @@
       "SubCategoria": "Lazer",
       "Valor": 41,
       "id": 32
-    },
-    {
-      "Data": "16/03/2022",
-      "Categoria": "Educação",
-      "Observacao": "",
-      "FonteDespesa": "Faculdade - Mensalidade 2 ",
-      "SubCategoria": "",
-      "Valor": 159,
-      "id": 34
     },
     {
       "Data": "07/01/2022",
@@ -176,7 +131,7 @@
     {
       "Data": "03/09/2022",
       "Categoria": "Empreendimentos",
-      "Observacao": "ABLUBLE",
+      "Observacao": "ABLUBLEd",
       "FonteReceita": "PICPAY",
       "SubCategoria": "",
       "Valor": 2314,

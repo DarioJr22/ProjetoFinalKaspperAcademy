@@ -159,7 +159,20 @@ export class AbasHomeComponent implements OnInit{
         setTimeout(() => {
           if (this.DadosDespesas.length > 0 &&
               this.DadosReceitas.length > 0) {
+                if(this.selecionarAba == 'Despesas'){
                 this.ModalInclusaoDesp = new window.bootstrap.Modal(document.getElementById('ModInclusaoDesp'))
+                this.ModalAltDesp = new window.bootstrap.Modal(document.getElementById('ModAlteracaoDesp'))
+                this.ModalDeleteDesp = new window.bootstrap.Modal(document.getElementById('ModExclusaoDesp'))
+                this.carregamento_Abas()
+                this.carregamento_Cards()}
+                else if (this.selecionarAba == 'Receitas'){
+                this.ModalInclusaoRece = new window.bootstrap.Modal(document.getElementById('ModInclusaoRece'))
+                this.ModalDeleteRece = new window.bootstrap.Modal(document.getElementById('ModExclusãoRece'))
+                this.ModalAltRece = new window.bootstrap.Modal(document.getElementById('ModAlteracaoRece'))
+                this.carregamento_Abas()
+                this.carregamento_Cards()}
+                else{
+                  this.ModalInclusaoDesp = new window.bootstrap.Modal(document.getElementById('ModInclusaoDesp'))
                 this.ModalAltDesp = new window.bootstrap.Modal(document.getElementById('ModAlteracaoDesp'))
                 this.ModalDeleteDesp = new window.bootstrap.Modal(document.getElementById('ModExclusaoDesp'))
                 this.ModalInclusaoRece = new window.bootstrap.Modal(document.getElementById('ModInclusaoRece'))
@@ -167,6 +180,8 @@ export class AbasHomeComponent implements OnInit{
                 this.ModalAltRece = new window.bootstrap.Modal(document.getElementById('ModAlteracaoRece'))
                 this.carregamento_Abas()
                 this.carregamento_Cards()
+              }
+                
                 console.log(this.ModalInclusaoDesp);
                 
           }else{this.carregarForm()}

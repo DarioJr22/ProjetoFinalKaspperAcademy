@@ -20,7 +20,7 @@ export class ControlereceitasComponent implements OnInit {
   controleDeCarregamento_Cards = true
   carregando = true 
   //Dados de Despesas
-  DadosDespesas:Despesas[] = []
+  DadosReceitas:Receitas[] = []
   //Categorias -- Despesas // Gráfico de pizza 
   Cat1:number = 0
   Lista1:any[] = []
@@ -33,6 +33,11 @@ export class ControlereceitasComponent implements OnInit {
 
   Cat4:number = 0
   Lista4:any[] = []
+
+  Cat5:number = 0
+  Lista5:any[] = []
+
+  
 
 
   Modal:any
@@ -58,12 +63,14 @@ export class ControlereceitasComponent implements OnInit {
     group:ScaleType.Quantile,
     domain: ['#259814']
   };
+  
   CategoriaList:string[] = 
-  [
-    'Casa-moradia',
-    'Cuidado Pessoal',
-    'Investimento',
-    'Educação'
+  [ '',
+    'Salário',
+    'Investimentos',
+    'Empreendimentos',
+    'Freelas',
+    'Outros'
   ]
 
   //=======================================================================
@@ -102,10 +109,11 @@ export class ControlereceitasComponent implements OnInit {
 
  carregarForm(){
   this.getDespesas()
-  this.esperarDespesa("Casa-moradia") 
-  this.esperarDespesa("Cuidado Pessoal")
-  this.esperarDespesa("Educação")
-  this.esperarDespesa("Investimento")
+  this.esperarReceitas("Salário") 
+  this.esperarReceitas("Investimentos")
+  this.esperarReceitas("Empreendimentos")
+  this.esperarReceitas("Freelas")
+  this.esperarReceitas("Outros")
   this.setarInformacoes()
   this.esperar()
   this.Modal = new window.bootstrap.Modal(document.getElementById('Modal'))
@@ -115,7 +123,7 @@ export class ControlereceitasComponent implements OnInit {
 
 
   getDespesas(){
-    this.kaizenService.getDespesas().subscribe((data)=>{console.log(this.DadosDespesas = data)})
+    this.kaizenService.getReceitas().subscribe((data)=>{console.log(this.DadosReceitas = data)})
   }
 
 
@@ -124,33 +132,41 @@ export class ControlereceitasComponent implements OnInit {
   somatorioCategoricoDesp(nomeCategoria:string){
     let Valor = 0
     let Lista:any = []
-    this.DadosDespesas.forEach((dados)=>{
+    this.DadosReceitas.forEach((dados)=>{
           if(nomeCategoria == dados.Categoria){
-            if( nomeCategoria == "Casa-moradia" ){
+            if( nomeCategoria == "Salário" ){
               Valor +=dados.Valor
               Lista.push(`${dados.id} - ${dados.Data} - ${dados.Categoria} - ${dados.Valor}`)
               this.Cat1 = Valor
               this.Lista1 = Lista
             }
-            if( nomeCategoria == "Cuidado Pessoal" ){
+            if( nomeCategoria == "Investimentos" ){
               Valor +=dados.Valor
               Lista.push(`${dados.id} - ${dados.Data} - ${dados.Categoria} - ${dados.Valor}`)
               this.Cat2 = Valor
               this.Lista2 = Lista
 
             }
-            if( nomeCategoria == "Educação" ){
+            if( nomeCategoria == "Empreendimentos" ){
               Valor +=dados.Valor
               Lista.push(`${dados.id} - ${dados.Data} - ${dados.Categoria} - ${dados.Valor}`)
               this.Cat3 = Valor
               this.Lista3 = Lista
 
             }
-            if( nomeCategoria == "Investimento" ){
+            if( nomeCategoria == "Freelas" ){
               Valor +=dados.Valor
               Lista.push(`${dados.id} - ${dados.Data} - ${dados.Categoria} - ${dados.Valor}`)
               this.Cat4 = Valor
               this.Lista4 = Lista
+              
+              
+            }
+            if( nomeCategoria == "Outros" ){
+              Valor +=dados.Valor
+              Lista.push(`${dados.id} - ${dados.Data} - ${dados.Categoria} - ${dados.Valor}`)
+              this.Cat5 = Valor
+              this.Lista5 = Lista
               
               
             }
@@ -164,16 +180,16 @@ export class ControlereceitasComponent implements OnInit {
     
   }
     
-  esperarDespesa(nomeCategoria:string){
+  esperarReceitas(nomeCategoria:string){
     setTimeout(()=>{
-      if (this.DadosDespesas.length > 0){this.somatorioCategoricoDesp(nomeCategoria)}
-      else{this.esperarDespesa(nomeCategoria)}
+      if (this.DadosReceitas.length > 0){this.somatorioCategoricoDesp(nomeCategoria)}
+      else{this.esperarReceitas(nomeCategoria)}
       },2000
     )
   }
   setarInformacoes(){
     setTimeout(()=>{
-      if (this.DadosDespesas.length > 0){}
+      if (this.DadosReceitas.length > 0){}
       this.atualizarInformacoes()
     },3000
   )
@@ -181,27 +197,32 @@ export class ControlereceitasComponent implements OnInit {
 
   atualizarInformacoes(){
     let lista:any[] = []
-    this.DivisaoCategoricaDesp = [
+    this.DivisaoCategoricaReceitas = [
       {
-        "name": "Casa-Moradia",
+        "name": "Salário",
         "value": this.Cat1
       },
       {
-        "name": "Cuidado Pessoal",
+        "name": "Investimentos",
         "value": this.Cat2
       },
       {
-        "name": "Investimento",
-        "value": this.Cat4
+        "name": "Empreendimentos",
+        "value":  this.Cat3
       },
         {
-        "name": "Educação",
-        "value": this.Cat3
+        "name": "Freelas",
+        "value":this.Cat4
+      }
+      ,
+        {
+        "name": "Outros",
+        "value": this.Cat5
       }
     ];
-    lista = this.DivisaoCategoricaDesp
+    lista = this.DivisaoCategoricaReceitas
 
-    this.DivisaoCategoricaDesp = lista.sort((a,b)=>{
+    this.DivisaoCategoricaReceitas = lista.sort((a,b)=>{
       if(a.value > b.value){
         return -1
       } else {
@@ -211,7 +232,7 @@ export class ControlereceitasComponent implements OnInit {
    
   }
 
-  DivisaoCategoricaDesp = [
+  DivisaoCategoricaReceitas = [
     {
       "name": "Casa-Moradia",
       "value": 0
@@ -231,20 +252,24 @@ export class ControlereceitasComponent implements OnInit {
   ];
 
   onSelect(data: any): void {
-    if(data.label == 'Investimento' ){
-      this.DadosModal = this.Lista4
-      this.TotalModal = `Total = ${data.value}`
-      this.Modal.show()
-    } else if(data.label == 'Casa-Moradia'){
+    if(data.label == 'Salário' ){
       this.DadosModal = this.Lista1
       this.TotalModal = `Total = ${data.value}`
       this.Modal.show()
-    } else if(data.label == 'Educação'){
+    } else if(data.label == 'Investimentos'){
+      this.DadosModal = this.Lista2
+      this.TotalModal = `Total = ${data.value}`
+      this.Modal.show()
+    } else if(data.label == 'Empreendimentos'){
       this.DadosModal = this.Lista3
       this.TotalModal = `Total = ${data.value}`
       this.Modal.show()
-    } else if(data.label == 'Cuidado Pessoal'){
-      this.DadosModal = this.Lista2
+    } else if(data.label == 'Freelas'){
+      this.DadosModal = this.Lista4
+      this.TotalModal = `Total = ${data.value}`
+      this.Modal.show()
+    } else if(data.label == 'Outros'){
+      this.DadosModal = this.Lista5
       this.TotalModal = `Total = ${data.value}`
       this.Modal.show()
     }
@@ -280,7 +305,7 @@ export class ControlereceitasComponent implements OnInit {
     let newDataMulti
     this.multi = []
     this.single = []
-    this.DadosDespesas.forEach((dados,i,array) =>{
+    this.DadosReceitas.forEach((dados,i,array) =>{
                             //Tranformando Data em Data
                             conversao = dados.Data.split('/')
                             dia = parseInt(conversao[0])
@@ -372,7 +397,7 @@ export class ControlereceitasComponent implements OnInit {
           
 
           //Preenche dados do grafico de barras empilhadas
-           this.DadosDespesas.forEach((dados,index,array) =>{
+           this.DadosReceitas.forEach((dados,index,array) =>{
                           conversao = dados.Data.split('/')
                           dia = parseInt(conversao[0])
                           mes = parseInt(conversao[1])
@@ -446,7 +471,7 @@ transformacaoHistMensal_Barras(){
                 
       
                 //Preenche dados do grafico de barras empilhadas
-                 this.DadosDespesas.forEach((dados,index,array) =>{
+                 this.DadosReceitas.forEach((dados,index,array) =>{
                                 conversao = dados.Data.split('/')
                                 dia = parseInt(conversao[0])
                                 mes = parseInt(conversao[1])
@@ -461,7 +486,7 @@ transformacaoHistMensal_Barras(){
                                 //Iteração da lista de meses
                                 handlerMonth.forEach((Meses,i,arrMeses) => {
                                   //Iteração dos dados utilizando meses
-                                  this.DadosDespesas.forEach((dados,i,arr) => {
+                                  this.DadosReceitas.forEach((dados,i,arr) => {
                                      //Coleta de dados
                                       if (idsPreenchidos.length < arr.length) {
                                         idsPreenchidos = []
@@ -532,7 +557,7 @@ transformacaoHistMensal_Barras(){
 
   esperar(){
     setTimeout(()=>{
-      if (this.DadosDespesas.length > 0){this.transformacaoHistMensal()}
+      if (this.DadosReceitas.length > 0){this.transformacaoHistMensal()}
       else{this.esperar()}
       },2000
     )
@@ -542,7 +567,7 @@ transformacaoHistMensal_Barras(){
   //___Controle de Carregamento Abashome
   carregou_Abas(event:any){
     setTimeout(() => {
-      if (this.DadosDespesas.length > 0) {
+      if (this.DadosReceitas.length > 0) {
             this.controleDeCarregamento_Cards = false
             this.cardsCarregados.emit(this.controleDeCarregamento_Cards)
             

@@ -1,11 +1,12 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Color, LegendPosition, ScaleType } from '@swimlane/ngx-charts';
-import { treemapSquarify } from 'd3';
+import { parse } from '@fortawesome/fontawesome-svg-core';
+import { Color, id, LegendPosition, MultiSeries, ScaleType } from '@swimlane/ngx-charts';
+import { Series } from '../../../../node_modules/@swimlane/ngx-charts/lib/models/chart-data.model'
 import { Despesas } from 'src/app/service/despesas';
 import { KaizenService } from 'src/app/service/kaizen.service';
 import { conversaoDadosGraficos } from './conversaodadosgraficos';
 import { dadosGraficosHorizontal } from './dadosgraficos';
-
+import {DataItem  } from "../../../../node_modules/@swimlane/ngx-charts/lib/models/chart-data.model";
 
 
 declare var window:any
@@ -24,6 +25,7 @@ export class ControledespesasComponent implements OnInit {
   @Output()cardsCarregados:EventEmitter<any> = new EventEmitter
 
   controleDeCarregamento_Cards = true
+  carregando = true 
   //Dados de Despesas
   DadosDespesas:Despesas[] = []
   //Categorias -- Despesas // Gráfico de pizza 
@@ -61,7 +63,7 @@ export class ControledespesasComponent implements OnInit {
   colorScheme:Color = {name:'MyScheme',
     selectable:true,
     group:ScaleType.Quantile,
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    domain: ['#A10A28']
   };
   CategoriaList:string[] = 
   [
@@ -73,7 +75,7 @@ export class ControledespesasComponent implements OnInit {
 
   //=======================================================================
   //Atributos para o gráfico de despesas -- Despesas // Gráfico de Barras empilhadas
-  viewEmpilhadas: [number,number] =  [700,350];
+  viewEmpilhadas: [number,number] =  [800,400];
   showXAxis: boolean = true;
   showYAxis: boolean = true;
   gradientEmp: boolean = false;
@@ -86,7 +88,7 @@ export class ControledespesasComponent implements OnInit {
 
   //===============================
   //grafico de barras 
-  view_barVertical:[number,number] = [700,350]
+  view_barVertical:[number,number] = [800,400]
   legendPosition:LegendPosition = LegendPosition.Below
   ValorTotalDespesas:number = 0
     
@@ -115,6 +117,7 @@ export class ControledespesasComponent implements OnInit {
   this.esperar()
   this.Modal = new window.bootstrap.Modal(document.getElementById('Modal'))
     this.esperar()
+  this.esperarCarregando()
 } 
 
 
@@ -267,44 +270,132 @@ export class ControledespesasComponent implements OnInit {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
   //================================
+ 
+
+  
+
 
   //GRAFICO DE BARRAS - Separadas
   transformacaoHistDiario(){
+    let newData:any
+    let conversao
+    let dia
+    let mes
+    let ano
+    let listaMeses:any [] = []
+    let handlerDay:any [] = []
+    let newDataMulti
     this.multi = []
     this.single = []
-    this.DadosDespesas.forEach((dados) =>{
+    this.DadosDespesas.forEach((dados,i,array) =>{
+                            //Tranformando Data em Data
+                            conversao = dados.Data.split('/')
+                            dia = parseInt(conversao[0])
+                            mes = parseInt(conversao[1])
+                            ano = parseInt(conversao[2])
+                            newData = new Date(ano,mes -1 ,dia)
+                            
+
+                            //Lista com os meses preenchidos 
+                            let handlerMonth:any [] = []
+                            handlerMonth.push(newData.getMonth()+1)
+                            handlerMonth = [...new Set(handlerMonth)]
+                            handlerMonth 
+                            //Lista Dias
+                            
+                            handlerDay.push(newData.getDay())
+                            console.log(handlerDay);
+                            /* handlerDay = [...new Set(handlerDay)] */
+                           
+                            
+
+                            
+                          
+
+                            
                     this.multi.push(
                             {
-                            "name":dados.Data,
+                            "name":newData,
                             "series": [
                             {
                                 "name": dados.Categoria,
                                 "value": dados.Valor
                             },
                             ]
-                        }) 
+                        })
+                        if(newData == newData){
                         this.single.push(
                           {
-                            "name": dados.Data,
+                            "name": newData,
                             "value": dados.Valor
                           })            
                     
-                }
+               
+                       
+                      }},
+                       
+                   
+                      
             )
+          
+            this.multi.sort((a:any,b:any)=>{
+              return a.name.getTime() - b.name.getTime()
+             } )
+
+          this.single.sort((a:any,b:any)=>{
+           return a.name.getTime() - b.name.getTime()
+          } 
+        )
+       
+       
+          
+ 
+        
         }
 
+
+   
+
+    
+        
         transformacaoHistMensal(){
-          this.multi = []
+          //Variáveis de Mês 
+          let newData:any
+          let conversao
+          let dia
+          let mes
+          let ano
+           let handlerMonth:any [] = []
+          /* this.multi = [] */
           this.single = []
+       
           let conv
-          let Mes
+          let Mes:any
           let listaMesMult:any[] = []
+          
           let valor:number = 0
           let ListaSingleMeses:any[] = []
-           this.DadosDespesas.forEach((dados) =>{
+          //Lista de meses initários
+          
+
+          //Preenche dados do grafico de barras empilhadas
+           this.DadosDespesas.forEach((dados,index,array) =>{
+                          conversao = dados.Data.split('/')
+                          dia = parseInt(conversao[0])
+                          mes = parseInt(conversao[1])
+                          ano = parseInt(conversao[2])
+                          newData = new Date(ano,mes -1 ,dia)
+
+                          //Lista com os meses preenchidos 
+                     /*     
+                          handlerMonth.push(newData.getMonth()+1)
+                          handlerMonth = [...new Set(handlerMonth)] */
+                       
+
                           conv  = dados.Data.split('/')
                           Mes =  conv[1] //Ordenar antes de colocar na variável  
-                          valor += dados.Valor    
+                          valor += dados.Valor
+                                
                           listaMesMult.push(
                                   {
                                   "name":Mes,
@@ -312,28 +403,23 @@ export class ControledespesasComponent implements OnInit {
                                   {
                                       "name": dados.Categoria,
                                       "value": dados.Valor
+                                      
                                   },
                                   ]
                                 }
                                
                               )
-                            
-                            this.single.push(
-                                {
-                                  "name": Mes,
-                                  "value":valor
-                                })
-
-
-                      
-                                listaMesMult.sort((a,b)=>{
+                       
+                          
+  
+                          listaMesMult.sort((a,b)=>{
                             if(a.name < b.name){
                               return -1
                             } else {
                               return 1
                             }
-                          })
-                         console.log(listaMesMult)
+                          }
+                        )
                           this.multi = listaMesMult             
                   }
                   
@@ -341,59 +427,105 @@ export class ControledespesasComponent implements OnInit {
                 )
                 
 
-                
+this.transformacaoHistMensal_Barras()
               }
 
-              transformacaoHistMensal_Barras(){
-                this.multi = []
+
+transformacaoHistMensal_Barras(){
+                //Variáveis de Mês 
+                let newData:any
+                let conversao
+                let dia
+                let mes
+                let ano
+                let handlerMonth:any [] = []
+                let idsPreenchidos:any[] = []
+                let indiceIds=-1
                 this.single = []
                 let conv
-                let Mes
-                let listaMesMult1:any[] = []
-                let valor:number = 0
-                let ListaSingleMeses:any[] = []
+                let Mes:any
+                let indiceLista=-1
                 
-                 this.DadosDespesas.forEach((dados)=>{
-                  conv  = dados.Data.split('/')
-                  Mes =  conv[1] //Ordenar antes de colocar na variável  
+                let listaSingleMeses:dadosGraficosHorizontal[] = [
                   
-                  if(listaMesMult1.indexOf(Mes)!= -1){
-                    valor += dados.Valor
-                    listaMesMult1.push({
-                    "name":Mes,
-                    "value":valor
-                  })
+                ]
+                //Lista de meses initários
+                
+      
+                //Preenche dados do grafico de barras empilhadas
+                 this.DadosDespesas.forEach((dados,index,array) =>{
+                                conversao = dados.Data.split('/')
+                                dia = parseInt(conversao[0])
+                                mes = parseInt(conversao[1])
+                                ano = parseInt(conversao[2])
+                                newData = new Date(ano,mes -1 ,dia)
+      
+                                //Lista com os meses preenchidos 
+                                handlerMonth.push(newData.getMonth()+1);
+                                handlerMonth = [...new Set(handlerMonth)]
+                                handlerMonth})
 
-                }
+                                //Iteração da lista de meses
+                                handlerMonth.forEach((Meses,i,arrMeses) => {
+                                  //Iteração dos dados utilizando meses
+                                  this.DadosDespesas.forEach((dados,i,arr) => {
+                                     //Coleta de dados
+                                      if (idsPreenchidos.length < arr.length) {
+                                        idsPreenchidos = []
+                                        arr.forEach((id) => {idsPreenchidos.push(id.id)
+                                        }
+                                      )
+                                      
+                                        
+                                      }
+                                      conv  = dados.Data.split('/')
+                                      Mes =  parseInt(conv[1]) // Mês
+                                      indiceIds= idsPreenchidos.indexOf(dados.id)
+                                      
+                                    
+                                      if (Meses === Mes ) {
+                                      indiceLista = listaSingleMeses.findIndex((e) => e.name == Mes)
+                             
+                                       if (indiceLista != -1 ) {
+                                       listaSingleMeses[indiceLista].value +=dados.Valor
+                                       
+                                      }else  if(indiceLista== -1 ){
 
+                                        listaSingleMeses.push(
+                                          {
+                                            "name": Mes,
+                                            "value": dados.Valor
+                                          }
+                                        )
+                                      }
+                                    } 
+                                  }
+                                ) 
+                              }
+                            );
 
-            
-                 })
+                            listaSingleMeses.sort((a,b)=>{
+                              if(a.name < b.name){
+                                return -1
+                              } else {
+                                return 1
+                              }
+                            }
+                          ) 
+                        this.single =  listaSingleMeses
+                      }
 
-                 console.log(listaMesMult1);
-                 
-                      
-                    }
-            
-  single = [
+                   
+  single:DataItem[]= [ 
     {
-      "name": "Germany",
-      "value": 8940000
-    },
-    {
-      "name": "USA",
-      "value": 5000000
-    },
-    {
-      "name": "France",
-      "value": 7200000
+      "name":'0',
+      "value":0
     }
-
   ]
 
   multi = [
     {
-      "name": "0",
+      "name": new Date(),
       "series": [
         {
           "name": "0",
@@ -407,7 +539,7 @@ export class ControledespesasComponent implements OnInit {
 
   esperar(){
     setTimeout(()=>{
-      if (this.DadosDespesas.length > 0){this.transformacaoHistDiario()}
+      if (this.DadosDespesas.length > 0){this.transformacaoHistMensal()}
       else{this.esperar()}
       },2000
     )
@@ -420,7 +552,6 @@ export class ControledespesasComponent implements OnInit {
       if (this.DadosDespesas.length > 0) {
             this.controleDeCarregamento_Cards = false
             this.cardsCarregados.emit(this.controleDeCarregamento_Cards)
-            console.log(this.controleDeCarregamento_Cards, 'carregou os cards');
             
       }else{this.carregou_Abas(this.controleDeCarregamento_Cards)}
     }, 3500);
@@ -439,6 +570,13 @@ export class ControledespesasComponent implements OnInit {
     this.getDespesas()
     this.carregarForm()
 
+  }
+
+  
+  esperarCarregando(){
+    setTimeout(() => {
+      this.carregando = false 
+    }, 10000);
   }
   
 }/////

@@ -40,7 +40,8 @@ import { AlertmodalService } from './service/alert/alertmodal.service';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarregandoComponent } from './componentes/carregando/carregando.component'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {MatCardModule} from '@angular/material/card'
+import {MatCardModule} from '@angular/material/card';
+import { LandingpageComponent } from './paginas/landingpage/landingpage.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +64,7 @@ import {MatCardModule} from '@angular/material/card'
     FormalterareceitasComponent,
     AlertModalComponent,
     CarregandoComponent,
+    LandingpageComponent,
  
   ],
   imports: [

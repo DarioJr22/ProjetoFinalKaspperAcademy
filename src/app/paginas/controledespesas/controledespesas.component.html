@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<app-carregando [carregando]="carregando" ></app-carregando>
 
 <div class="positionCardNotfound col-9 position-absolute top-0 end-0 container-fluid m-3">
   <!-- Acorddion -->
@@ -43,17 +44,41 @@
     <div class="flex">
     <div>
       
-    </div>
-    <h1 class="tituloCard"><strong>Histórioco de gastos</strong> <div class="btn-group" role="group">
-      <button (click)="transformacaoHistDiario()" class="btn btn-primary ml-3">Transforma dia</button>
-      <button (click)="transformacaoHistMensal()" class="btn btn-primary end-0">Transforma Mês</button>
-    </div></h1>
+    </div> 
+    <h1 class="tituloCard"><strong>Histórioco de gastos</strong> 
+      
+      
+  </h1>
+  <div class="btn-group " role="group">
+    <button (click)="transformacaoHistDiario()" class="btn btn-outline-danger ml-3 ">Dia</button>
+    <button (click)="transformacaoHistMensal()" class="btn btn-outline-danger  ">Mês</button>
+  </div>
   </div>
     <div class="flex scrolbarGrafico">
       <hr>
+
+      <div class="">
+        <h3 class="accordion-item"><strong>Gasto por Total (Dia/Mês)</strong></h3>
+        <ngx-charts-bar-vertical 
+        [view]="view_barVertical" 
+        [scheme]="colorScheme" 
+        [results]="single" 
+        [gradient]="gradient"
+          [xAxis]="showXAxis" 
+          [yAxis]="showYAxis" 
+          [legend]="false" 
+          [showXAxisLabel]="false"
+          [showYAxisLabel]="false"
+          [showGridLines] = "true"
+          [showDataLabel]="showDataLabel" 
+          [legendPosition]="legendPosition"
+          (select)="onSelect($event)">
+        </ngx-charts-bar-vertical>
+      </div>
+
       <div>
-        <h3 class="accordion-item"><strong>Gasto por categoria (Mês/dia)</strong></h3>
-        <ngx-charts-bar-vertical-stacked
+        <h3 class="accordion-item"><strong>Gasto por categoria (Dia/Mês)</strong></h3>
+        <ngx-charts-bar-vertical-2d
         [view]="viewEmpilhadas" 
         scheme="flame" 
         [results]="multi" 
@@ -61,24 +86,18 @@
         [xAxis]="showXAxis" 
         [yAxis]="showYAxis" 
         [legend]="showLegendEmp" 
+        [showGridLines] = "false"
         [showDataLabel]="showDataLabel"
         [showXAxisLabel]="showXAxisLabel"
         [showYAxisLabel]="showYAxisLabel"
         [legendPosition]="legendPosition"
         [animations]="animations" 
         (select)="onSelect($event)">
-        </ngx-charts-bar-vertical-stacked>
+        </ngx-charts-bar-vertical-2d>
       </div>
 
 
-      <div class="">
-        <h3 class="accordion-item"><strong>Gasto por Total (Mês/dia)</strong></h3>
-        <ngx-charts-bar-vertical [view]="view_barVertical" scheme="flame" [results]="single" [gradient]="gradient"
-          [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
-          [showYAxisLabel]="showYAxisLabel" [showDataLabel]="showDataLabel" [legendPosition]="legendPosition"
-          (select)="onSelect($event)">
-        </ngx-charts-bar-vertical>
-      </div>
+      
       
     </div>
   </mat-card>

@@ -4,11 +4,13 @@ import { ControledespesasComponent } from './paginas/controledespesas/controlede
 import { ControlereceitasComponent } from './paginas/controlereceitas/controlereceitas.component';
 import { EmconstrucaoComponent } from './paginas/emconstrucao/emconstrucao.component';
 import { HomeComponent } from './paginas/home/home.component';
+import { LandingpageComponent } from './paginas/landingpage/landingpage.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { NotfoundComponent } from './paginas/notfound/notfound.component';
 
 const routes: Routes = [
-  {path:'', component:LoginComponent},
+  {path:'', component:LandingpageComponent},
+  {path:'login', component:LoginComponent},
   {path:'home', component:HomeComponent},
   {path:'controledespesas', component:ControledespesasComponent},
   {path:'controlereceitas', component:ControlereceitasComponent},

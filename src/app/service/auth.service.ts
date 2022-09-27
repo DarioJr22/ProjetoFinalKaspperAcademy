@@ -13,8 +13,8 @@ export class AuthService {
   constructor(private router:Router) { }
 
   fazerLogin(usuario:Usuario){
-      if(usuario.nome === 'dario' &&
-        usuario.senha === '123'){
+      if(usuario.nome === 'dario@kaizen.com' &&
+        usuario.senha === '12345'){
 
           this.usuarioAutenticado = true
           this.router.navigate(['/home'])

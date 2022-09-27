@@ -13,14 +13,22 @@ export class HomeComponent implements OnInit,OnChanges {
   constructor() { }
 
   ngOnInit(): void {
+    this.esperarCarregando()
+
   }
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
-    this.carregouCards(this.carregando)
+    /* this.carregouCards(this.carregando) */
      
   }
-  carregouCards(event:any){
-    this.carregando = event
+  
+  esperarCarregando(){
+    setTimeout(() => {
+      this.carregando = false 
+    }, 10000);
+  }
+  carregouCards(){
+    this.carregando
   }
 
 

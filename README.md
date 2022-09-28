@@ -1,6 +1,6 @@
 # Kaizen
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
+Esse projeto é a versão Beta do aplicativo Kaize, Um aplicativo de controle e gerenciamento financeiro. [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
 
 ## Development server
 

@@ -272,6 +272,11 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumnsDespesas;"></tr>
           </table>
           
+          <hr>
+
+         
+          
+
           
 
         <!--------------Modal Exclusão das Despesas --------->
@@ -341,7 +346,29 @@
        <button class="btn btn-danger mt-3 mr-3" (click)="abrirCreateModalDespesas()">Registar</button>
        <button class="btn btn-danger mt-3 " (click)="abriralteracaoDespesa()">Alterar</button>
 
-        
+       <table  datatable [dtTrigger]="dtTrigger" [dtOptions]="dtOptions" class="row-border hover" >
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Data</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">SubCategoria</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Observacao</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of DadosDespesas">
+            <td>{{i.id}}</td>
+            <td>{{i.Data}}</td>
+            <td>{{i.Categoria}}</td>
+            <td>{{i.SubCategoria}}</td>
+            <td>{{i.Valor}}</td>
+            <td>{{i.Observacao}}</td>
+           <!--  <td><fa-icon (click) = "abrirDeleteModalDespesas(i.id)" class="bg-gradient-primary" [icon]=" faTrash "></fa-icon></td> -->
+          </tr>
+        </tbody>
+      </table>
         <!--------------Modal Alteração de Despesas das Despesas --------->
         <div class="modal fade" id="ModAlteracaoDesp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">

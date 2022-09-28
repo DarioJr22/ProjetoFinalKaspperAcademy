@@ -1,4 +1,4 @@
-import { EventEmitter,Output,Component, OnInit, Input } from '@angular/core';
+import { EventEmitter,Output,Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Despesas } from 'src/app/service/despesas';
 import { KaizenService } from 'src/app/service/kaizen.service';
 
@@ -7,6 +7,10 @@ import { PageEvent } from '@angular/material/paginator';
 import { Receitas } from 'src/app/service/receitas';
 import { AlertmodalService } from 'src/app/service/alert/alertmodal.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Subject } from 'rxjs';
+import { LanguageApp } from './definicoesdatatables';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+/* import { LanguageSettings } from "./../../../../node_modules/@types/datatables.net/index" */
 
 
 declare var window:any
@@ -16,7 +20,7 @@ declare var window:any
   templateUrl: './abas-home.component.html',
   styleUrls: ['./abas-home.component.css']
 })
-export class AbasHomeComponent implements OnInit{
+export class AbasHomeComponent implements OnInit,OnDestroy{
   //Carregamento
 
   //Evento de saída para componente de cards
@@ -30,13 +34,28 @@ export class AbasHomeComponent implements OnInit{
   DadosDespesas:Despesas [] = []
   DadosReceitas:Receitas [] = []
   ValorTotalDespesas:number = 0 
+  // Lógica de implementação da tabela
+  dtOptions:DataTables.Settings = {}
+  
+
+  //dados
+  dtTrigger:Subject<any> = new Subject<any>()
+  /* trocarFields:LanguageSettings */
 
   //Controle de seleção de abas
   @Input()selecionarAba:string = ''
   @Input()mostrarDuasAbas:boolean = true
   AbaSelecionadaDesp = ''
   AbaSelecionadaReceitas = ''
+  faTrash = faTrash
 
+
+  spanish_datatables = {
+    processing: "Procesando...",
+    search: "Buscar:",
+    lengthMenu: "Mostrar _MENU_ &elementos"
+    
+  }
 
   selecaoDeAbaAtiva(selecionarAba:string){
     if(selecionarAba == "Receitas"){
@@ -101,21 +120,7 @@ export class AbasHomeComponent implements OnInit{
   ModalAltDesp:any
   ModalAltRece:any
 
-  //_______Paginator_________
 
-  length =5 
-  pageSize = 10
-  pageSizOptions:number [] = [5,10,25,100]
-  
-  
-  //_______________
-  pageEvent:PageEvent = {
-    length : 5,
-    pageIndex: 0,
-    pageSize: 10,
-   
-    
-  }
 /*
  @ViewChild(MatPaginator) 
  paginator:MatPaginator
@@ -134,17 +139,29 @@ export class AbasHomeComponent implements OnInit{
 
   constructor(private kaizenService:KaizenService,
               private modalService:AlertmodalService,
-              private modalServiceModal:BsModalService
+              private modalServiceModal:BsModalService,
+             
 
             ) { }
 
   ngOnInit(): void {
+   
+    
     this.DadosDespesas =[]
     this.getDespesas()
     this.getReceitas()
     this.carregarForm()
-   
+    
+    
+    console.log(this.dtOptions);
+    
     }
+
+ngOnDestroy(): void {
+  this.dtTrigger.unsubscribe()
+}
+
+
 /* 
     private showAlert(message:string, type:string){
       const bsModalRef: BsModalRef = this.modalServiceModal.show()
@@ -164,13 +181,15 @@ export class AbasHomeComponent implements OnInit{
                 this.ModalAltDesp = new window.bootstrap.Modal(document.getElementById('ModAlteracaoDesp'))
                 this.ModalDeleteDesp = new window.bootstrap.Modal(document.getElementById('ModExclusaoDesp'))
                 this.carregamento_Abas()
-                this.carregamento_Cards()}
+                this.carregamento_Cards()
+               }
                 else if (this.selecionarAba == 'Receitas'){
                 this.ModalInclusaoRece = new window.bootstrap.Modal(document.getElementById('ModInclusaoRece'))
                 this.ModalDeleteRece = new window.bootstrap.Modal(document.getElementById('ModExclusãoRece'))
                 this.ModalAltRece = new window.bootstrap.Modal(document.getElementById('ModAlteracaoRece'))
                 this.carregamento_Abas()
-                this.carregamento_Cards()}
+                this.carregamento_Cards()
+              }
                 else{
                   this.ModalInclusaoDesp = new window.bootstrap.Modal(document.getElementById('ModInclusaoDesp'))
                 this.ModalAltDesp = new window.bootstrap.Modal(document.getElementById('ModAlteracaoDesp'))
@@ -180,22 +199,35 @@ export class AbasHomeComponent implements OnInit{
                 this.ModalAltRece = new window.bootstrap.Modal(document.getElementById('ModAlteracaoRece'))
                 this.carregamento_Abas()
                 this.carregamento_Cards()
+               
               }
                 
                 console.log(this.ModalInclusaoDesp);
                 
           }else{this.carregarForm()}
-        }, 2000)
+        }, 10000)
         //==
         this.selecaoDeAbaAtiva(this.selecionarAba)
        
-        
         
       
       
     }
 
+   carregarTabelasJquery(){
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      scrollX: true,
+      processing: true,
+      deferRender: true,
+      destroy:true,
+      lengthMenu: [5, 10, 25, 50]
+      }
+   console.log(this.dtOptions);
+
    
+    }
   //------------------------------------ DESPESAS ------------------------------------
 
   validaCamposDespesas(){
@@ -220,11 +252,17 @@ export class AbasHomeComponent implements OnInit{
   }
 
   getDespesas(){
+    
     this.kaizenService
     .getDespesas()
     .subscribe(
-    (dados)=>{console.log(dados, this.DadosDespesas = dados)})
-  }
+    dados =>{this.DadosDespesas = dados ;
+     
+      this.dtTrigger.next(this.DadosDespesas);
+      this.carregarTabelasJquery() 
+    }
+)
+}
 
   createDespesas(){
     this.validaCamposDespesas()
@@ -514,4 +552,13 @@ esperarDespesas(){
     console.log(event);
     
   }
+
+  //==================
+ 
+ 
+
+ 
+
+ 
+
 }

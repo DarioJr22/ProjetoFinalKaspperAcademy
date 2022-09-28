@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   List = faList12
   Analisis = faChartBar
   Config = faGears 
-
+ 
 
   constructor() { }
 

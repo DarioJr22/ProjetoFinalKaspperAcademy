@@ -2,15 +2,6 @@
   "Despesas": [
     {
       "Data": "01/09/2022",
-      "Categoria": "Casa-moradia",
-      "Observacao": "",
-      "FonteDespesa": "Feira da semana 3 de setembro - Faltaram frutas",
-      "SubCategoria": "Alimentação",
-      "Valor": 294,
-      "id": 26
-    },
-    {
-      "Data": "01/09/2022",
       "Categoria": "Cuidado Pessoal",
       "Observacao": "",
       "FonteDespesa": "asasassa",
@@ -24,52 +15,16 @@
       "Observacao": "",
       "FonteDespesa": "asasassa",
       "SubCategoria": "Lazer",
-      "Valor": 41,
-      "id": 30
-    },
-    {
-      "Data": "01/09/2022",
-      "Categoria": "Cuidado Pessoal",
-      "Observacao": "",
-      "FonteDespesa": "asasassa",
-      "SubCategoria": "Lazer",
-      "Valor": 41,
+      "Valor": 413,
       "id": 31
-    },
-    {
-      "Data": "01/09/2022",
-      "Categoria": "Cuidado Pessoal",
-      "Observacao": "",
-      "FonteDespesa": "asasassa",
-      "SubCategoria": "Lazer",
-      "Valor": 41,
-      "id": 32
-    },
-    {
-      "Data": "07/01/2022",
-      "Categoria": "Educação",
-      "Observacao": "",
-      "FonteDespesa": "assdaasd",
-      "SubCategoria": "Lazer",
-      "Valor": 321,
-      "id": 36
-    },
-    {
-      "Data": "15/01/2022",
-      "Categoria": "Educação",
-      "Observacao": "",
-      "FonteDespesa": "assdaasd",
-      "SubCategoria": "Lazer",
-      "Valor": 321,
-      "id": 37
     },
     {
       "Data": "15/02/2022",
       "Categoria": "Educação",
       "Observacao": "",
-      "FonteDespesa": "assdaasd",
+      "FonteDespesa": "assdhaasd",
       "SubCategoria": "Lazer",
-      "Valor": 321,
+      "Valor": 3214,
       "id": 38
     },
     {
@@ -82,40 +37,31 @@
       "id": 40
     },
     {
-      "Data": "31/05/2022",
-      "Categoria": "Educação",
+      "Data": "01/09/2022",
+      "Categoria": "Cuidado Pessoal",
       "Observacao": "",
-      "FonteDespesa": "assdaasd",
-      "SubCategoria": "Lazer",
-      "Valor": 321,
+      "FonteDespesa": "PICPAY",
+      "SubCategoria": "Alimentação",
+      "Valor": 20,
       "id": 41
     },
     {
-      "Data": "30/06/2022",
-      "Categoria": "Educação",
+      "Data": "28/03/2022",
+      "Categoria": "Cuidado Pessoal",
       "Observacao": "",
-      "FonteDespesa": "assdaasd",
+      "FonteDespesa": "NUBANK",
       "SubCategoria": "Lazer",
-      "Valor": 321,
+      "Valor": 23112,
       "id": 42
     },
     {
-      "Data": "25/12/2022",
-      "Categoria": "Casa-moradia",
+      "Data": "01/09/2022",
+      "Categoria": "Cuidado Pessoal",
       "Observacao": "",
-      "FonteDespesa": "ITAU",
-      "SubCategoria": "Cursos",
-      "Valor": 333,
+      "FonteDespesa": "PICPAY",
+      "SubCategoria": "Lazer",
+      "Valor": 55,
       "id": 43
-    },
-    {
-      "Data": "08/07/2022",
-      "Categoria": "Casa-moradia",
-      "Observacao": "",
-      "FonteDespesa": "Observação",
-      "SubCategoria": "Alimentação",
-      "Valor": 333,
-      "id": 44
     }
   ],
   "Receitas": [

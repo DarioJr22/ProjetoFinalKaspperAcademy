@@ -42,6 +42,8 @@ import { CarregandoComponent } from './componentes/carregando/carregando.compone
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatCardModule} from '@angular/material/card';
 import { LandingpageComponent } from './paginas/landingpage/landingpage.component'
+import { DataTablesModule } from "angular-datatables";
+import * as $ from "jquery";
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +81,9 @@ import { LandingpageComponent } from './paginas/landingpage/landingpage.componen
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
     ModalModule.forRoot(),
+    DataTablesModule,
     //Imports Material
+    
     MatTableModule,
     MatSliderModule,
     MatFormFieldModule,

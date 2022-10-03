@@ -7,6 +7,8 @@ import { PageEvent } from '@angular/material/paginator';
 import { Receitas } from 'src/app/service/receitas';
 import { AlertmodalService } from 'src/app/service/alert/alertmodal.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { faCircleCheck, faDownload, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
+import * as XLSX from 'xlsx'
 
 
 declare var window:any
@@ -36,8 +38,6 @@ export class AbasHomeComponent implements OnInit{
   @Input()mostrarDuasAbas:boolean = true
   AbaSelecionadaDesp = ''
   AbaSelecionadaReceitas = ''
-
-
   selecaoDeAbaAtiva(selecionarAba:string){
     if(selecionarAba == "Receitas"){
       this.AbaSelecionadaReceitas = "tab-pane fade show active"
@@ -50,6 +50,39 @@ export class AbasHomeComponent implements OnInit{
       this.AbaSelecionadaDesp = "tab-pane fade"
     }
   }
+  //Lógica de impressão da tabela 
+  fileNameDespesas= 'TabelaDeDespesas.xlsx'
+  exportexcelDespesas(): void
+  {
+    /* pass here the table id */
+    let element = document.getElementById('tableDespesas');
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+ 
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Despesas');
+ 
+    /* save to file */  
+    XLSX.writeFile(wb, this.fileNameDespesas);
+ 
+  }
+  fileNameReceitas= 'TabelaDeReceitas.xlsx'
+   exportexcelReceitas(): void
+  {
+    /* pass here the table id */
+    let element = document.getElementById('tableReceitas');
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+ 
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Receitas');
+ 
+    /* save to file */  
+    XLSX.writeFile(wb, this.fileNameReceitas);
+ 
+  }
+
+  
   //Validacao
   validacampos:boolean = false
 
@@ -101,21 +134,12 @@ export class AbasHomeComponent implements OnInit{
   ModalAltDesp:any
   ModalAltRece:any
 
-  //_______Paginator_________
+  //_______FaIcons_________
+  faIcon = faDownload
+  faIcon2 = faPencilAlt
+  faIcon3 = faCircleCheck
+  faIcon4 = faTrash
 
-  length =5 
-  pageSize = 10
-  pageSizOptions:number [] = [5,10,25,100]
-  
-  
-  //_______________
-  pageEvent:PageEvent = {
-    length : 5,
-    pageIndex: 0,
-    pageSize: 10,
-   
-    
-  }
 /*
  @ViewChild(MatPaginator) 
  paginator:MatPaginator

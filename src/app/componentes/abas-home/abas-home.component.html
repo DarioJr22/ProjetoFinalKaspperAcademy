@@ -1,6 +1,8 @@
 <div
 >
 
+
+
     <nav>
       
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -49,9 +51,10 @@
         </div>
     </nav>
 
-
+    
       <div class="tab-content ">
         <ng-template [ngIf]="selecionarAba == 'Receitas' || selecionarAba == 'AsDuas'">
+         
         <div 
         [class]="AbaSelecionadaReceitas" 
         id="nav-Receitas" 
@@ -60,7 +63,7 @@
         tabindex="0">
         <mat-card>
           <div class="grid mx-auto scrolbarTabela ">
-            <table mat-table [dataSource]="DadosReceitas" class="table  mat-elevation-z8">
+            <table id="tableReceitas" mat-table [dataSource]="DadosReceitas" class="table  tableHome mat-elevation-z8">
               
               <ng-container matColumnDef="id_R">
                 <th mat-header-cell *matHeaderCellDef> id </th>
@@ -99,7 +102,7 @@
 
               <ng-container matColumnDef="Deletar/Alterar_R">
                 <th mat-header-cell *matHeaderCellDef> Deletar/Alterar_R </th>
-                <td mat-cell *matCellDef="let Receitas"> <button class="btn btn-danger" (click)="abrirDeleteModalReceitas(Receitas.id)">Deletar</button> </td>
+                <td mat-cell *matCellDef="let Receitas"> <button class="btn btn-danger" (click)="abrirDeleteModalReceitas(Receitas.id)">Deletar <fa-icon [icon]=" faIcon4 "> </fa-icon></button> </td>
               </ng-container>
 
              
@@ -116,7 +119,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Coletar Registro</h5>
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -133,13 +136,9 @@
           </div>
         </div> 
 
-
-
-
-
-            
-            <button class="btn btn-success mt-3 mr-3" (click)="abrirCreateModalReceitas()">Registar</button>
-            <button class="btn btn-success mt-3 " (click)="abriralteracaoReceitas()">Alterar</button>
+            <button class="btn btn-success mt-3 mr-3" (click)="abrirCreateModalReceitas()">Registar <fa-icon [icon]=" faIcon3 "> </fa-icon></button>
+            <button class="btn btn-success mt-3 mr-3 " (click)="abriralteracaoReceitas()">Alterar <fa-icon [icon]=" faIcon2 "> </fa-icon></button>
+            <button class="btn btn-success mt-3" (click)="exportexcelReceitas()"> Exportar Para Excel <fa-icon [icon]=" faIcon "> </fa-icon></button>
 
         <!--------------Modal Inclusão das Receitas --------->
         <div class="modal fade" id="ModInclusaoRece" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -208,7 +207,7 @@
         
         <!-- <CONTEUDO ABA DESPESAS> -->
           <ng-template [ngIf]="selecionarAba == 'Despesas' || selecionarAba == 'AsDuas'">
-
+            
         <div 
         [class]="AbaSelecionadaDesp" 
         id="nav-Despesas" role="tabpanel" 
@@ -219,7 +218,7 @@
         <div class="grid mx-auto scrolbarTabela ">
             
                  
-          <table mat-table [dataSource]="DadosDespesas" class="table mat-elevation-z8 ">
+          <table id="tableDespesas" mat-table [dataSource]="DadosDespesas" class="table  tableHome mat-elevation-z8 ">
 
             <!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->
@@ -265,7 +264,7 @@
 
             <ng-container matColumnDef="Delete/Edit">
               <th mat-header-cell *matHeaderCellDef> Deletar/Editar </th>
-              <td mat-cell *matCellDef="let Despesas"><button class="btn btn-danger" (click) = "abrirDeleteModalDespesas(Despesas.id)">Deletar</button></td>
+              <td mat-cell *matCellDef="let Despesas"><button class="btn btn-danger" (click) = "abrirDeleteModalDespesas(Despesas.id)">Deletar <fa-icon [icon]=" faIcon4 "> </fa-icon></button></td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumnsDespesas"></tr>
@@ -338,8 +337,10 @@
 
        <!--------------Botão de inclusão das Despesas --------->
         
-       <button class="btn btn-danger mt-3 mr-3" (click)="abrirCreateModalDespesas()">Registar</button>
-       <button class="btn btn-danger mt-3 " (click)="abriralteracaoDespesa()">Alterar</button>
+       <button class="btn btn-danger mt-3 mr-3" (click)="abrirCreateModalDespesas()">Registar <fa-icon [icon]=" faIcon3 "> </fa-icon></button>
+       <button class="btn btn-danger mt-3 mr-3 " (click)="abriralteracaoDespesa()">Alterar <fa-icon [icon]=" faIcon2 "> </fa-icon></button>
+       <button class="btn btn-success mt-3" (click)="exportexcelDespesas()" > Exportar Para Excel <fa-icon [icon]=" faIcon "> </fa-icon></button>
+       
 
         
         <!--------------Modal Alteração de Despesas das Despesas --------->
@@ -372,7 +373,7 @@
           </div>
         </div> 
         
-
+       
         
 
 
@@ -386,6 +387,32 @@
         <div class="tab-pane fade" id="nav-Saldo" role="tabpanel" aria-labelledby="nav-Saldo-tab" tabindex="0">Saldo</div>
         <div class="tab-pane fade" id="nav-SaldoPrev" role="tabpanel" aria-labelledby="nav-SaldoPrev-tab" tabindex="0">nav-SaldoPrev</div>
       </div>
-    </ng-template>
+      </ng-template>
     </div>
-
+  
+    
+<!-- <table>
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Data</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">SubCategoria</th>
+      <th scope="col">FonteDespesa</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Observacao</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr *ngfor="let i of DadosDespesas">
+      <td>{{i.id}}</td>
+      <td>{{i.Data}}</td>
+      <td>{{i.Categoria}}</td>
+      <td>{{i.SubCategoria}}</td>
+      <td>{{i.FonteDespesa}}</td>
+      <td>{{i.Valor}}</td>
+      <td>{{i.Observacao}}</td>
+      <td><button class="btn btn-danger" (click)="abrirDeleteModalDespesas(i.id)">Deletar <fa-icon [icon]=" faIcon4 "> </fa-icon></button></td>
+    </tr>
+  </tbody>
+</table> -->

@@ -3,135 +3,198 @@
     {
       "Data": "01/09/2022",
       "Categoria": "Casa-moradia",
-      "Observacao": "",
-      "FonteDespesa": "Feira da semana 3 de setembro - Faltaram frutas",
+      "Observacao": "Aluguél Setembro",
+      "FonteDespesa": "ELCSS-ADRIEN'S\n",
+      "SubCategoria": "",
+      "Valor": 500,
+      "id": 4
+    },
+    {
+      "Data": "13/04/2022",
+      "Categoria": "Casa-moradia",
+      "Observacao": "ELCSS-SM ESTIVAS",
+      "FonteDespesa": "Feira da semana",
       "SubCategoria": "Alimentação",
-      "Valor": 294,
-      "id": 26
+      "Valor": 40,
+      "id": 5
     },
     {
-      "Data": "01/09/2022",
-      "Categoria": "Cuidado Pessoal",
-      "Observacao": "",
-      "FonteDespesa": "asasassa",
-      "SubCategoria": "Lazer",
-      "Valor": 41,
-      "id": 29
+      "Data": "27/05/2022",
+      "Categoria": "Investimento",
+      "Observacao": "Bolsa Mês Maio",
+      "FonteDespesa": "Investimento ",
+      "SubCategoria": "Bolsa de Valores",
+      "Valor": 300,
+      "id": 6
     },
     {
-      "Data": "01/09/2022",
-      "Categoria": "Cuidado Pessoal",
+      "Data": "02/03/2022",
+      "Categoria": "Casa-moradia",
       "Observacao": "",
-      "FonteDespesa": "asasassa",
-      "SubCategoria": "Lazer",
-      "Valor": 41,
-      "id": 30
+      "FonteDespesa": "Aluguel mês março",
+      "SubCategoria": "",
+      "Valor": 500,
+      "id": 7
     },
     {
-      "Data": "01/09/2022",
-      "Categoria": "Cuidado Pessoal",
+      "Data": "02/04/2022",
+      "Categoria": "Casa-moradia",
       "Observacao": "",
-      "FonteDespesa": "asasassa",
-      "SubCategoria": "Lazer",
-      "Valor": 41,
-      "id": 31
+      "FonteDespesa": "Aluguel mês Abril",
+      "SubCategoria": "",
+      "Valor": 500,
+      "id": 8
     },
     {
-      "Data": "01/09/2022",
-      "Categoria": "Cuidado Pessoal",
+      "Data": "02/05/2022",
+      "Categoria": "Casa-moradia",
       "Observacao": "",
-      "FonteDespesa": "asasassa",
-      "SubCategoria": "Lazer",
-      "Valor": 41,
-      "id": 32
-    },
-    {
-      "Data": "07/01/2022",
-      "Categoria": "Educação",
-      "Observacao": "",
-      "FonteDespesa": "assdaasd",
-      "SubCategoria": "Lazer",
-      "Valor": 321,
-      "id": 36
-    },
-    {
-      "Data": "15/01/2022",
-      "Categoria": "Educação",
-      "Observacao": "",
-      "FonteDespesa": "assdaasd",
-      "SubCategoria": "Lazer",
-      "Valor": 321,
-      "id": 37
+      "FonteDespesa": "Aluguel mês Maio",
+      "SubCategoria": "",
+      "Valor": 5003,
+      "id": 9
     },
     {
       "Data": "15/02/2022",
-      "Categoria": "Educação",
+      "Categoria": "Cuidado Pessoal",
       "Observacao": "",
-      "FonteDespesa": "assdaasd",
-      "SubCategoria": "Lazer",
-      "Valor": 321,
-      "id": 38
+      "FonteDespesa": "Academia Março",
+      "SubCategoria": "Esportes",
+      "Valor": 120,
+      "id": 10
     },
     {
-      "Data": "28/04/2022",
-      "Categoria": "Educação",
+      "Data": "15/04/2022",
+      "Categoria": "Cuidado Pessoal",
       "Observacao": "",
-      "FonteDespesa": "assdaasd",
-      "SubCategoria": "Lazer",
-      "Valor": 321,
-      "id": 40
+      "FonteDespesa": "Academia Abril",
+      "SubCategoria": "Esportes",
+      "Valor": 120,
+      "id": 11
     },
     {
-      "Data": "31/05/2022",
-      "Categoria": "Educação",
+      "Data": "05/03/2022",
+      "Categoria": "Cuidado Pessoal",
       "Observacao": "",
-      "FonteDespesa": "assdaasd",
-      "SubCategoria": "Lazer",
-      "Valor": 321,
-      "id": 41
-    },
-    {
-      "Data": "30/06/2022",
-      "Categoria": "Educação",
-      "Observacao": "",
-      "FonteDespesa": "assdaasd",
-      "SubCategoria": "Lazer",
-      "Valor": 321,
-      "id": 42
-    },
-    {
-      "Data": "25/12/2022",
-      "Categoria": "Casa-moradia",
-      "Observacao": "",
-      "FonteDespesa": "ITAU",
-      "SubCategoria": "Cursos",
-      "Valor": 333,
-      "id": 43
-    },
-    {
-      "Data": "08/07/2022",
-      "Categoria": "Casa-moradia",
-      "Observacao": "",
-      "FonteDespesa": "Observação",
+      "FonteDespesa": "NUBANK",
       "SubCategoria": "Alimentação",
-      "Valor": 333,
-      "id": 44
+      "Valor": 300,
+      "id": 12
+    },
+    {
+      "Data": "05/04/2022",
+      "Categoria": "Investimento",
+      "Observacao": "",
+      "FonteDespesa": "NUBANK",
+      "SubCategoria": "Alimentação",
+      "Valor": 300,
+      "id": 13
+    },
+    {
+      "Data": "05/05/2022",
+      "Categoria": "Cuidado Pessoal",
+      "Observacao": "Feira Maio",
+      "FonteDespesa": "NUBANK",
+      "SubCategoria": "Alimentação",
+      "Valor": 300,
+      "id": 14
+    },
+    {
+      "Data": "26/06/2022",
+      "Categoria": "Casa-moradia",
+      "Observacao": "Feira Junho",
+      "FonteDespesa": "NUBANK",
+      "SubCategoria": "Alimentação",
+      "Valor": 300,
+      "id": 15
+    },
+    {
+      "Data": "28/08/2022",
+      "Categoria": "Casa-moradia",
+      "Observacao": "",
+      "FonteDespesa": "Aluguel agosto",
+      "SubCategoria": "",
+      "Valor": 500,
+      "id": 16
+    },
+    {
+      "Data": "28/07/2022",
+      "Categoria": "Casa-moradia",
+      "Observacao": "",
+      "FonteDespesa": "Aluguel agosto",
+      "SubCategoria": "",
+      "Valor": 500,
+      "id": 17
+    },
+    {
+      "Data": "25/03/2022",
+      "Categoria": "Investimento",
+      "Observacao": "",
+      "FonteDespesa": "Investimento Março",
+      "SubCategoria": "",
+      "Valor": 300,
+      "id": 18
+    },
+    {
+      "Data": "01/01/2022",
+      "Categoria": "Educação",
+      "Observacao": "",
+      "FonteDespesa": "Facul Mês de Janeiro",
+      "SubCategoria": "Faculdade",
+      "Valor": 600,
+      "id": 19
+    },
+    {
+      "Data": "01/02/2022",
+      "Categoria": "Educação",
+      "Observacao": "",
+      "FonteDespesa": "Facul Mês de Janeiro",
+      "SubCategoria": "Faculdade",
+      "Valor": 600,
+      "id": 20
+    },
+    {
+      "Data": "06/03/2022",
+      "Categoria": "Educação",
+      "Observacao": "",
+      "FonteDespesa": "Facul Mês de Março",
+      "SubCategoria": "Faculdade",
+      "Valor": 600,
+      "id": 21
+    },
+    {
+      "Data": "28/01/2022",
+      "Categoria": "Casa-moradia",
+      "Observacao": "",
+      "FonteDespesa": "Aluguél Janeiro",
+      "SubCategoria": "",
+      "Valor": 600,
+      "id": 22
+    },
+    {
+      "Data": "28/02/2022",
+      "Categoria": "Casa-moradia",
+      "Observacao": "",
+      "FonteDespesa": "Aluguel Fevereiro",
+      "SubCategoria": "",
+      "Valor": 600,
+      "id": 23
+    },
+    {
+      "Data": "03/06/2022",
+      "Categoria": "Investimento",
+      "Observacao": "",
+      "FonteDespesa": "Investimento no negócio - Triade ",
+      "SubCategoria": "",
+      "Valor": 650,
+      "id": 24
     }
   ],
   "Receitas": [
     {
-      "Data": "15/09/2022",
-      "Categoria": "Freelas",
-      "Observacao": "Grana do freela em angular",
-      "FonteReceita": "NUBANK",
-      "SubCategoria": "wesdassdsfss",
-      "Valor": 4414,
-      "id": 3
-    },
-    {
       "Data": "03/09/2022",
       "Categoria": "Empreendimentos",
-      "Observacao": "ABLUBLEd",
+      "Observacao": "Lucro dos empreendimentos da Kaspper",
       "FonteReceita": "PICPAY",
       "SubCategoria": "",
       "Valor": 2314,
@@ -140,11 +203,110 @@
     {
       "Data": "01/09/2022",
       "Categoria": "Investimentos",
-      "Observacao": "",
+      "Observacao": "Dividendos mês Setembro",
       "FonteReceita": "SANTANDER",
       "SubCategoria": "",
-      "Valor": 321,
+      "Valor": 32,
       "id": 6
+    },
+    {
+      "Data": "01/01/2022",
+      "Categoria": "Salário",
+      "Observacao": "Salário Mês 1",
+      "FonteReceita": "ITAU",
+      "SubCategoria": "",
+      "Valor": 1750,
+      "id": 7
+    },
+    {
+      "Data": "01/02/2022",
+      "Categoria": "Salário",
+      "Observacao": "Salário Mês 1",
+      "FonteReceita": "ITAU",
+      "SubCategoria": "",
+      "Valor": 175,
+      "id": 8
+    },
+    {
+      "Data": "01/03/2022",
+      "Categoria": "Salário",
+      "Observacao": "Salário Mês ",
+      "FonteReceita": "ITAU",
+      "SubCategoria": "",
+      "Valor": 1750,
+      "id": 9
+    },
+    {
+      "Data": "01/04/2022",
+      "Categoria": "Salário",
+      "Observacao": "Salário Mês ",
+      "FonteReceita": "ITAU",
+      "SubCategoria": "",
+      "Valor": 1750,
+      "id": 10
+    },
+    {
+      "Data": "01/05/2022",
+      "Categoria": "Salário",
+      "Observacao": "Salário Mês ",
+      "FonteReceita": "ITAU",
+      "SubCategoria": "",
+      "Valor": 1750,
+      "id": 11
+    },
+    {
+      "Data": "01/09/2022",
+      "Categoria": "Outros",
+      "Observacao": "Sorteio",
+      "FonteReceita": "ITAU",
+      "SubCategoria": "",
+      "Valor": 30,
+      "id": 12
+    },
+    {
+      "Data": "13/07/2022",
+      "Categoria": "Freelas",
+      "Observacao": "Trampo da editora abril",
+      "FonteReceita": "ITAU",
+      "SubCategoria": "",
+      "Valor": 303,
+      "id": 13
+    },
+    {
+      "Data": "16/06/2022",
+      "Categoria": "Freelas",
+      "Observacao": "Fiscalização de provas",
+      "FonteReceita": "ITAU",
+      "SubCategoria": "",
+      "Valor": 120,
+      "id": 14
+    },
+    {
+      "Data": "11/02/2022",
+      "Categoria": "Investimentos",
+      "Observacao": "Fiscalização de provas",
+      "FonteReceita": "ITAU",
+      "SubCategoria": "",
+      "Valor": 120,
+      "id": 15
+    },
+    {
+      "Data": "23/06/2022",
+      "Categoria": "Investimentos",
+      "Observacao": "Fiscalização de provas",
+      "FonteReceita": "ITAU",
+      "SubCategoria": "",
+      "Valor": 403,
+      "id": 16
+    },
+    {
+      "Data": "01/09/2022",
+      "Categoria": "Outros",
+      "Observacao": "Frella 1 ",
+      "FonteReceita": "ITAU",
+      "SubCategoria": "",
+      "Valor": 400,
+      "id": 17
     }
   ]
 }

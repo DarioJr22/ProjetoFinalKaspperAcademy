@@ -11384,6 +11384,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .botaonav{
   padding: 10px;
 }
+.tableHome{
+  width: 120%;
+}
+.mat-column-amount{
+ 
+  text-align: right;
+}
 
 /* =====================================LandingPage=============================================== */
 

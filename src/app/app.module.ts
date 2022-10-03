@@ -79,6 +79,7 @@ import { LandingpageComponent } from './paginas/landingpage/landingpage.componen
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
     ModalModule.forRoot(),
+   
     //Imports Material
     MatTableModule,
     MatSliderModule,
